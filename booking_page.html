@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Stay | Hotel Devang Dwarka</title>
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dn45xyazy/image/upload/v1749986380/android-chrome-192x192_cnl2ib.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+        background: #880000;
+        color: white;
+        padding: 1rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    white-space: nowrap;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin-left: -70px;
+}
+
+
+    .logo a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: white;
+    }
+
+    .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    white-space: nowrap;
+    justify-content: flex-start;
+    margin-left: 0.5rem;
+}
+
+
+    .nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.nav-links a:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+}
+
+
+    .nav-links a:hover {
+        background: rgba(255,255,255,0.2);
+    }
+
+    .nav-links a.active {
+        background: rgba(255,255,255,0.3);
+        font-weight: 600;
+    }
+
+    .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.8rem;
+        cursor: pointer;
+        padding: 0.5rem;
+    }
+
+
+        /* Main Content */
+        .booking-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 120px 2rem 2rem;
+        }
+
+        .booking-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .booking-title {
+            font-size: 3rem;
+            color: #8b0000;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .booking-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .whatsapp-info {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .booking-form {
+            background: white;
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(45deg, #ffd700, #ffed4a);
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            color: #8b0000;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #8b0000;
+            font-size: 1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #ffd700;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .room-type-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .room-option {
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            position: relative;
+        }
+
+        .room-option:hover {
+            border-color: #ffd700;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .room-option.selected {
+            border-color: #8b0000;
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.05), rgba(255, 215, 0, 0.05));
+        }
+
+        .room-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .room-name {
+            font-weight: bold;
+            color: #8b0000;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .room-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #b22222;
+        }
+
+        .room-features {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .extra-mattress-section {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+            border: 1px solid #ffd700;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #8b0000;
+        }
+
+        .checkbox-group label {
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+
+        .whatsapp-btn {
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .whatsapp-icon {
+            font-size: 1.5rem;
+        }
+
+        .form-note {
+            background: #f8f9fa;
+            border-left: 4px solid #8b0000;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .form-note p {
+            margin: 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        /* Responsive Design */
+       @media (max-width: 768px) {
+        .menu-toggle {
+            display: block;
+        }
+
+.logo {
+  margin: 0 auto;
+  justify-content: center;
+}
+
+
+
+       .nav-links {
+    position: fixed;
+    top: 70px;           /* Positioned below header */
+    left: 0;
+    width: 100%;         /* Full width overlay */
+    background: #880000; /* Same maroon color as header */
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    gap: 0;
+    clip-path: circle(0px at 90% -10%);  /* Hidden by default */
+    transition: clip-path 0.5s ease-out; /* Smooth animation */
+    pointer-events: none; /* Disabled when hidden */
+}
+            .nav-links.active {
+    clip-path: circle(1000px at 90% -10%); /* Reveals menu with circular animation */
+    pointer-events: all; /* Enables interaction */
+}
+
+.nav-links li {
+            width: 100%;
+            text-align: center;
+        }
+
+.nav-links a {
+            display: block;
+            padding: 1rem;
+            border-radius: 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+            .booking-title {
+                font-size: 2.2rem;
+            }
+
+            .booking-form {
+                padding: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .room-type-selection {
+                grid-template-columns: 1fr;
+            }
+
+            .checkbox-group {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .booking-form {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Loading state */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #25D366;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+   <header>
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749707119/logo-photoaidcom-cropped_vjedul.png" alt="Logo" style="height: 40px; margin-right: 10px;">
+                Hotel Devang
+            </a>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">☰</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about_us.html">About Us</a></li>
+            <li><a href="rooms_page.html">Rooms</a></li>
+            <li><a href="gallery_page.html">Gallery</a></li>
+            <li><a href="facilities_page.html">Facilities</a></li>
+            <li><a href="booking_page.html" class="active">Booking</a></li>
+            <li><a href="dwarka_attractions.html">Nearby Attractions</a></li>
+            <li><a href="policies_page.html">Policies</a></li>
+            <li><a href="contact_page.html">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+    <div class="booking-container">
+        <div class="booking-header">
+            <h1 class="booking-title">Book Your Stay</h1>
+            <p class="booking-subtitle">Experience divine hospitality in the sacred city of Dwarka</p>
+            
+            <div class="whatsapp-info">
+                <h3>📱 WhatsApp Booking</h3>
+                <p>Fill the form below and click "Book via WhatsApp" to send your booking request directly to our hotel</p>
+            </div>
+        </div>
+
+        <div class="booking-form">
+            <div class="form-note">
+                <p><strong>Note:</strong> After filling this form, you'll be redirected to WhatsApp to send your booking details to our hotel. We'll confirm your booking and availability via WhatsApp.</p>
+            </div>
+
+            <div class="error-message" id="errorMessage"></div>
+
+            <form id="bookingForm">
+                <!-- Guest Information -->
+                <div class="form-section">
+                    <h3 class="section-title">👤 Guest Information</h3>
+                    <div class="form-group">
+                        <label for="guestName">Full Name *</label>
+                        <input type="text" id="guestName" class="form-control" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="guestPhone">Contact Number *</label>
+                        <input type="tel" id="guestPhone" class="form-control" required placeholder="+91 98765 43210">
+                    </div>
+                </div>
+
+                <!-- Booking Details -->
+                <div class="form-section">
+                    <h3 class="section-title">📅 Booking Details</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="checkIn">Check-in Date *</label>
+                            <input type="date" id="checkIn" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkOut">Check-out Date *</label>
+                            <input type="date" id="checkOut" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="numPersons">Number of Persons *</label>
+                        <select id="numPersons" class="form-control" required>
+                            <option value="">Select number of guests</option>
+                            <option value="1">1 Person</option>
+                            <option value="2">2 Persons</option>
+                            <option value="3">3 Persons</option>
+                            <option value="4">4 Persons</option>
+                            <option value="5">5 Persons</option>
+                            <option value="6">6 Persons</option>
+                            <option value="7">7 Persons</option>
+                            <option value="8">8 Persons</option>
+                            <option value="9">9 Persons</option>
+                            <option value="10">10 Persons</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Room Type Selection -->
+                <div class="form-section">
+                    <h3 class="section-title">🏨 Room Type *</h3>
+                    <div class="room-type-selection">
+                        <div class="room-option" onclick="selectRoomType('standard-ac')" tabindex="0">
+                            <input type="radio" name="roomType" value="standard-ac" required>
+                            <div class="room-name">Standard AC Room</div>
+                            <div class="room-price">₹1,300/night</div>
+                            <div class="room-features">AC • Double Bed • TV • Bathroom</div>
+                        </div>
+                        <div class="room-option" onclick="selectRoomType('standard-non-ac')" tabindex="0">
+                            <input type="radio" name="roomType" value="standard-non-ac" required>
+                            <div class="room-name">Standard Non-AC</div>
+                            <div class="room-price">₹1,000/night</div>
+                            <div class="room-features">Fan • Double Bed • TV • Bathroom</div>
+                        </div>
+                        <div class="room-option" onclick="selectRoomType('deluxe-ac')" tabindex="0">
+                            <input type="radio" name="roomType" value="deluxe-ac" required>
+                            <div class="room-name">Deluxe AC Room</div>
+                            <div class="room-price">₹1,600/night</div>
+                            <div class="room-features">Premium AC • King Bed • LCD TV</div>
+                        </div>
+                        <div class="room-option" onclick="selectRoomType('deluxe-non-ac')" tabindex="0">
+                            <input type="radio" name="roomType" value="deluxe-non-ac" required>
+                            <div class="room-name">Deluxe Non-AC</div>
+                            <div class="room-price">₹1,300/night</div>
+                            <div class="room-features">Spacious • King Bed • LCD TV</div>
+                        </div>
+                        <div class="room-option" onclick="selectRoomType('super-deluxe-ac')" tabindex="0">
+                            <input type="radio" name="roomType" value="super-deluxe-ac" required>
+                            <div class="room-name">Super Deluxe AC</div>
+                            <div class="room-price">₹1,800/night</div>
+                            <div class="room-features">Luxury • Premium AC • Smart TV</div>
+                        </div>
+                        <div class="room-option" onclick="selectRoomType('super-deluxe-non-ac')" tabindex="0">
+                            <input type="radio" name="roomType" value="super-deluxe-non-ac" required>
+                            <div class="room-name">Super Deluxe Non-AC</div>
+                            <div class="room-price">₹1,500/night</div>
+                            <div class="room-features">Premium • Luxury Bed • Smart TV</div>
+                        </div>
+                        <div class="room-option" onclick="selectRoomType('suite-ac')" tabindex="0">
+                            <input type="radio" name="roomType" value="suite-ac" required>
+                            <div class="room-name">Suite AC Room</div>
+                            <div class="room-price">₹2,800/night</div>
+                            <div class="room-features">Living Room • King Bed • Sea View</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Extra Mattress -->
+                <div class="form-section">
+                    <div class="extra-mattress-section">
+                        <h3 class="section-title">🛏️ Extra Mattress</h3>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="extraMattress">
+                            <label for="extraMattress">Yes, I need extra mattress (₹300 per mattress per night)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Special Requests -->
+                <div class="form-section">
+                    <h3 class="section-title">💬 Special Requests</h3>
+                    <div class="form-group">
+                        <label for="specialRequests">Any special requirements (Optional)</label>
+                        <textarea id="specialRequests" class="form-control" rows="3" placeholder="Any special requirements or requests..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="whatsapp-btn" id="whatsappBtn">
+                    <span class="whatsapp-icon">📱</span>
+                    Book via WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Hotel owner's WhatsApp number (replace with actual number)
+        const HOTEL_WHATSAPP = '+919824402132'; // Replace with your hotel's WhatsApp number
+
+        // Room type mapping for display
+        const ROOM_TYPES = {
+            'standard-ac': { name: 'Standard AC Room', price: '₹1,500' },
+            'standard-non-ac': { name: 'Standard Non-AC Room', price: '₹1,200' },
+            'deluxe-ac': { name: 'Deluxe AC Room', price: '₹1,800' },
+            'deluxe-non-ac': { name: 'Deluxe Non-AC Room', price: '₹1,500' },
+            'super-deluxe-ac': { name: 'Super Deluxe AC Room', price: '₹2,000' },
+            'super-deluxe-non-ac': { name: 'Super Deluxe Non-AC Room', price: '₹1,700' },
+            'suite-ac': { name: 'Suite AC Room', price: '₹3,000' }
+        };
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            setMinimumDates();
+            setupFormValidation();
+        });
+
+        // Menu toggle function
+       function toggleMenu() {
+    const navLinks = document.getElementById('navLinks');
+    navLinks.classList.toggle('active');
+}
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('active');
+    });
+});
+
+
+        // Set minimum dates for check-in and check-out
+        function setMinimumDates() {
+            const today = new Date().toISOString().split('T')[0];
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const tomorrowString = tomorrow.toISOString().split('T')[0];
+            
+            document.getElementById('checkIn').min = today;
+            document.getElementById('checkOut').min = tomorrowString;
+            
+            // Update checkout min date when checkin changes
+            document.getElementById('checkIn').addEventListener('change', function() {
+                const checkInDate = new Date(this.value);
+                checkInDate.setDate(checkInDate.getDate() + 1);
+                document.getElementById('checkOut').min = checkInDate.toISOString().split('T')[0];
+            });
+        }
+
+        // Select room type
+        function selectRoomType(roomType) {
+            // Remove previous selections
+            document.querySelectorAll('.room-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Mark the selected room type
+            event.currentTarget.classList.add('selected');
+            
+            // Check the radio button
+            document.querySelector(`input[value="${roomType}"]`).checked = true;
+        }
+
+        // Setup form validation and submission
+        function setupFormValidation() {
+            const form = document.getElementById('bookingForm');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (validateForm()) {
+                    sendWhatsAppMessage();
+                }
+            });
+        }
+
+        // Validate form
+        function validateForm() {
+            const errorMessage = document.getElementById('errorMessage');
+            const errors = [];
+
+            // Check required fields
+            const requiredFields = [
+                { id: 'guestName', name: 'Full Name' },
+                { id: 'guestPhone', name: 'Contact Number' },
+                { id: 'checkIn', name: 'Check-in Date' },
+                { id: 'checkOut', name: 'Check-out Date' },
+                { id: 'numPersons', name: 'Number of Persons' }
+            ];
+
+            requiredFields.forEach(field => {
+                const element = document.getElementById(field.id);
+                if (!element.value.trim()) {
+                    errors.push(`${field.name} is required`);
+                }
+            });
+
+            // Check if room type is selected
+            const roomTypeSelected = document.querySelector('input[name="roomType"]:checked');
+            if (!roomTypeSelected) {
+                errors.push('Please select a room type');
+            }
+
+            // Validate dates
+            const checkIn = document.getElementById('checkIn').value;
+            const checkOut = document.getElementById('checkOut').value;
+            
+            if (checkIn && checkOut) {
+                const checkInDate = new Date(checkIn);
+                const checkOutDate = new Date(checkOut);
+                
+                if (checkOutDate <= checkInDate) {
+                    errors.push('Check-out date must be after check-in date');
+                }
+            }
+
+            // Validate phone number
+            const phone = document.getElementById('guestPhone').value;
+            if (phone && !/^\+?[\d\s\-\(\)]{10,}$/.test(phone)) {
+                errors.push('Please enter a valid phone number');
+            }
+
+            // Show errors if any
+            if (errors.length > 0) {
+                errorMessage.innerHTML = errors.join('<br>');
+                errorMessage.style.display = 'block';
+                errorMessage.scrollIntoView({ behavior: 'smooth' });
+                return false;
+            }
+
+            errorMessage.style.display = 'none';
+            return true;
+        }
+
+        // Send WhatsApp message
+        function sendWhatsAppMessage() {
+            const btn = document.getElementById('whatsappBtn');
+            const originalText = btn.innerHTML;
+            
+            // Show loading state
+            btn.innerHTML = '<span class="loading"></span> Preparing WhatsApp...';
+            btn.disabled = true;
+
+            // Get form data
+            const formData = getFormData();
+            
+            // Create WhatsApp message
+            const message = createWhatsAppMessage(formData);
+            
+            // Create WhatsApp URL
+            const whatsappUrl = `https://wa.me/${HOTEL_WHATSAPP.replace(/\+/g, '')}?text=${encodeURIComponent(message)}`;
+            
+            // Simulate a brief delay for better UX
+            setTimeout(() => {
+                // Open WhatsApp
+                window.open(whatsappUrl, '_blank');
+                
+                // Reset button
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                
+                // Show success message
+                showSuccessMessage();
+            }, 1000);
+        }
+
+        // Get form data
+        function getFormData() {
+            const roomType = document.querySelector('input[name="roomType"]:checked').value;
+            const extraMattress = document.getElementById('extraMattress').checked;
+            
+            return {
+                name: document.getElementById('guestName').value,
+                phone: document.getElementById('guestPhone').value,
+                checkIn: document.getElementById('checkIn').value,
+                checkOut: document.getElementById('checkOut').value,
+                numPersons: document.getElementById('numPersons').value,
+                roomType: roomType,
+                roomTypeName: ROOM_TYPES[roomType].name,
+                roomTypePrice: ROOM_TYPES[roomType].price,
+                extraMattress: extraMattress,
+                specialRequests: document.getElementById('specialRequests').value
+            };
+        }
+
+        // Create WhatsApp message
+        function createWhatsAppMessage(data) {
+            const checkInDate = new Date(data.checkIn).toLocaleDateString('en-IN');
+            const checkOutDate = new Date(data.checkOut).toLocaleDateString('en-IN');
+            
+            let message = `🏨 *HOTEL DEVANG DWARKA - BOOKING REQUEST*\n\n`;
+            message += `📝 *Guest Details:*\n`;
+            message += `👤 Name: ${data.name}\n`;
+            message += `📞 Phone: ${data.phone}\n\n`;
+            
+            message += `📅 *Booking Details:*\n`;
+            message += `📅 Check-in: ${checkInDate}\n`;
+            message += `📅 Check-out: ${checkOutDate}\n`;
+            message += `👥 Number of Persons: ${data.numPersons}\n\n`;
+            
+            message += `🏨 *Room Details:*\n`;
+            message += `🛏️ Room Type: ${data.roomTypeName}\n`;
+            message += `💰 Price: ${data.roomTypePrice}/night\n`;
+            
+            if (data.extraMattress) {
+                message += `🛏️ Extra Mattress: Yes (₹300/night)\n`;
+            }
+            
+            if (data.specialRequests) {
+                message += `\n💌 *Special Requests:*\n${data.specialRequests}\n`;
+            }
+            
+            message += `\n✨ Please confirm room availability and booking details. Thank you!\n\n`;
+            message += `📍 *Hotel Devang Dwarka*\n`;
+            message += `🌐 Visit: hoteldevang.com`;
+            
+            return message;
+        }
+
+        // Show success message
+        function showSuccessMessage() {
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success-message';
+            successDiv.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: linear-gradient(135deg, #25D366, #128C7E);
+                color: white;
+                padding: 2rem;
+                border-radius: 15px;
+                text-align: center;
+                z-index: 10000;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                animation: fadeInUp 0.5s ease-out;
+            `;
+            
+            successDiv.innerHTML = `
+                <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Booking Request Sent! ✅</h3>
+                <p style="margin-bottom: 1.5rem;">We've sent your booking details to Hotel Devang Dwarka via WhatsApp.</p>
+                <p>Please wait for confirmation from our staff.</p>
+            `;
+            
+            document.body.appendChild(successDiv);
+            
+            // Remove after 5 seconds
+            setTimeout(() => {
+                successDiv.style.opacity = '0';
+                setTimeout(() => {
+                    document.body.removeChild(successDiv);
+                }, 500);
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

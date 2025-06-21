@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Policies | Family Friendly Hotel Devang | Dwarka</title>
+<link rel="icon" type="image/png" href="https://res.cloudinary.com/dn45xyazy/image/upload/v1749986380/android-chrome-192x192_cnl2ib.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: #880000; 
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            padding-left: 1rem;
+            padding-right: 2rem;
+        }
+
+        .logo {
+    font-size: 1.6rem; 
+    font-weight: bold;
+    white-space: nowrap; 
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+margin-left: -70px;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+
+
+      .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    overflow: hidden;        /* ✅ prevent scrollbars */
+    white-space: nowrap;     /* ✅ keep items in one line */
+justify-content: flex-start;
+margin-left:0.5rem;
+
+}
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        /* Hero Section */
+        .policies-hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749489887/hotel_image_klezyl.png');
+            background-size: cover;
+            background-position: center;
+            padding: 6rem 0 4rem;
+            text-align: center;
+            color: white;
+        }
+
+        .policies-hero h1 {
+            font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+    color: white; /* Add this line to set text color to white */
+    /* Remove these gradient text properties: */
+    /* background: linear-gradient(45deg, #ffd700, #fff); */
+    /* -webkit-background-clip: text; */
+    /* -webkit-text-fill-color: transparent; */
+    /* background-clip: text; */
+        }
+
+        .policies-hero p {
+            font-size: 1.2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Policies Section */
+        .policies-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .policies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .policy-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid transparent;
+        }
+
+        .policy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .policy-card.check-in {
+            border-left-color: #4caf50;
+        }
+
+        .policy-card.cancellation {
+            border-left-color: #ffd700;
+        }
+
+        .policy-card.payment {
+            border-left-color: #b8860b;
+        }
+
+        .policy-card.guest {
+            border-left-color: #9c27b0;
+        }
+
+        .policy-card.safety {
+            border-left-color: #f44336;
+        }
+
+        .policy-card.additional {
+            border-left-color: #607d8b;
+        }
+
+        .policy-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .policy-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #8b0000;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .policy-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .policy-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .policy-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        .policy-list.warning li::before {
+            content: '⚠️';
+        }
+
+        .policy-list.info li::before {
+            content: 'ℹ️';
+        }
+
+        .policy-note {
+            background: linear-gradient(45deg, #ffd700, #daa520);
+            color: #8b0000;
+            padding: 1rem;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        /* Important Notice Section */
+       .important-notice {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #660000, #8B0000);
+    color: white;
+}
+
+        .notice-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .notice-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .notice-box {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            margin-bottom: 2rem;
+        }
+
+        .notice-box h3 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .notice-box p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 4rem 0;
+           background: #caa035;
+            color: #8b0000;
+            text-align: center;
+        }
+
+        .contact-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            background: rgba(139,0,0,0.2);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            min-width: 200px;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-item p {
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #8b0000;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .footer-section p, .footer-section li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #ffd700;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+
+.menu-toggle {
+    display: block;  /* Shows hamburger menu on mobile */
+}
+
+.logo {
+  margin: 0 auto;
+  justify-content: center;
+}
+
+
+          .nav-links {
+    position: fixed;
+    top: 70px;           /* Positioned below header */
+    left: 0;
+    width: 100%;         /* Full width overlay */
+    background: #880000; /* Same maroon color as header */
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    gap: 0;
+    clip-path: circle(0px at 90% -10%);  /* Hidden by default */
+    transition: clip-path 0.5s ease-out; /* Smooth animation */
+    pointer-events: none; /* Disabled when hidden */
+}
+
+
+.nav-links.active {
+    clip-path: circle(1000px at 90% -10%); /* Reveals menu with circular animation */
+    pointer-events: all; /* Enables interaction */
+}
+            
+           .nav-links li {
+    width: 100%;
+    text-align: center;
+}
+
+.nav-links a {
+    display: block;
+    padding: 1rem;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1); /* Separator lines */
+}
+
+            .policies-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(139, 0, 0, 0.95);
+                flex-direction: column;
+                padding: 1rem;
+                backdrop-filter: blur(10px);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 0.8rem 1rem;
+                border-radius: 10px;
+                text-align: center;
+            }
+
+            .policies-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .policies-hero p {
+                font-size: 1.1rem;
+            }
+
+            .policy-card {
+                padding: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .policies-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+  <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: white;">
+    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749707119/logo-photoaidcom-cropped_vjedul.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
+    Hotel Devang
+  </a>
+</div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about_us.html">About Us</a></li>
+                <li><a href="rooms_page.html">Rooms</a></li>
+                <li><a href="gallery_page.html">Gallery</a></li>
+                <li><a href="facilities_page.html">Facilities</a></li>
+                <li><a href="booking_page.html">Booking</a></li>
+                <li><a href="dwarka_attractions.html">Nearby Attractions</a></li>
+                <li><a href="policies.html" class="active">Policies</a></li>
+		<li><a href="contact_page.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="policies-hero">
+            <div class="container">
+                <h1>Hotel Policies</h1>
+                <p>Please review our policies to ensure a comfortable and pleasant stay at Hotel Devang in sacred Dwarka</p>
+            </div>
+        </section>
+
+        <!-- Policies Section -->
+        <section class="policies-section">
+            <div class="container">
+                <div class="policies-grid">
+                    <!-- Check-in/Check-out Policy -->
+                    <div class="policy-card check-in fade-in">
+                        <h3><span class="policy-icon">🏨</span>Check-in & Check-out</h3>
+                        <ul class="policy-list">
+                            <li><strong>Check-in Time:</strong> 12:30 PM</li>
+                            <li><strong>Check-out Time:</strong> 10:00 AM</li>
+                            <li>Early check-in subject to room availability</li>
+                            <li>Late check-out may incur additional charges</li>
+                            <li>Valid photo ID required of each Family members</li>
+                            <li>Registration required as per Government regulations</li>
+                        </ul>
+                        <div class="policy-note">
+                            <strong>Note:</strong> For spiritual travelers arriving for early morning temple visits, we offer complimentary luggage storage.
+                        </div>
+                    </div>
+
+                    <!-- Cancellation Policy -->
+                    <div class="policy-card cancellation fade-in">
+                        <h3><span class="policy-icon">📅</span>Cancellation Policy</h3>
+                       <ul class  = "policy-list warning">
+  <li>Advance payments made online are non-refundable in case of cancellation.</li>
+  <li>Valid photo ID is mandatory for all guests at check-in.</li>
+  <li>The credit card holder must be among the travelers.</li>
+  <li>Reservations may be cancelled or modified if found to be fraudulent or erroneous.</li>
+  <li>Refunds, if applicable, will be initiated within 48 hours and credited within 5–7 working days via the original payment method.</li>
+</ul>
+
+                        <div class="policy-note">
+                            <strong>Festival Period:</strong> During Janmashtami and other major festivals, special cancellation terms apply.
+                        </div>
+                    </div>
+
+                    <!-- Payment Policy -->
+                    <div class="policy-card payment fade-in">
+                        <h3><span class="policy-icon">💳</span>Payment Policy</h3>
+                        <ul class="policy-list">
+                            <li>Cash payments accepted</li>
+                            <li>UPI payments welcome (GPay, PhonePe, Paytm)</li>
+                            <li>Bank transfers accepted</li>
+                            <li>Credit/Debit cards accepted (subject to charges)</li>
+                            <li>Advance payment for group bookings</li>
+                            <li>GST as applicable on all rates</li>
+                        </ul>
+                        <div class="policy-note">
+                            <strong>Preferred:</strong> UPI payments for quick and secure transactions.
+                        </div>
+                    </div>
+
+                    <!-- Guest Policy -->
+                    <div class="policy-card guest fade-in">
+                        <h3><span class="policy-icon">👥</span>Guest Policy</h3>
+                        <ul class="policy-list">
+                            <li>Maximum occupancy as per room type</li>
+                            <li>Extra person charges applicable</li>
+                            <li>Children below 5 years stay free (without extra bed)</li>
+                            <li>Valid ID required for all guests above 12 years</li>
+                            <li>Visitor hours: 24 hours</li>
+                            <li> No Prior approval required for visitors</li>
+                        </ul>
+                        <div class="policy-note">
+                            <strong>Family Friendly:</strong> We welcome families and provide child-friendly amenities.
+                        </div>
+                    </div>
+
+                    <!-- Safety & Security -->
+                    <div class="policy-card safety fade-in">
+                        <h3><span class="policy-icon">🛡️</span>Safety & Security</h3>
+                        <ul class="policy-list warning">
+                            <li>CCTV surveillance in common areas</li>
+                            <li> No Safe deposit facility available at front desk</li>
+                            <li>Please lock your rooms when leaving</li>
+                            <li>Report any suspicious activity immediately</li>
+                            <li>Fire safety equipment available on all floors</li>
+                        </ul>
+                        <div class="policy-note">
+                            <strong>Important:</strong> Hotel is not responsible for valuables left in rooms. Please use safe deposit facility.
+                        </div>
+                    </div>
+
+                    <!-- Additional Policies -->
+                    <div class="policy-card additional fade-in">
+                        <h3><span class="policy-icon">📋</span>General Policies</h3>
+                        <ul class="policy-list info">
+                            <li>Strictly vegetarian premises (no non-veg/alcohol)</li>
+                            <li>Smoking prohibited in all indoor areas</li>
+                            <li>Pets not allowed</li>
+                            <li>Damage charges applicable for hotel property</li>
+                            <li>Room cleaning timing before 12:00PM - 12:30PM</li>
+                        </ul>
+                        <div class="policy-note">
+                            <strong>Sacred Environment:</strong> We maintain a pure, spiritual atmosphere in respect of Dwarka's religious significance.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Important Notice -->
+        <section class="important-notice">
+            <div class="container">
+                <div class="notice-content">
+                    <h2>Important Guidelines</h2>
+                    <div class="notice-box">
+                        <h3>🙏 Spiritual Atmosphere</h3>
+                        <p>As we are located in the sacred city of Dwarka, we request all guests to maintain the sanctity of the place. Please dress modestly and respect local customs and traditions.</p>
+                    </div>
+                    <div class="notice-box">
+                        <h3>🕐 Temple Visit Timings</h3>
+                        <p>Dwarkadhish Temple opens early at 6:30 AM. We provide wake-up calls and early morning assistance for devotees wishing to attend morning prayers.</p>
+                    </div>
+                    <div class="notice-box">
+                        <h3>🚗 Parking & Transportation</h3>
+                        <p>Limited parking available on first-come, first-served basis. We can arrange local transportation and temple visit guides upon request.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-content">
+                    <h2>Need Clarification?</h2>
+                    <p>Our team is here to help with any questions about our policies</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <h3>📞 Phone</h3>
+                            <p>+91 98244 02132</p>
+                        </div>
+                        <div class="contact-item">
+                            <h3>✉️ Email</h3>
+                            <p>info@hoteldevang.com</p>
+                        </div>
+                        <div class="contact-item">
+                            <h3>🕐 Reception</h3>
+                            <p>24/7 Available</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>📍 Dwarka, Gujarat - 361335</p>
+                    <p>📞 Phone: +91 98244 02132</p>
+                    <p>✉️ Email: info@hoteldevang.com</p>
+                    <p>🌐 Website: www.hoteldevang.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about_us.html">About Us</a></li>
+                        <li><a href="rooms_page.html">Our Rooms</a></li>
+                        <li><a href="facilities_page.html">Amenities</a></li>
+                        <li><a href="contact_page.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Nearby Attractions</h3>
+                    <ul>
+                        <li>Dwarkadhish Temple</li>
+                        <li>Rukmini Devi Temple</li>
+                        <li>Gomti Ghat</li>
+                        <li>Bet Dwarka</li>
+                        <li>Nageshwar Jyotirlinga</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Guest Services</h3>
+                    <ul>
+                        <li>24/7 Reception</li>
+                        <li>Room Service</li>
+                        <li>Travel Assistance</li>
+                        <li>Temple Guide Service</li>
+                        <li>Parking Facility</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+    <p>&copy; 2025 Hotel Devang. All rights reserved. | 
+        Developed by <a href="https://kushang-acharya.onrender.com" target="_blank" style="color: gold ">Kushang Acharya</a>
+    </p>
+</div>
+
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navLinks = document.getElementById('navLinks');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+    header.style.background = 'linear-gradient(135deg, rgba(139, 0, 0, 0.95) 0%, rgba(178, 34, 34, 0.95) 100%)';
+} else {
+    header.style.background = 'linear-gradient(135deg, #8b0000 0%, #b22222 100%)';
+}
+
+        });
+        
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 1s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.policy-card, .notice-box, .contact-item').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
