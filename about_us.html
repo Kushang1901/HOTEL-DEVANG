@@ -30,6 +30,7 @@ header {
     z-index: 1000;
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+transition: top 0.4s ease-in-out; 
 }
 
 nav {
@@ -46,7 +47,7 @@ nav {
     font-weight: bold;
     white-space: nowrap; 
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    margin-left: 0px;
+    margin-left: -90px;
 }
 
 .logo a {
@@ -846,6 +847,24 @@ document.querySelectorAll('.nav-links a').forEach(link => {
         if (statsSection) {
             statsObserver.observe(statsSection);
         }
+
+// Smooth hide/show navbar on scroll
+let prevScrollPos = window.pageYOffset;
+
+window.addEventListener("scroll", function () {
+    const currentScrollPos = window.pageYOffset;
+
+    if (prevScrollPos > currentScrollPos) {
+        // Scrolling up - show navbar
+        document.querySelector("header").style.top = "0";
+    } else {
+        // Scrolling down - hide navbar
+        document.querySelector("header").style.top = "-100px";
+    }
+
+    prevScrollPos = currentScrollPos;
+});
+
 
     </script>
 </body>

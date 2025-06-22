@@ -30,6 +30,8 @@
         top: 0;
         z-index: 1000;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+			transition: top 0.4s ease-in-out; 
+
     }
 
     nav {
@@ -876,6 +878,24 @@ document.querySelectorAll('.nav-links a').forEach(link => {
                 }, 500);
             }, 5000);
         }
+
+	// Smooth hide/show navbar on scroll
+let prevScrollPos = window.pageYOffset;
+
+window.addEventListener("scroll", function () {
+    const currentScrollPos = window.pageYOffset;
+
+    if (prevScrollPos > currentScrollPos) {
+        // Scrolling up - show navbar
+        document.querySelector("header").style.top = "0";
+    } else {
+        // Scrolling down - hide navbar
+        document.querySelector("header").style.top = "-100px";
+    }
+
+    prevScrollPos = currentScrollPos;
+});
+
     </script>
 </body>
 </html>
