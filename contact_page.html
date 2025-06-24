@@ -155,6 +155,24 @@ nav {
     text-align: center;
 }
 
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #ffffff; /* or any background color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+#preloader img {
+  width: 200px;
+  height: auto;
+}
+
+
 .contact-item {
     display: flex;
     align-items: center;
@@ -399,7 +417,11 @@ footer {
         height: 300px;
     }
 }
-
+@media (max-width: 600px) {
+  #preloader img {
+    width: 100px; /* or any smaller size you prefer */
+  }
+}
 /* Animations */
 @keyframes fadeInUp {
     from {
@@ -419,6 +441,10 @@ footer {
     </style>
 </head>
 <body>
+
+<div id="preloader">
+  <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1750791182/Untitled_design_bqjxji.gif" alt="Loading..." />
+</div>
     <!-- Header -->
     <header>
         <nav>
@@ -614,5 +640,12 @@ window.addEventListener("scroll", function () {
 });
 
     </script>
+
+<script>
+  window.addEventListener("load", function () {
+    document.getElementById("preloader").style.display = "none";
+  });
+</script>
+
 </body>
 </html>
