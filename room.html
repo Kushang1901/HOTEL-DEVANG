@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms & Rates | Family Friendly Hotel Devang | Sacred Dwarka</title>
+<link rel="icon" type="image/png" href="https://res.cloudinary.com/dn45xyazy/image/upload/v1749986380/android-chrome-192x192_cnl2ib.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: #880000; 
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+			transition: top 0.4s ease-in-out; 
+
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            padding-left: 1rem;
+            padding-right: 0.5rem;
+        }
+
+         .logo {
+    font-size: 1.6rem; 
+    font-weight: bold;
+    white-space: nowrap; 
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+margin-left: -90px;
+}
+.logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+
+      .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    flex-wrap: nowrap;
+    overflow: hidden;        /* ✅ prevent scrollbars */
+    white-space: nowrap;     /* ✅ keep items in one line */
+justify-content: flex-start;
+margin-left:0rem;
+
+}
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(139, 0, 0, 0.9), rgba(178, 34, 34, 0.9)), 
+                        url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749491973/office_1_jvfbtg.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+
+       .page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+    color: white; /* Add this line to set text color to white */
+    /* Remove these gradient text properties: */
+    /* background: linear-gradient(45deg, #ffd700, #fff); */
+    /* -webkit-background-clip: text; */
+    /* -webkit-text-fill-color: transparent; */
+    /* background-clip: text; */
+}
+        .page-header p {
+            font-size: 1.2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Room Categories Section */
+        .room-categories {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #8B0000;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #DAA520, #FFD700);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Room Grid */
+        .room-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #ffffff; /* or any background color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+#preloader img {
+  width: 200px;
+  height: auto;
+}
+
+        .room-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .room-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .room-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .room-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, #DAA520, #FFD700);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3);
+        }
+
+        .room-content {
+            padding: 2rem;
+        }
+
+        .room-title {
+            font-size: 1.5rem;
+            color: #8B0000;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .room-subtitle {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .room-description {
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .room-amenities {
+            margin-bottom: 2rem;
+        }
+
+        .room-amenities h4 {
+            color: #8B0000;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .amenities-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .amenity-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .amenity-icon {
+            color: #DAA520;
+            font-size: 1rem;
+        }
+
+        .room-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .room-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #8B0000;
+        }
+
+        .price-note {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 0.2rem;
+        }
+
+        .book-btn {
+            background: linear-gradient(45deg, #DAA520, #FFD700);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3);
+        }
+
+        .book-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(218, 165, 32, 0.4);
+        }
+
+        /* Room Images */
+        .standard-ac { background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749663633/R3_ecxega.jpg'); }
+	.standard-non-ac { background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749733434/SNAC_jfrviw.jpg'); }
+        .deluxe-ac { background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749663633/R12_eikbqa.jpg'); }
+        .deluxe-non-ac { background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749663632/R11_mdgi9o.jpg'); }
+        .super-deluxe-ac { background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749733338/SDA_qsn0ar.jpg'); }
+        .super-deluxe-non-ac { background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749663632/R4_t6r4h9.jpg'); }
+        .suite-ac { background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749663633/R10_urhfho.jpg'); }
+
+        /* Important Notice */
+        .important-notice {
+            background: linear-gradient(135deg, #FFF8DC 0%, #F5DEB3 100%);
+            padding: 3rem 0;
+            border-top: 4px solid #DAA520;
+        }
+
+        .notice-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .notice-content h3 {
+            color: #8B0000;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .notice-content p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-text {
+            background: linear-gradient(45deg, #DAA520, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+
+        /* Contact CTA */
+        .contact-cta {
+            background: linear-gradient(135deg, #8B0000 0%, #B22222 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .contact-cta h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .contact-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: #8B0000;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #FFD700;
+        }
+
+        .footer-section p, .footer-section li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #FFD700;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav-links a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+.logo {
+  margin: 0 auto;
+  justify-content: center;
+}
+
+
+
+           .nav-links {
+    position: fixed;
+    top: 70px;           /* Positioned below header */
+    left: 0;
+    width: 100%;         /* Full width overlay */
+    background: #880000; /* Same maroon color as header */
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    gap: 0;
+    clip-path: circle(0px at 90% -10%);  /* Hidden by default */
+    transition: clip-path 0.5s ease-out; /* Smooth animation */
+    pointer-events: none; /* Disabled when hidden */
+}
+
+          .nav-links.active {
+    clip-path: circle(1000px at 90% -10%); /* Reveals menu with circular animation */
+    pointer-events: all; /* Enables interaction */
+}
+
+           .nav-links li {
+    width: 100%;
+    text-align: center;
+}
+
+.nav-links a {
+    display: block;
+    padding: 1rem;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1); /* Separator lines */
+}
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .room-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+
+            .room-footer {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+        }
+@media (max-width: 600px) {
+  #preloader img {
+    width: 100px; /* or any smaller size you prefer */
+  }
+}
+
+
+    </style>
+</head>
+<body>
+
+<div id="preloader">
+  <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1750791182/Untitled_design_bqjxji.gif" alt="Loading..." />
+</div>
+    <!-- Header -->
+    <header>
+
+        <nav>
+          <div class="logo">
+  <a href="index.html">
+    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749707119/logo-photoaidcom-cropped_vjedul.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
+    Hotel Devang
+  </a>
+</div>
+
+             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about_us.html">About Us</a></li>
+                <li><a href="room.html" class="active">Rooms</a></li>
+		<li><a href="gallery_page.html">Gallery</a></li>
+                <li><a href="facilities_page.html">Facilities</a></li>
+                <li><a href="booking_page.html">Booking</a></li>
+                <li><a href="dwarka_attractions.html">Nearby Attractions</a></li>
+                <li><a href="policies_page.html">Policies</a></li>
+		 <li><a href="contact_page.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+<h1> <span class="hotel-name"></span> Rooms & Rates</h1>      
+      <p>Choose from our 7 categories of comfortable accommodations, all featuring double beds for your perfect stay in sacred Dwarka</p>
+        </div>
+    </section>
+
+    <!-- Room Categories -->
+    <section class="room-categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Accommodation Options</h2>
+                <p>All rooms feature comfortable double beds. For groups of more than 2 persons, we provide extra mattresses to ensure everyone has a comfortable stay.</p>
+		<p><u>Important</u> : And extra charges may apply as per Government rules.</p>
+            </div>
+
+            <div class="room-grid">
+                <!-- Standard AC Room -->
+                <div class="room-card">
+                    <div class="room-image standard-ac">
+                        <div class="room-badge">Most Popular</div>
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title">Standard AC Room</h3>
+                        <p class="room-subtitle">Comfortable & Air-Conditioned</p>
+                        <p class="room-description">
+                            Perfect for families and couples seeking comfort with modern amenities. These well-appointed rooms offer a peaceful retreat after a day of temple visits and spiritual activities.
+                        </p>
+                        <div class="room-amenities">
+                            <h4>Room Amenities</h4>
+                            <div class="amenities-list">
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">❄️</span>
+                                    <span>Air Conditioning</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🛏️</span>
+                                    <span>Double Bed</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">📺</span>
+                                    <span>Television</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🚿</span>
+                                    <span>Private Bathroom</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🧼</span>
+                                    <span>Fresh Towels</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🪑</span>
+                                    <span>Seating Area</span>
+                                </div>
+				<div class="amenity-item">
+                                    <span class="amenity-icon">☕</span>
+                                    <span>Tea/Coffee Service</span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="room-footer">
+                            <div>
+                                <div class="room-price">₹1,300/night + Govt. Tax</div>
+                                <b><div class="price-note">*Prices may vary by season</div></b>
+                            </div>
+                            <a href="booking_page.html" class="book-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Standard Non-AC Room -->
+                <div class="room-card">
+                    <div class="room-image standard-non-ac">
+                        <div class="room-badge">Budget Friendly</div>
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title">Standard Non-AC Room</h3>
+                        <p class="room-subtitle">Comfortable & Economical</p>
+                        <p class="room-description">
+                            Ideal for pilgrims looking for clean, comfortable accommodation at affordable rates. These rooms provide all essential amenities for a pleasant stay.
+                        </p>
+                        <div class="room-amenities">
+                            <h4>Room Amenities</h4>
+                            <div class="amenities-list">
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🪟</span>
+                                    <span>Natural Ventilation</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🛏️</span>
+                                    <span>Double Bed</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">📺</span>
+                                    <span>Television</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🚿</span>
+                                    <span>Private Bathroom</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🧼</span>
+                                    <span>Fresh Towels</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🪑</span>
+                                    <span>Seating Area</span>
+                                </div>
+				<div class="amenity-item">
+                                    <span class="amenity-icon">☕</span>
+                                    <span>Tea/Coffee Service</span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="room-footer">
+                            <div>
+                                <div class="room-price">₹1,000/night  + Govt. Tax</div>
+                                <b><div class="price-note">*Prices may vary by season</div></b>
+                            </div>
+                            <a href="booking_page.html" class="book-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deluxe AC Room -->
+                <div class="room-card">
+                    <div class="room-image deluxe-ac">
+                        <div class="room-badge">Enhanced Comfort</div>
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title">Deluxe AC Room</h3>
+                        <p class="room-subtitle">Spacious & Premium</p>
+                        <p class="room-description">
+                            Enhanced comfort with additional space and upgraded amenities. Perfect for families who desire extra comfort during their spiritual journey in Dwarka.
+                        </p>
+                        <div class="room-amenities">
+                            <h4>Room Amenities</h4>
+                            <div class="amenities-list">
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">❄️</span>
+                                    <span>Air Conditioning</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🛏️</span>
+                                    <span>Best Double Bed</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">📺</span>
+                                    <span>LCD Television</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🚿</span>
+                                    <span>Clean Bathroom</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">☕</span>
+                                    <span>Tea/Coffee Service</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🪑</span>
+                                    <span>Accomodable Furniture</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="room-footer">
+                            <div>
+                                <div class="room-price">₹1,600/night  + Govt. Tax</div>
+                               <b> <div class="price-note">*Prices may vary by season</div></b>
+                            </div>
+                            <a href="booking_page.html" class="book-btn">Book Now</a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deluxe Non-AC Room -->
+                <div class="room-card">
+                    <div class="room-image deluxe-non-ac">
+                        <div class="room-badge">Spacious</div>
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title">Deluxe Non-AC Room</h3>
+                        <p class="room-subtitle">Spacious & Well-Ventilated</p>
+                        <p class="room-description">
+                            Larger rooms with enhanced amenities and natural ventilation. Great for guests who prefer natural air circulation while enjoying premium comfort.
+                        </p>
+                        <div class="room-amenities">
+                            <h4>Room Amenities</h4>
+                            <div class="amenities-list">
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🪟</span>
+                                    <span>Excellent Ventilation</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🛏️</span>
+                                    <span>Premium Double Bed</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">📺</span>
+                                    <span>LCD Television</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🚿</span>
+                                    <span>Modern Bathroom</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">☕</span>
+                                    <span>Tea/Coffee Maker</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🪑</span>
+                                    <span>Premium Furniture</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="room-footer">
+                            <div>
+                                <div class="room-price">₹1,300/night  + Govt. Tax</div>
+                               <b> <div class="price-note">*Prices may vary by season</div></b>
+                            </div>
+                            <a href="booking_page.html" class="book-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Super Deluxe AC Room -->
+                <div class="room-card">
+                    <div class="room-image super-deluxe-ac">
+                        <div class="room-badge">Luxury</div>
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title">Super Deluxe AC Room</h3>
+                        <p class="room-subtitle">Luxury & Elegance</p>
+                        <p class="room-description">
+                            Experience luxury accommodation with premium amenities and elegant interiors. Perfect for guests seeking the finest comfort during their stay in sacred Dwarka.
+                        </p>
+                        <div class="room-amenities">
+                            <h4>Room Amenities</h4>
+                            <div class="amenities-list">
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">❄️</span>
+                                    <span>Premium AC</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🛏️</span>
+                                    <span>Luxury Double Bed</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">📺</span>
+                                    <span>Smart TV</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🛁</span>
+                                    <span>Best Bathroom</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">☕</span>
+                                    <span>Tea/Coffee Service</span>
+                                </div>
+
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🪑</span>
+                                    <span>Best Furniture</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="room-footer">
+                            <div>
+                                <div class="room-price">₹1,800/night + Govt. Tax</div>
+                               <b> <div class="price-note">*Prices may vary by season</div></b>
+                            </div>
+                            <a href="booking_page.html" class="book-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                           <!-- Super Deluxe Non-AC Room -->
+                <div class="room-card">
+                    <div class="room-image super-deluxe-non-ac">
+                        <div class="room-badge">Premium</div>
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title">Super Deluxe Non-AC Room</h3>
+                        <p class="room-subtitle">Premium Comfort with Natural Air</p>
+                        <p class="room-description">
+                            Luxury accommodation with excellent natural ventilation and premium amenities. Ideal for guests who appreciate comfort while staying connected to nature.
+                        </p>
+                        <div class="room-amenities">
+                            <h4>Room Amenities</h4>
+                            <div class="amenities-list">
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🌬️</span>
+                                    <span>Superior Ventilation</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🛏️</span>
+                                    <span>Luxury Double Bed</span>
+                                </div>
+                               <div class="amenity-item">
+    			<span class="amenity-icon">📺</span>
+    				<span>Smart TV</span>
+				</div>
+				<div class="amenity-item">
+   			 <span class="amenity-icon">🚿</span>
+   			 <span>Private Bathroom</span>
+				</div>
+				<div class="amenity-item">
+  			  <span class="amenity-icon">🪑</span>
+  			  <span>Luxury Furniture</span>
+				</div>
+				<div class="amenity-item">
+                                    <span class="amenity-icon">☕</span>
+                                    <span>Tea/Coffee Service</span>
+                                </div>
+
+</div> 
+</div> <div class="room-footer">
+    <div>
+        <div class="room-price">₹1,500/night + Govt. Tax</div>
+        <b><div class="price-note">*Prices may vary by season</div></b>
+    </div>
+    <a href="booking_page.html" class="book-btn">Book Now</a>
+</div>
+</div> 
+</div>
+
+                <!-- Suite AC Room -->
+                <div class="room-card">
+                    <div class="room-image suite-ac">
+                        <div class="room-badge">Ultimate Luxury</div>
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title">Suite AC Room</h3>
+                        <p class="room-subtitle">Spacious Suite with Separate Living Area</p>
+                        <p class="room-description">
+                            Our most luxurious accommodation featuring a separate living area, bedroom, and premium amenities. Perfect for extended stays, VIP guests, and families seeking the ultimate comfort experience in Dwarka.
+                        </p>
+                        <div class="room-amenities">
+                            <h4>Suite Amenities</h4>
+                            <div class="amenities-list">
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">❄️</span>
+                                    <span>Multi-Zone AC</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🛏️</span>
+                                    <span>King Size Bed</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🛋️</span>
+                                    <span>Separate Living Room</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">📺</span>
+                                    <span>Multiple Smart TVs</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🛁</span>
+                                    <span>Premium Bathroom</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🏠</span>
+                                    <span>Mini Refrigerator</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">☕</span>
+                                    <span>Premium Tea/Coffee</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🪑</span>
+                                    <span>Joint Study Sace</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🌅</span>
+                                    <span>Sea View</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="room-footer">
+                            <div>
+                                <div class="room-price">₹2,800/night + Govt. Tax</div>
+                               <b> <div class="price-note">*Prices may vary by season</div></b>
+                            </div>
+                            <a href="booking_page.html" class="book-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+<script>
+function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+}
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('active');
+    });
+});
+// Smooth hide/show navbar on scroll
+let prevScrollPos = window.pageYOffset;
+
+window.addEventListener("scroll", function () {
+    const currentScrollPos = window.pageYOffset;
+
+    if (prevScrollPos > currentScrollPos) {
+        // Scrolling up - show navbar
+        document.querySelector("header").style.top = "0";
+    } else {
+        // Scrolling down - hide navbar
+        document.querySelector("header").style.top = "-100px";
+    }
+
+    prevScrollPos = currentScrollPos;
+});
+
+</script>
+
+<script>
+  window.addEventListener("load", function () {
+    document.getElementById("preloader").style.display = "none";
+  });
+</script>
+
+</body>
+</html>
+
