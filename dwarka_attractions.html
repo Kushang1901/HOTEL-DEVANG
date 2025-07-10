@@ -220,6 +220,41 @@ margin-left:0.5rem;
             border-bottom: none;
         }
 
+.travel-info-wrapper {
+  background: linear-gradient(45deg, #caa035, #d4b148);
+  color: white;
+  padding: 3rem;
+  border-radius: 20px;
+  margin: 4rem 0;
+  text-align: center;
+}
+
+.travel-info-heading {
+  font-size: 2.5rem;
+  color: #8B0000;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.travel-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  text-align: left;
+}
+
+.travel-info-card {
+  background: rgba(255,255,255,0.1);
+  padding: 1.5rem;
+  border-radius: 15px;
+}
+
+.travel-info-card h3 {
+  margin-bottom: 1rem;
+  color: #8B0000;
+}
+
+
         /* Attractions Grid */
         .attractions-grid {
             display: grid;
@@ -287,6 +322,22 @@ margin-left:0.5rem;
             color: #8b0000;
         }
 
+.footer-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #ffd700;
+  font-size: 1.6rem;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.footer-logo {
+  height: 40px;
+  border-radius: 50%;
+}
+
         /* Specific attraction images */
         .dwarkadhish { background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749676813/dwarkadhish-temple-1022x600_zd23bn.png'); }
         
@@ -310,103 +361,175 @@ margin-left:0.5rem;
         .rukmani { background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749677719/900551442Dwarka_Rukmini_Temple_Main_xbfaqq.jpg'); }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
+       /* 🌐 MOBILE STYLES */
+@media (max-width: 768px) {
+  .container,
+  .route-card,
+  .attraction-content {
+    padding: 1rem;
+  }
 
-.logo {
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;         /* ✅ FULL WIDTH */
-  padding: 0 1rem;     /* ✅ SMALL GAP ON SIDES */
-}
-	
-          .nav-links {
-    position: fixed;
-    top: 70px;           /* Positioned below header */
-    left: 0;
-    width: 100%;         /* Full width overlay */
-    background: #880000; /* Same maroon color as header */
+  .menu-toggle {
+    display: block;
+  }
+
+
+footer {
+    padding: 1.5rem 1rem;
+    text-align: center;
+  }
+
+  footer .container > div {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 1rem; 
+  }
+
+  footer h3 {
+    font-size: 1.4rem;
+    line-height: 1.3;
+  }
+
+  footer p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  footer .logo {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  footer .logo img {
+    margin-bottom: 0.5rem;
+  }
+
+  footer div[style*="grid-template-columns"] {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .logo {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: #880000;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1rem;
     gap: 0;
-    clip-path: circle(0px at 90% -10%);  /* Hidden by default */
-    transition: clip-path 0.5s ease-out; /* Smooth animation */
-    pointer-events: none; /* Disabled when hidden */
-}
+    clip-path: circle(0px at 90% -10%);
+    transition: clip-path 0.5s ease-out;
+    pointer-events: none;
+  }
 
+  .nav-links.active {
+    clip-path: circle(1000px at 90% -10%);
+    pointer-events: all;
+  }
 
-header, nav {
-  background-color: #880000;
-}
-body, html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden;
-}
-
-
-           .nav-links.active {
-    clip-path: circle(1000px at 90% -10%); /* Reveals menu with circular animation */
-    pointer-events: all; /* Enables interaction */
-}
-
-.nav-links li {
+  .nav-links li {
     width: 100%;
     text-align: center;
-}
+  }
 
-.nav-links a {
+  .nav-links a {
     display: block;
     padding: 1rem;
     border-radius: 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1); /* Separator lines */
-}
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
 
-            .hero-content h1 {
-                font-size: 2rem;
-            }
+  .hero-content h1 {
+    font-size: 1.6rem;
+    padding: 0 1rem;
+  }
 
-            .attractions-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
 
-            .route-cards {
-                grid-template-columns: 1fr;
-            }
-        }
-@media (max-width: 600px) {
-  #preloader img {
-    width: 100px; /* or any smaller size you prefer */
+.travel-info-wrapper {
+    padding: 2rem 1rem;
+  }
+
+  .travel-info-heading {
+    font-size: 2rem;
+  }
+
+  .travel-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .attractions-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .route-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .attraction-image {
+    height: 200px;
+  }
+
+  .travel-info-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  footer {
+    padding: 1.5rem 1rem;
   }
 }
 
-        /* Animation */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+@media (max-width: 600px) {
+  #preloader img {
+    width: 100px;
+  }
+}
 
-        .attraction-card {
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
+@media (max-width: 500px) {
+  .attraction-image {
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-heading {
+    flex-direction: column;
+    font-size: 1.2rem;
+  }
+
+  .footer-logo {
+    margin-bottom: 0.5rem;
+  }
+}
+
     </style>
 </head>
 <body>
@@ -651,75 +774,64 @@ body, html {
                 </div>
 </div>
  <!-- Important Information Section -->
-           <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Information</title>
-</head>
-<body style="margin: 0; padding: 20px; font-family: Arial, sans-serif; background-color: #f5f5f5;">
-    <div style="background: linear-gradient(45deg, #caa035, #d4b148);
-     color: white; padding: 3rem; border-radius: 20px; margin: 4rem 0; text-align: center;">
-        <h3 style="background: linear-gradient(45deg, #8B0000, #8B0000); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: #8B0000; font-size: 2.5rem; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Important Travel Information</h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: left;">
-            <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 15px;">
-                <h3 style="margin-bottom: 1rem; color: #8B0000;">⏰ <span style="background: linear-gradient(45deg, #8B0000, #8B0000); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: #8B0000;">Time Required</span></h3>
-                <p style="color: white;"><strong>Main City Tour:</strong> 1 Full Day (6-8 hours)</p>
-                <p style="color: white;"><strong>Extended Pilgrimage:</strong> 1-2 Full Days</p>
-                <p style="color: white;"><strong>Complete Dwarka Visit:</strong> Minimum 2 Days recommended</p>
-            </div>
-            <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 15px;">
-                <h3 style="margin-bottom: 1rem; color: #8B0000;">🚗 <span style="background: linear-gradient(45deg, #8B0000, #8B0000); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: #8B0000;">Transportation</span></h3>
-                <p style="color: white;"><strong>Local Auto/Taxi:</strong> Available from hotel</p>
-                <p style="color: white;"><strong>Private Car:</strong> Recommended for distant places</p>
-                <p style="color: white;"><strong>Group Tours:</strong> Available on request</p>
-            </div>
-            <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 15px;">
-                <h3 style="margin-bottom: 1rem; color: #8B0000;">💡 <span style="background: linear-gradient(45deg, #8B0000, #8B0000); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: #8B0000;">Pro Tips</span></h3>
-                <p style="color: white;"><strong>Early Start:</strong> Begin at 6:00 AM for peaceful darshan</p>
-                <p style="color: white;"><strong>Dress Code:</strong> Modest clothing required</p>
-                <p style="color: white;"><strong>Photography:</strong> Some temples restrict cameras</p>
-            </div>
-        </div>
+          <section class="travel-info-wrapper">
+  <h3 class="travel-info-heading">Important Travel Information</h3>
+  <div class="travel-info-grid">
+    <div class="travel-info-card">
+      <h3>⏰ Time Required</h3>
+      <p><strong>Main City Tour:</strong> 1 Full Day (6–8 hours)</p>
+      <p><strong>Extended Pilgrimage:</strong> 1–2 Full Days</p>
+      <p><strong>Complete Dwarka Visit:</strong> Minimum 2 Days recommended</p>
     </div>
-</body>
-</html>
-
-        </div>
-    </section>
+    <div class="travel-info-card">
+      <h3>🚗 Transportation</h3>
+      <p><strong>Local Auto/Taxi:</strong> Available from hotel</p>
+      <p><strong>Private Car:</strong> Recommended for distant places</p>
+      <p><strong>Group Tours:</strong> Available on request</p>
+    </div>
+    <div class="travel-info-card">
+      <h3>💡 Pro Tips</h3>
+      <p><strong>Early Start:</strong> Begin at 6:00 AM for peaceful darshan</p>
+      <p><strong>Dress Code:</strong> Modest clothing required</p>
+      <p><strong>Photography:</strong> Some temples restrict cameras</p>
+    </div>
+  </div>
+</section>
 
 
     <!-- Footer -->
     <footer style="background: #880000; color: white; padding: 3rem 0;">
-        <div class="container">
-            <div style="text-align: center;">
-                <h3 style="color: #ffd700; margin-bottom: 1rem;"><div class="logo">
-  <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749707119/logo-photoaidcom-cropped_vjedul.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
- Hotel Devang - Your Spiritual Journey Partner</h3>
-                <p style="margin-bottom: 2rem;">We provide complete assistance for your Dwarka pilgrimage including transportation arrangements, guide services, and detailed itinerary planning.</p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem;">
-                    <div>
-                        <h4 style="color: #ffd700;">📞 Contact Us</h4>
-                        <p>Phone: +91 98244 02132</p>
-                        <p>Email: info@hoteldevang.com</p>
-                    </div>
-                    <div>
-                        <h4 style="color: #ffd700;">🎯 Services</h4>
-                        <p>Temple Guide Service</p>
-                        <p>Transportation Arrangement</p>
-                        <p>Pilgrimage Planning</p>
-                    </div>
-                    <div>
-                        <h4 style="color: #ffd700;">📍 Location</h4>
-                        <p>Dwarka, Gujarat - 361335</p>
-                        <p>Near Dwarkadhish Temple</p>
-                    </div>
-                </div>
-            </div>
-            
+  <div class="container">
+    <div style="text-align: center;">
+      <h3 class="footer-heading">
+  <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749707119/logo-photoaidcom-cropped_vjedul.png" alt="Logo" class="footer-logo">
+  Hotel Devang – Your Spiritual Journey Partner
+</h3>
+
+      <p style="margin-bottom: 2rem;">We provide complete assistance for your Dwarka pilgrimage including transportation arrangements, guide services, and detailed itinerary planning.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem;">
+        <div>
+          <h4 style="color: #ffd700;">📞 Contact Us</h4>
+          <p>Phone: +91 98244 02132</p>
+          <p>Email: info@hoteldevang.com</p>
         </div>
-    </footer>
+        <div>
+          <h4 style="color: #ffd700;">🎯 Services</h4>
+          <p>Temple Guide Service</p>
+          <p>Transportation Arrangement</p>
+          <p>Pilgrimage Planning</p>
+        </div>
+        <div>
+          <h4 style="color: #ffd700;">📍 Location</h4>
+          <p>Dwarka, Gujarat - 361335</p>
+          <p>Near Dwarkadhish Temple</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
 
     <script>
         // Mobile menu toggle
