@@ -21,51 +21,55 @@ body {
 
 /* Header */
 header {
-    background: #880000; 
-    color: white;
-    padding: 1rem 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-transition: top 0.4s ease-in-out; 
-}
+ background: #880000;       
+	 color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+		transition: top 0.4s ease-in-out; 
+        }
 
-nav {
+       nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1rem; /* Consistent padding */
 }
 
-.logo {
+      .logo {
     font-size: 1.6rem; 
     font-weight: bold;
     white-space: nowrap; 
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    margin-left: -90px;
+    margin-left: 0; /* Remove negative margin */
+    flex-shrink: 0; /* Prevent logo from shrinking */
 }
+
 
 .logo a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: white;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
 }
 
-.nav-links {
+
+      .nav-links {
     display: flex;
     list-style: none;
     gap: 1rem;
     flex-wrap: nowrap;
-    overflow: hidden;
-    white-space: nowrap;
-    justify-content: flex-start;
-    margin-left: 0rem;
+    overflow: hidden;        /* ✅ prevent scrollbars */
+    white-space: nowrap;     /* ✅ keep items in one line */
+justify-content: flex-start;
+margin-left:0.5rem;
+
 }
 
 .nav-links a {
@@ -75,6 +79,7 @@ nav {
     padding: 0.5rem 1rem;
     border-radius: 25px;
     font-size: 0.9rem;
+    white-space: nowrap;
 }
 
 .nav-links a:hover {
@@ -310,9 +315,7 @@ nav {
     color: white;
     font-size: 1.5rem;
     cursor: pointer;
-    margin-left: 10px;
 }
-
 .vision-card, .mission-card {
     background: rgba(255,255,255,0.1);
     padding: 3rem;
@@ -532,49 +535,60 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-   .menu-toggle {
-    display: block;  /* Shows hamburger menu on mobile */
-}
+  .menu-toggle {
+        display: block;
+        z-index: 1001; /* Ensure it's above other elements */
+    }
 
-.logo {
-  margin: 0 auto;
-  justify-content: center;
-}
+    /* Center logo on mobile */
+    .logo {
+        margin: 0 auto;
+        justify-content: center;
+        font-size: 1.3rem;
+    }
+    
 
 
+.logo img {
+        height: 32px;
+        margin-right: 6px;
+    }
 
-.nav-links {
-    position: fixed;
-    top: 70px;           /* Positioned below header */
-    left: 0;
-    width: 100%;         /* Full width overlay */
-    background: #880000; /* Same maroon color as header */
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 0;
-    gap: 0;
-    clip-path: circle(0px at 90% -10%);  /* Hidden by default */
-    transition: clip-path 0.5s ease-out; /* Smooth animation */
-    pointer-events: none; /* Disabled when hidden */
-}
+    /* Mobile navigation menu */
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #880000;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        gap: 0;
+        clip-path: circle(0px at 90% -10%);
+        transition: clip-path 0.5s ease-out;
+        pointer-events: none;
+        overflow-x: visible; /* Reset overflow for mobile menu */
+        white-space: normal; /* Reset white-space for mobile menu */
+    }
 
-.nav-links.active {
-    clip-path: circle(1000px at 90% -10%); /* Reveals menu with circular animation */
-    pointer-events: all; /* Enables interaction */
-}
+    .nav-links.active {
+        clip-path: circle(1000px at 90% -10%);
+        pointer-events: all;
+    }
 
-.nav-links li {
-    width: 100%;
-    text-align: center;
-}
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
 
-.nav-links a {
-    display: block;
-    padding: 1rem;
-    border-radius: 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1); /* Separator lines */
-}
-
+    .nav-links a {
+        display: block;
+        padding: 1rem;
+        border-radius: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        font-size: 1rem; /* Larger font for mobile menu */
+    }
 
     .page-header h1 {
         font-size: 2rem;
@@ -649,7 +663,16 @@ footer {
     opacity: 1;
     transform: translateY(0);
 }
-
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    .logo img {
+        height: 28px;
+        margin-right: 5px;
+    }
+}
 
     </style>
 </head>

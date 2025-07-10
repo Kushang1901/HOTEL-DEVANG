@@ -19,54 +19,56 @@ body {
     overflow-x: hidden;
 }
 
-/* Header */
 header {
-    background: #880000;
-    color: white;
-    padding: 1rem 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-			transition: top 0.4s ease-in-out; 
+ background: #880000;       
+	 color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+		transition: top 0.4s ease-in-out; 
+        }
 
-}
-
-nav {
+       nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1rem; /* Consistent padding */
 }
 
-.logo {
+      .logo {
     font-size: 1.6rem; 
     font-weight: bold;
     white-space: nowrap; 
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    margin-left: -70px;
+    margin-left: 0; /* Remove negative margin */
+    flex-shrink: 0; /* Prevent logo from shrinking */
 }
+
 
 .logo a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: white;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
 }
 
-.nav-links {
+
+      .nav-links {
     display: flex;
     list-style: none;
     gap: 1rem;
     flex-wrap: nowrap;
-    overflow: hidden;
-    white-space: nowrap;
-    justify-content: flex-start;
-    margin-left: 0.5rem;
+    overflow: hidden;        /* ✅ prevent scrollbars */
+    white-space: nowrap;     /* ✅ keep items in one line */
+justify-content: flex-start;
+margin-left:0.5rem;
+
 }
 
 .nav-links a {
