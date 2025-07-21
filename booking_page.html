@@ -524,7 +524,8 @@ margin-left:0.5rem;
 
         <div class="booking-form">
             <div class="form-note">
-                <p><strong>Note:</strong> After filling this form, you'll be redirected to WhatsApp to send your booking details to our hotel. We'll confirm your booking and availability via WhatsApp.</p>
+               <p><strong>Note:</strong> All rooms are suitable for 2 persons only. For more than 2 guests, extra mattresses are provided at ₹300 per mattress per night. Maximum of 5 persons are allowed per room. For bookings with more than 5 persons, please book an additional room. After filling this form, you'll be redirected to WhatsApp to confirm booking and availability.</p>
+
             </div>
 
             <div class="error-message" id="errorMessage"></div>
@@ -558,19 +559,24 @@ margin-left:0.5rem;
                     </div>
                     <div class="form-group">
                         <label for="numPersons">Number of Persons *</label>
-                        <select id="numPersons" class="form-control" required>
-                            <option value="">Select number of guests</option>
-                            <option value="1">1 Person</option>
-                            <option value="2">2 Persons</option>
-                            <option value="3">3 Persons</option>
-                            <option value="4">4 Persons</option>
-                            <option value="5">5 Persons</option>
-                            <option value="6">6 Persons</option>
-                            <option value="7">7 Persons</option>
-                            <option value="8">8 Persons</option>
-                            <option value="9">9 Persons</option>
-                            <option value="10">10 Persons</option>
-                        </select>
+                        <select id="numPersons" class="form-control" required onchange="handlePersonChange(this)">
+    <option value="">Select number of guests</option>
+    <option value="1">1 Person</option>
+    <option value="2">2 Persons</option>
+    <option value="3">3 Persons</option>
+    <option value="4">4 Persons</option>
+    <option value="5">5 Persons</option>
+    <option value="6">6 Persons</option>
+    <option value="7">7 Persons</option>
+    <option value="8">8 Persons</option>
+    <option value="9">9 Persons</option>
+    <option value="10">10 Persons</option>
+    <option value="other">More than 10</option>
+</select>
+<div id="customPersonsWrapper" style="display: none; margin-top: 1rem;">
+    <input type="number" id="customPersons" class="form-control" min="11" placeholder="Enter number of persons (more than 10)">
+</div>
+
                     </div>
                 </div>
 
@@ -578,47 +584,61 @@ margin-left:0.5rem;
                 <div class="form-section">
                     <h3 class="section-title">🏨 Room Type *</h3>
                     <div class="room-type-selection">
-                        <div class="room-option" onclick="selectRoomType('standard-ac')" tabindex="0">
-                            <input type="radio" name="roomType" value="standard-ac" required>
+                        <div class="room-option" onclick="toggleRoomType('standard-ac')" tabindex="0">
+  <label style="display: block; cursor: pointer;">
+    <input type="checkbox" name="roomType[]" value="standard-ac" style="pointer-events: none;" />
                             <div class="room-name">Standard AC Room</div>
                             <div class="room-price">₹1,300/night</div>
                             <div class="room-features">AC • Double Bed • TV • Bathroom</div>
+		        </label>
                         </div>
-                        <div class="room-option" onclick="selectRoomType('standard-non-ac')" tabindex="0">
-                            <input type="radio" name="roomType" value="standard-non-ac" required>
+                       <div class="room-option" onclick="toggleRoomType('standard-non-ac')" tabindex="0">
+  <label style="display: block; cursor: pointer;">
+    <input type="checkbox" name="roomType[]" value="standard-non-ac" style="pointer-events: none;" />
                             <div class="room-name">Standard Non-AC</div>
                             <div class="room-price">₹1,000/night</div>
                             <div class="room-features">Fan • Double Bed • TV • Bathroom</div>
+			  </label>
                         </div>
-                        <div class="room-option" onclick="selectRoomType('deluxe-ac')" tabindex="0">
-                            <input type="radio" name="roomType" value="deluxe-ac" required>
+                        <div class="room-option" onclick="toggleRoomType('deluxe ac room')" tabindex="0">
+  <label style="display: block; cursor: pointer;">
+    <input type="checkbox" name="roomType[]" value="deluxe ac room" style="pointer-events: none;" />
                             <div class="room-name">Deluxe AC Room</div>
                             <div class="room-price">₹1,600/night</div>
                             <div class="room-features">Premium AC • King Bed • LCD TV</div>
+			</label>
                         </div>
-                        <div class="room-option" onclick="selectRoomType('deluxe-non-ac')" tabindex="0">
-                            <input type="radio" name="roomType" value="deluxe-non-ac" required>
+                        <div class="room-option" onclick="toggleRoomType('deluxe non-ac')" tabindex="0">
+  <label style="display: block; cursor: pointer;">
+    <input type="checkbox" name="roomType[]" value="deluxe-non-ac" style="pointer-events: none;" />
                             <div class="room-name">Deluxe Non-AC</div>
                             <div class="room-price">₹1,300/night</div>
                             <div class="room-features">Spacious • King Bed • LCD TV</div>
+			</label>
                         </div>
-                        <div class="room-option" onclick="selectRoomType('super-deluxe-ac')" tabindex="0">
-                            <input type="radio" name="roomType" value="super-deluxe-ac" required>
+                        <div class="room-option" onclick="toggleRoomType('super-deluxe-ac')" tabindex="0">
+  <label style="display: block; cursor: pointer;">
+    <input type="checkbox" name="roomType[]" value="super-deluxe-ac" style="pointer-events: none;" />
                             <div class="room-name">Super Deluxe AC</div>
                             <div class="room-price">₹1,800/night</div>
                             <div class="room-features">Luxury • Premium AC • Smart TV</div>
+			</label>
                         </div>
-                        <div class="room-option" onclick="selectRoomType('super-deluxe-non-ac')" tabindex="0">
-                            <input type="radio" name="roomType" value="super-deluxe-non-ac" required>
+                        <div class="room-option" onclick="toggleRoomType('deluxe-non-ac')" tabindex="0">
+  <label style="display: block; cursor: pointer;">
+    <input type="checkbox" name="roomType[]" value="deluxe-non-ac" style="pointer-events: none;" />
                             <div class="room-name">Super Deluxe Non-AC</div>
                             <div class="room-price">₹1,500/night</div>
                             <div class="room-features">Premium • Luxury Bed • Smart TV</div>
+			</label>
                         </div>
-                        <div class="room-option" onclick="selectRoomType('suite-ac')" tabindex="0">
-                            <input type="radio" name="roomType" value="suite-ac" required>
+                        <div class="room-option" onclick="toggleRoomType('suite-ac')" tabindex="0">
+  <label style="display: block; cursor: pointer;">
+    <input type="checkbox" name="roomType[]" value="suite-ac" style="pointer-events: none;" />
                             <div class="room-name">Suite AC Room</div>
                             <div class="room-price">₹2,800/night</div>
                             <div class="room-features">Living Room • King Bed • Sea View</div>
+			</label>
                         </div>
                     </div>
                 </div>
@@ -634,14 +654,20 @@ margin-left:0.5rem;
                     </div>
                 </div>
 
-                <!-- Special Requests -->
-                <div class="form-section">
-                    <h3 class="section-title">💬 Special Requests</h3>
-                    <div class="form-group">
-                        <label for="specialRequests">Any special requirements (Optional)</label>
-                        <textarea id="specialRequests" class="form-control" rows="3" placeholder="Any special requirements or requests..."></textarea>
-                    </div>
-                </div>
+               <div class="form-section">
+    <h3 class="section-title">💬 Special Requests</h3>
+    
+    <div class="form-note" style="margin-bottom: 1rem;">
+        <p><strong>Note:</strong> If you wish to book more than one room or want a mix of room types 
+        (e.g. 1 Deluxe AC + 1 Suite), please mention the details below. We will confirm availability via WhatsApp.</p>
+    </div>
+
+    <div class="form-group">
+        <label for="specialRequests">Any special requirements or extra room details (Optional)</label>
+        <textarea id="specialRequests" class="form-control" rows="3" placeholder="e.g. Need 2 rooms: 1 Deluxe AC + 1 Standard Non-AC..."></textarea>
+    </div>
+</div>
+
 
                 <button type="submit" class="whatsapp-btn" id="whatsappBtn">
                     <span class="whatsapp-icon">📱</span>
@@ -704,89 +730,121 @@ document.querySelectorAll('.nav-links a').forEach(link => {
         }
 
         // Select room type
-        function selectRoomType(roomType) {
-            // Remove previous selections
-            document.querySelectorAll('.room-option').forEach(option => {
-                option.classList.remove('selected');
-            });
-            
-            // Mark the selected room type
-            event.currentTarget.classList.add('selected');
-            
-            // Check the radio button
-            document.querySelector(`input[value="${roomType}"]`).checked = true;
-        }
+       function toggleRoomType(roomType) {
+    const option = document.querySelector(`input[value="${roomType}"]`).parentElement.parentElement;
+    const checkbox = option.querySelector('input');
+
+    checkbox.checked = !checkbox.checked;
+
+    if (checkbox.checked) {
+        option.classList.add('selected');
+    } else {
+        option.classList.remove('selected');
+    }
+}
+
+
 
         // Setup form validation and submission
-        function setupFormValidation() {
-            const form = document.getElementById('bookingForm');
-            
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                if (validateForm()) {
-                    sendWhatsAppMessage();
-                }
-            });
+       function setupFormValidation() {
+    const form = document.getElementById('bookingForm');
+
+    // Auto-check extra mattress if more than 2 persons are selected
+    const numPersonsInput = document.getElementById('numPersons');
+    const extraMattressCheckbox = document.getElementById('extraMattress');
+
+    numPersonsInput.addEventListener('change', function () {
+        const val = parseInt(this.value, 10);
+        if (val > 2 && val <= 5) {
+            extraMattressCheckbox.checked = true;
+        } else {
+            extraMattressCheckbox.checked = false;
         }
+    });
+
+    // On form submission
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        if (validateForm()) {
+            sendWhatsAppMessage();
+        }
+    });
+}
+
 
         // Validate form
-        function validateForm() {
-            const errorMessage = document.getElementById('errorMessage');
-            const errors = [];
+       function validateForm() {
+    const errorMessage = document.getElementById('errorMessage');
+    const errors = [];
 
-            // Check required fields
-            const requiredFields = [
-                { id: 'guestName', name: 'Full Name' },
-                { id: 'guestPhone', name: 'Contact Number' },
-                { id: 'checkIn', name: 'Check-in Date' },
-                { id: 'checkOut', name: 'Check-out Date' },
-                { id: 'numPersons', name: 'Number of Persons' }
-            ];
+    // Check required fields
+    const requiredFields = [
+        { id: 'guestName', name: 'Full Name' },
+        { id: 'guestPhone', name: 'Contact Number' },
+        { id: 'checkIn', name: 'Check-in Date' },
+        { id: 'checkOut', name: 'Check-out Date' },
+        { id: 'numPersons', name: 'Number of Persons' }
+    ];
 
-            requiredFields.forEach(field => {
-                const element = document.getElementById(field.id);
-                if (!element.value.trim()) {
-                    errors.push(`${field.name} is required`);
-                }
-            });
-
-            // Check if room type is selected
-            const roomTypeSelected = document.querySelector('input[name="roomType"]:checked');
-            if (!roomTypeSelected) {
-                errors.push('Please select a room type');
-            }
-
-            // Validate dates
-            const checkIn = document.getElementById('checkIn').value;
-            const checkOut = document.getElementById('checkOut').value;
-            
-            if (checkIn && checkOut) {
-                const checkInDate = new Date(checkIn);
-                const checkOutDate = new Date(checkOut);
-                
-                if (checkOutDate <= checkInDate) {
-                    errors.push('Check-out date must be after check-in date');
-                }
-            }
-
-            // Validate phone number
-            const phone = document.getElementById('guestPhone').value;
-            if (phone && !/^\+?[\d\s\-\(\)]{10,}$/.test(phone)) {
-                errors.push('Please enter a valid phone number');
-            }
-
-            // Show errors if any
-            if (errors.length > 0) {
-                errorMessage.innerHTML = errors.join('<br>');
-                errorMessage.style.display = 'block';
-                errorMessage.scrollIntoView({ behavior: 'smooth' });
-                return false;
-            }
-
-            errorMessage.style.display = 'none';
-            return true;
+    requiredFields.forEach(field => {
+        const element = document.getElementById(field.id);
+        if (!element.value.trim()) {
+            errors.push(`${field.name} is required`);
         }
+    });
+
+    // ✅ Check room type selection (multi-select checkboxes)
+    const selectedRooms = document.querySelectorAll('input[name="roomType[]"]:checked');
+    if (selectedRooms.length === 0) {
+        errors.push('Please select at least one room type');
+    }
+
+    // ✅ Person and room logic
+    const numPersonsInput = document.getElementById('numPersons');
+    let numPersons = numPersonsInput.value;
+
+    if (numPersons === 'other') {
+        const customPersons = document.getElementById('customPersons').value;
+        if (!customPersons || parseInt(customPersons) < 1) {
+            errors.push('Please enter a valid number of persons.');
+        } else {
+            numPersons = customPersons;
+        }
+    }
+
+    const totalPersons = parseInt(numPersons, 10);
+    const totalRooms = selectedRooms.length;
+
+    // ⚠️ Each room can accommodate up to 5 persons
+    if (totalPersons > totalRooms * 5) {
+        errors.push(`Maximum 5 persons are allowed per room. You selected ${totalRooms} room(s), but entered ${totalPersons} persons. Please select additional rooms.`);
+    }
+
+    // ✅ Mattress logic
+    const extraMattressChecked = document.getElementById('extraMattress').checked;
+    if (totalPersons > totalRooms * 2 && totalPersons <= totalRooms * 5 && !extraMattressChecked) {
+        errors.push('For more than 2 persons per room, please select the extra mattress option (₹300 per mattress per night).');
+    }
+
+    // ✅ Phone number format check
+    const phone = document.getElementById('guestPhone').value;
+    if (phone && !/^\+?[\d\s\-\(\)]{10,}$/.test(phone)) {
+        errors.push('Please enter a valid phone number.');
+    }
+
+    // Show errors if any
+    if (errors.length > 0) {
+        errorMessage.innerHTML = errors.join('<br>');
+        errorMessage.style.display = 'block';
+        errorMessage.scrollIntoView({ behavior: 'smooth' });
+        return false;
+    }
+
+    errorMessage.style.display = 'none';
+    return true;
+}
+
 
         // Send WhatsApp message
         function sendWhatsAppMessage() {
@@ -821,23 +879,47 @@ document.querySelectorAll('.nav-links a').forEach(link => {
         }
 
         // Get form data
-        function getFormData() {
-            const roomType = document.querySelector('input[name="roomType"]:checked').value;
-            const extraMattress = document.getElementById('extraMattress').checked;
-            
-            return {
-                name: document.getElementById('guestName').value,
-                phone: document.getElementById('guestPhone').value,
-                checkIn: document.getElementById('checkIn').value,
-                checkOut: document.getElementById('checkOut').value,
-                numPersons: document.getElementById('numPersons').value,
-                roomType: roomType,
-                roomTypeName: ROOM_TYPES[roomType].name,
-                roomTypePrice: ROOM_TYPES[roomType].price,
-                extraMattress: extraMattress,
-                specialRequests: document.getElementById('specialRequests').value
-            };
-        }
+       function getFormData() {
+    const extraMattress = document.getElementById('extraMattress').checked;
+
+    // Collect all selected room types (checkboxes)
+    const selectedRoomElements = document.querySelectorAll('input[name="roomType[]"]:checked');
+    const selectedRooms = Array.from(selectedRoomElements).map(el => {
+        return {
+            type: el.value,
+            name: ROOM_TYPES[el.value].name,
+            price: ROOM_TYPES[el.value].price
+        };
+    });
+
+    return {
+        name: document.getElementById('guestName').value,
+        phone: document.getElementById('guestPhone').value,
+        checkIn: document.getElementById('checkIn').value,
+        checkOut: document.getElementById('checkOut').value,
+        numPersons: document.getElementById('numPersons').value === 'other'
+    ? document.getElementById('customPersons').value
+    : document.getElementById('numPersons').value,
+
+        roomTypes: selectedRooms,
+        extraMattress: extraMattress,
+        specialRequests: document.getElementById('specialRequests').value
+    };
+}
+
+function handlePersonChange(select) {
+    const wrapper = document.getElementById('customPersonsWrapper');
+    const customInput = document.getElementById('customPersons');
+
+    if (select.value === 'other') {
+        wrapper.style.display = 'block';
+        customInput.required = true;
+    } else {
+        wrapper.style.display = 'none';
+        customInput.required = false;
+        customInput.value = ''; // Clear if switching back
+    }
+}
 
         // Create WhatsApp message
         function createWhatsAppMessage(data) {
@@ -854,9 +936,12 @@ document.querySelectorAll('.nav-links a').forEach(link => {
             message += `📅 Check-out: ${checkOutDate}\n`;
             message += `👥 Number of Persons: ${data.numPersons}\n\n`;
             
-            message += `🏨 *Room Details:*\n`;
-            message += `🛏️ Room Type: ${data.roomTypeName}\n`;
-            message += `💰 Price: ${data.roomTypePrice}/night\n`;
+           message += `🏨 *Room Details:*\n`;
+data.roomTypes.forEach(room => {
+    message += `🛏️ Room Type: ${room.name}\n`;
+    message += `💰 Price: ${room.price}/night\n`;
+});
+
             
             if (data.extraMattress) {
                 message += `🛏️ Extra Mattress: Yes (₹300/night)\n`;
