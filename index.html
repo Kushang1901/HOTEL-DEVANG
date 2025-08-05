@@ -207,6 +207,16 @@ margin-left:0.5rem;
     background-position: center;
 }
 
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(to right, #880000, #caa035);
+    z-index: 10000; /* 🔥 ensure it stays above header */
+    transition: width 0.2s ease-out;
+}
 
 
         /* About Section */
@@ -417,6 +427,26 @@ background-size: cover;
             border-top: 1px solid rgba(255,255,255,0.2);
         }
 
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  background-color: #25D366;
+  padding: 8px; /* reduced from 10px */
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+.whatsapp-float img {
+  width: 36px;  /* reduced from 48px */
+  height: 36px;
+}
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -619,6 +649,7 @@ background-size: cover;
 <div id="preloader">
   <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1750791182/Untitled_design_bqjxji.gif" alt="Loading..." />
 </div>
+<div id="scroll-progress"></div>
 
     <!-- Header -->
     <header>
@@ -785,6 +816,10 @@ background-size: cover;
 </div>
 
         </div>
+	<a href="https://wa.me/919824402132" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+  <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1754210588/whatsapp_4008228_vjl1qc.png" alt="WhatsApp">
+</a>
+
     </footer>
 
     <script>
@@ -841,6 +876,13 @@ background-size: cover;
             }
         });
     });
+});
+window.addEventListener("scroll", function () {
+    const progress = document.getElementById("scroll-progress");
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    progress.style.width = scrollPercent + "%";
 });
 
         

@@ -162,6 +162,16 @@ margin-left:0.5rem;
   height: auto;
 }
 
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(to right, #880000, #caa035);
+    z-index: 10000; /* 🔥 ensure it stays above header */
+    transition: width 0.2s ease-out;
+}
 
         .whatsapp-info h3 {
             font-size: 1.3rem;
@@ -337,6 +347,26 @@ margin-left:0.5rem;
             justify-content: center;
             gap: 1rem;
         }
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  background-color: #25D366;
+  padding: 8px; /* reduced from 10px */
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+.whatsapp-float img {
+  width: 36px;  /* reduced from 48px */
+  height: 36px;
+}
 
         .whatsapp-btn:hover {
             transform: translateY(-2px);
@@ -487,6 +517,8 @@ margin-left:0.5rem;
 <div id="preloader">
   <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1750791182/Untitled_design_bqjxji.gif" alt="Loading..." />
 </div>
+<div id="scroll-progress"></div>
+
    <header>
     <nav>
         <div class="logo">
@@ -676,6 +708,9 @@ margin-left:0.5rem;
             </form>
         </div>
     </div>
+<a href="https://wa.me/919824402132" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+  <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1754210588/whatsapp_4008228_vjl1qc.png" alt="WhatsApp">
+</a>
 
     <script>
         // Hotel owner's WhatsApp number (replace with actual number)
@@ -683,14 +718,15 @@ margin-left:0.5rem;
 
         // Room type mapping for display
         const ROOM_TYPES = {
-            'standard-ac': { name: 'Standard AC Room', price: '₹1,500' },
-            'standard-non-ac': { name: 'Standard Non-AC Room', price: '₹1,200' },
-            'deluxe-ac': { name: 'Deluxe AC Room', price: '₹1,800' },
-            'deluxe-non-ac': { name: 'Deluxe Non-AC Room', price: '₹1,500' },
-            'super-deluxe-ac': { name: 'Super Deluxe AC Room', price: '₹2,000' },
-            'super-deluxe-non-ac': { name: 'Super Deluxe Non-AC Room', price: '₹1,700' },
-            'suite-ac': { name: 'Suite AC Room', price: '₹3,000' }
-        };
+    'standard-ac': { name: 'Standard AC Room', price: '₹1,500' },
+    'standard-non-ac': { name: 'Standard Non-AC Room', price: '₹1,200' },
+    'deluxe ac room': { name: 'Deluxe AC Room', price: '₹1,800' }, // FIXED
+    'deluxe-non-ac': { name: 'Deluxe Non-AC Room', price: '₹1,500' },
+    'super-deluxe-ac': { name: 'Super Deluxe AC Room', price: '₹2,000' },
+    'super-deluxe-non-ac': { name: 'Super Deluxe Non-AC Room', price: '₹1,700' },
+    'suite-ac': { name: 'Suite AC Room', price: '₹3,000' }
+};
+
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
@@ -749,11 +785,13 @@ document.querySelectorAll('.nav-links a').forEach(link => {
        function setupFormValidation() {
     const form = document.getElementById('bookingForm');
 
-    // Auto-check extra mattress if more than 2 persons are selected
     const numPersonsInput = document.getElementById('numPersons');
     const extraMattressCheckbox = document.getElementById('extraMattress');
 
+    // ✅ Fix: Run handlePersonChange on change
     numPersonsInput.addEventListener('change', function () {
+        handlePersonChange(this); // Show/hide custom input field
+
         const val = parseInt(this.value, 10);
         if (val > 2 && val <= 5) {
             extraMattressCheckbox.checked = true;
@@ -771,6 +809,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
         }
     });
 }
+
 
 
         // Validate form
@@ -851,31 +890,17 @@ document.querySelectorAll('.nav-links a').forEach(link => {
             const btn = document.getElementById('whatsappBtn');
             const originalText = btn.innerHTML;
             
-            // Show loading state
-            btn.innerHTML = '<span class="loading"></span> Preparing WhatsApp...';
-            btn.disabled = true;
+           const formData = getFormData();
+const message = createWhatsAppMessage(formData);
+const whatsappUrl = `https://wa.me/${HOTEL_WHATSAPP.replace(/\+/g, '')}?text=${encodeURIComponent(message)}`;
 
-            // Get form data
-            const formData = getFormData();
-            
-            // Create WhatsApp message
-            const message = createWhatsAppMessage(formData);
-            
-            // Create WhatsApp URL
-            const whatsappUrl = `https://wa.me/${HOTEL_WHATSAPP.replace(/\+/g, '')}?text=${encodeURIComponent(message)}`;
-            
-            // Simulate a brief delay for better UX
-            setTimeout(() => {
-                // Open WhatsApp
-                window.open(whatsappUrl, '_blank');
-                
-                // Reset button
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-                
-                // Show success message
-                showSuccessMessage();
-            }, 1000);
+// Open WhatsApp immediately
+window.open(whatsappUrl, '_blank');
+
+// Optional: Show quick confirmation (non-blocking)
+showSuccessMessage();
+
+
         }
 
         // Get form data
@@ -1009,6 +1034,13 @@ window.addEventListener("scroll", function () {
     }
 
     prevScrollPos = currentScrollPos;
+});
+window.addEventListener("scroll", function () {
+    const progress = document.getElementById("scroll-progress");
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    progress.style.width = scrollPercent + "%";
 });
 
     </script>
