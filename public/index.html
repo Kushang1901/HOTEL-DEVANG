@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Friendly Hotel Devang | Premium Stay in Sacred Dwarka</title>
+<link rel="icon" type="image/png" href="https://res.cloudinary.com/dn45xyazy/image/upload/v1749986380/android-chrome-192x192_cnl2ib.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+ background: #880000;       
+	 color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+		transition: top 0.4s ease-in-out; 
+        }
+
+       nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem; /* Consistent padding */
+}
+
+      .logo {
+    font-size: 1.6rem; 
+    font-weight: bold;
+    white-space: nowrap; 
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin-left: 0; /* Remove negative margin */
+    flex-shrink: 0; /* Prevent logo from shrinking */
+}
+
+
+.logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+
+
+      .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    overflow: hidden;        /* ✅ prevent scrollbars */
+    white-space: nowrap;     /* ✅ keep items in one line */
+justify-content: flex-start;
+margin-left:0.5rem;
+
+}
+
+
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section - Multiple Background Options */
+        .hero {
+    height: 100vh;
+       background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+		padding-top: 6rem;
+        }
+
+        .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+    color: white; /* Add this line to set text color to white */
+    /* Remove these gradient text properties: */
+    /* background: linear-gradient(45deg, #ffd700, #fff); */
+    /* -webkit-background-clip: text; */
+    /* -webkit-text-fill-color: transparent; */
+    /* background-clip: text; */
+}
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+          background: #caa035;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+           box-shadow: 0 4px 15px rgba(202, 160, 53, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+           box-shadow: 0 8px 25px rgba(202, 160, 53, 0.6);
+
+        }
+
+        /* Slideshow */
+       .slideshow-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+        .slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  background-size: cover;
+  background-position: center;
+}
+
+        .slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+        .slide1 {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749491973/office_1_jvfbtg.jpg');
+    background-size: cover;
+    background-position: center;
+        }
+
+        .slide2 {
+           background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dn45xyazy/image/upload/v1750707469/s2_nrsx3l.jpg');
+    background-size: cover;
+    background-position: center;
+        }
+
+        .slide3 {
+           background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dn45xyazy/image/upload/v1750707469/s3_f9kvj9.jpg');
+    background-size: cover;
+    background-position: center;
+        }
+
+.slide4 {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dn45xyazy/image/upload/v1750707468/s4_dexrie.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(to right, #880000, #caa035);
+    z-index: 10000; /* 🔥 ensure it stays above header */
+    transition: width 0.2s ease-out;
+}
+
+
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+color: #880000;   
+        position: relative;
+        }
+
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+          background: #caa035;
+            border-radius: 2px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #666;
+            line-height: 1.8;
+	max-width: 550px;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+             background: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749489887/hotel_image_klezyl.png') no-repeat center center;
+background-size: cover;
+
+            height: 400px;
+
+		aspect-ratio: 4 / 3;
+  height: auto;
+        }
+
+        /* Highlights Section */
+        .highlights {
+            padding: 5rem 0;
+          background: #caa035;
+    color: white;
+        }
+
+        .highlights h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .highlight-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .highlight-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .highlight-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+          color: #880000;
+        }
+
+        .highlight-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Room Stats */
+        .room-stats {
+            padding: 4rem 0;
+            background: #caa035;
+            color: white;
+            text-align: center;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #ffffff; /* or any background color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+#preloader img {
+  width: 200px;
+  height: auto;
+}
+
+
+        .stat-item {
+            background: rgba(255,255,255,0.2);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            min-width: 200px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: #880000;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #caa035;
+        }
+
+        .footer-section p, .footer-section li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+           color: #caa035;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  background-color: #25D366;
+  padding: 8px; /* reduced from 10px */
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+.whatsapp-float img {
+  width: 36px;  /* reduced from 48px */
+  height: 36px;
+}
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+       /* Mobile Desktop Mode (1024px and below) */
+@media (max-width: 1024px) {
+    /* Navigation improvements */
+    nav {
+        padding: 0 1rem;
+        justify-content: space-between;
+    }
+    
+    .logo {
+        margin-left: 0; /* Remove negative margin */
+        font-size: 1.4rem;
+        flex-shrink: 0; /* Prevent logo compression */
+    }
+    
+    .logo img {
+        height: 35px; /* Slightly smaller for better fit */
+        margin-right: 8px;
+    }
+    
+    .nav-links {
+        gap: 0.8rem;
+        overflow-x: auto !important;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+        padding: 0 0.5rem; /* Add padding for better spacing */
+    }
+    
+    .nav-links::-webkit-scrollbar {
+        display: none; /* Chrome, Safari */
+    }
+    
+    .nav-links a {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+        flex-shrink: 0; /* Prevent nav items from shrinking */
+    }
+
+    /* Content layout fixes */
+    .container {
+        padding: 0 1rem !important;
+        max-width: 100% !important;
+    }
+    
+    .about-text {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .about-text p {
+        max-width: 100% !important;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr !important;
+        padding: 0 1rem !important;
+        gap: 1.5rem !important;
+    }
+}
+
+/* Mobile Phone Mode (768px and below) */
+@media (max-width: 768px) {
+    /* Show mobile menu toggle */
+    .menu-toggle {
+        display: block;
+        z-index: 1001; /* Ensure it's above other elements */
+    }
+
+    /* Center logo on mobile */
+    .logo {
+        margin: 0 auto;
+        justify-content: center;
+        font-size: 1.3rem;
+    }
+    
+    .logo img {
+        height: 32px;
+        margin-right: 6px;
+    }
+
+    /* Mobile navigation menu */
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #880000;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        gap: 0;
+        clip-path: circle(0px at 90% -10%);
+        transition: clip-path 0.5s ease-out;
+        pointer-events: none;
+        overflow-x: visible; /* Reset overflow for mobile menu */
+        white-space: normal; /* Reset white-space for mobile menu */
+    }
+
+    .nav-links.active {
+        clip-path: circle(1000px at 90% -10%);
+        pointer-events: all;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 1rem;
+        border-radius: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        font-size: 1rem; /* Larger font for mobile menu */
+    }
+
+    /* Hero section adjustments */
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+    
+    .hero-content {
+        padding-top: 7rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* Layout adjustments */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .stats-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .highlights-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    .logo img {
+        height: 28px;
+        margin-right: 5px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+  #preloader img {
+    width: 100px; /* or any smaller size you prefer */
+  }
+}
+
+@media (max-width: 992px) {
+  .about-content {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+	
+    </style>
+</head>
+<body>
+
+<div id="preloader">
+  <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1750791182/Untitled_design_bqjxji.gif" alt="Loading..." />
+</div>
+<div id="scroll-progress"></div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+           <div class="logo">
+  <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: white;">
+    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749707119/logo-photoaidcom-cropped_vjedul.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
+    Hotel Devang
+  </a>
+</div>
+
+
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about_us.html">About Us</a></li>
+                <li><a href="room.html">Rooms</a></li>
+		<li><a href="gallery_page.html">Gallery</a></li>
+                <li><a href="facilities_page.html">Facilities</a></li>
+                <li><a href="booking_page.html">Booking</a></li>
+                <li><a href="dwarka_attractions.html">Nearby Attractions</a></li>
+                <li><a href="policies_page.html">Policies</a></li>
+		<li><a href="contact_page.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Slideshow -->
+   <section class="hero" id="home">
+  <div class="slideshow-container">
+    <div class="slide slide1"></div>
+    <div class="slide slide2"></div>
+    <div class="slide slide3"></div>
+    <div class="slide slide4"></div>
+      </div>
+  <div class="hero-content">
+    <h1>Welcome to Family Friendly <span class="hotel-name">Hotel-Devang</span></h1>
+    <p>Experience divine hospitality in the sacred city Dwarka . Your spiritual journey begins with our warm welcome and comfortable stay.</p>
+    <a href="room.html" class="cta-button">Book Your Stay</a>
+  </div>
+</section>
+
+
+    <!-- Room Statistics -->
+    <section class="room-stats">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number">43</span>
+                    <span class="stat-label">Comfortable Rooms</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Service Available</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4.2★</span>
+                    <span class="stat-label">Guest Experience</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Our Hotel</h2>
+                    <p>Nestled in the heart of sacred Dwarka, our heritage type hotel offers a perfect blend of traditional hospitality and modern comfort. Located in Gujarat's spiritual capital, we provide an authentic experience for pilgrims and travelers alike.</p>
+                    <p>With 43 well-appointed rooms, we ensure every guest enjoys a peaceful and memorable stay while exploring the divine city of Lord Krishna. Our strategic location makes it easy to visit all major temples and attractions in Dwarka.</p>
+                    <p>From families on pilgrimage to solo travelers seeking spiritual solace, we welcome everyone with open arms and genuine care that reflects the true spirit of Gujarat's hospitality.</p>
+                </div>
+                <div class="about-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section class="highlights" id="amenities">
+        <div class="container">
+            <h2>Why Choose Hotel Devang?</h2>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <span class="highlight-icon">🏛️</span>
+                    <h3>Sacred Location</h3>
+                    <p>Strategically located in Dwarka, Gujarat - 361335, just minutes away from the famous Dwarkadhish Temple and other significant religious sites.</p>
+                </div>
+                <div class="highlight-card">
+                    <span class="highlight-icon">🛏️</span>
+                    <h3>Comfortable Accommodation</h3>
+                    <p>43 well-furnished rooms with modern amenities, ensuring a comfortable stay for all our guests during their spiritual journey.</p>
+                </div>
+                <div class="highlight-card">
+                    <span class="highlight-icon">🙏</span>
+                    <h3>Warm Hospitality</h3>
+                    <p>Experience authentic Gujarati hospitality with our caring staff who understand the needs of pilgrims and travelers.</p>
+                </div>
+                <div class="highlight-card">
+                    <span class="highlight-icon">🍽️</span>
+                    <h3>Pure Vegetarian breakfast</h3>
+                    <p>Savor delicious, pure vegetarian meals prepared with love, respecting the spiritual significance of this holy city.</p>
+                </div>
+                <div class="highlight-card">
+                    <span class="highlight-icon">🌅</span>
+                    <h3>Peaceful Ambience</h3>
+                    <p>Enjoy a serene atmosphere perfect for meditation, prayer, and spiritual reflection in the divine city of Dwarka.</p>
+                </div>
+                <div class="highlight-card">
+                    <span class="highlight-icon">💰</span>
+                    <h3>Affordable Rates</h3>
+                    <p>Quality accommodation at reasonable prices, making your pilgrimage comfortable without straining your budget.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>📍 Dwarka, Gujarat - 361335</p>
+                    <p>📞 Phone: +91 98244 02132</p>
+                    <p>✉️ Email: info@hoteldevang.com</p>
+                    <p>🌐 Website: www.hoteldevang.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about_us.html">About Us</a></li>
+                        <li><a href="rooms_page.html">Our Rooms</a></li>
+                        <li><a href="facilities_page.html">Amenities</a></li>
+                        <li><a href="contact_page.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Nearby Attractions</h3>
+                    <ul>
+                        <li>Dwarkadhish Temple</li>
+                        <li>Rukmini Devi Temple</li>
+                        <li>Gomti Ghat</li>
+                        <li>Bet Dwarka</li>
+                        <li>Nageshwar Jyotirlinga</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Guest Services</h3>
+                    <ul>
+                        <li>24/7 Reception</li>
+                        <li>Room Service</li>
+                        <li>Travel Assistance</li>
+                        <li>Temple Guide Service</li>
+                        <li>Parking Facility</li>
+                    </ul>
+                </div>
+            </div>
+           <div class="footer-bottom">
+    <p>&copy; 2025 Hotel Devang. All rights reserved. | 
+        Developed by <a href="https://kushang-acharya.onrender.com" target="_blank" style="color: gold ">Kushang Acharya</a>
+    </p>
+</div>
+
+        </div>
+	<a href="https://wa.me/919824402132" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+  <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1754210588/whatsapp_4008228_vjl1qc.png" alt="WhatsApp">
+</a>
+
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navLinks = document.getElementById('navLinks');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Slideshow functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+      document.addEventListener("DOMContentLoaded", function () {
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            slide.style.zIndex = '0';
+        });
+        slides[index].classList.add('active');
+        slides[index].style.zIndex = '1';
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    // Start the slideshow
+    showSlide(currentSlide); // Ensure first slide is visible
+    setInterval(nextSlide, 3000);
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+});
+window.addEventListener("scroll", function () {
+    const progress = document.getElementById("scroll-progress");
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    progress.style.width = scrollPercent + "%";
+});
+
+        
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    if (window.scrollY > 100) {
+        header.style.background = 'rgba(136, 0, 0, 0.95)'; // Semi-transparent golden
+    } else {
+        header.style.background = '#880000'; // Flat golden color
+    }
+});
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 1s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.highlight-card, .stat-item, .about-text').forEach(el => {
+            observer.observe(el);
+        });
+
+// Smooth hide/show navbar on scroll
+let prevScrollPos = window.pageYOffset;
+
+window.addEventListener("scroll", function () {
+    const currentScrollPos = window.pageYOffset;
+
+    if (prevScrollPos > currentScrollPos) {
+        // Scrolling up - show navbar
+        document.querySelector("header").style.top = "0";
+    } else {
+        // Scrolling down - hide navbar
+        document.querySelector("header").style.top = "-100px";
+    }
+
+    prevScrollPos = currentScrollPos;
+});
+
+    </script>
+
+<script>
+  window.addEventListener("load", function () {
+    document.getElementById("preloader").style.display = "none";
+  });
+</script>
+
+
+
+</body>
+</html>
