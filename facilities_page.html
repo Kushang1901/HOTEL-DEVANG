@@ -644,6 +644,37 @@
                 width: 100px; /* or any smaller size you prefer */
             }
         }
+
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+            /* Enlarged image */
+            .lightbox-overlay img {
+                max-width: 90%;
+                max-height: 90%;
+                border-radius: 10px;
+                box-shadow: 0 0 20px #000;
+            }
+
+            /* Close button */
+            .lightbox-overlay span {
+                position: absolute;
+                top: 20px;
+                right: 30px;
+                font-size: 35px;
+                color: white;
+                cursor: pointer;
+            }
     </style>
 </head>
 <body>
@@ -719,21 +750,21 @@
                         <li>Comfortable seating arrangements</li>
                         <li>Ideal for receptions and conferences</li>
                     </ul>
-                    
+
                     <div class="photo-section">
                         <h4>📸 Hall Photos</h4>
                         <div class="photo-placeholder">
                             <div class="photo-box" style="background: none; border: none; padding: 0;">
-    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666019/PACH4_ab34nx.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-</div>
+                                <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666019/PACH4_ab34nx.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                            </div>
 
                             <div class="photo-box" style="background: none; border: none; padding: 0;">
-    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666018/PACH1_uqnyof.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-</div>
+                                <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666018/PACH1_uqnyof.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                            </div>
 
                             <div class="photo-box" style="background: none; border: none; padding: 0;">
-    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666018/PACH2_rknn8t.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-</div>
+                                <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666018/PACH2_rknn8t.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                            </div>
 
                         </div>
                     </div>
@@ -751,24 +782,29 @@
                         <li>Suitable for religious ceremonies</li>
                         <li>Cost-effective option</li>
                     </ul>
-                    
+
                     <div class="photo-section">
                         <h4>📸 Hall Photos</h4>
                         <div class="photo-placeholder">
- <div class="photo-box" style="background: none; border: none; padding: 0;">
-    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749628980/confernecr_hall_wnhtro.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-</div>
+                            <div class="photo-box" style="background: none; border: none; padding: 0;">
+                                <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749628980/confernecr_hall_wnhtro.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                            </div>
 
                             <div class="photo-box" style="background: none; border: none; padding: 0;">
-    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749734165/gh2_ywxumy.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-</div>
+                                <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749734165/gh2_ywxumy.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                            </div>
 
                             <div class="photo-box" style="background: none; border: none; padding: 0;">
-    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749734164/gh1_gaaaxj.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-</div>
+                                <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749734164/gh1_gaaaxj.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                            </div>
 
                         </div>
                     </div>
+                </div>
+               
+                <div class="lightbox-overlay" id="lightboxOverlay">
+                    <span id="lightboxClose">&times;</span>
+                    <img id="lightboxImg" src="" alt="Enlarged Image">
                 </div>
 
                 <!-- Non-AC Hall 2 -->
@@ -783,28 +819,28 @@
                         <li>Budget-friendly venue</li>
                         <li>Multi-purpose usage</li>
                     </ul>
-                    
+
                     <div class="photo-section">
                         <h4>📸 Hall Photos</h4>
                         <div class="photo-placeholder">
-                             <div class="photo-placeholder">
- <div class="photo-box" style="background: none; border: none; padding: 0;">
-    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749739087/H3_vwuoy3.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-</div>
+                            <div class="photo-placeholder">
+                                <div class="photo-box" style="background: none; border: none; padding: 0;">
+                                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749739087/H3_vwuoy3.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                                </div>
 
-                            <div class="photo-box" style="background: none; border: none; padding: 0;">
-    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749739087/H2_ccupwb.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-</div>
+                                <div class="photo-box" style="background: none; border: none; padding: 0;">
+                                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749739087/H2_ccupwb.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                                </div>
 
-                            <div class="photo-box" style="background: none; border: none; padding: 0;">
-    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749739087/H1_uuqkjw.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-</div>
+                                <div class="photo-box" style="background: none; border: none; padding: 0;">
+                                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749739087/H1_uuqkjw.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                                </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- Event Functions -->
@@ -1134,6 +1170,32 @@ window.addEventListener("scroll", function () {
     const scrollPercent = (scrollTop / docHeight) * 100;
     progress.style.width = scrollPercent + "%";
 });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const overlay = document.getElementById("lightboxOverlay");
+            const overlayImg = document.getElementById("lightboxImg");
+            const closeBtn = document.getElementById("lightboxClose");
+
+            // Select all facility images
+            const imgs = document.querySelectorAll(".photo-box img");
+
+            imgs.forEach(img => {
+                img.addEventListener("click", () => {
+                    overlay.style.display = "flex";
+                    overlayImg.src = img.src; // open same image in large view
+                });
+            });
+
+            // Close when clicking X
+            closeBtn.addEventListener("click", () => {
+                overlay.style.display = "none";
+            });
+
+            // Close when clicking outside image
+            overlay.addEventListener("click", (e) => {
+                if (e.target === overlay) overlay.style.display = "none";
+            });
+        });
 
         </script>
 
