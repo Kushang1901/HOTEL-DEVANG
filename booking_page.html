@@ -833,7 +833,7 @@
                             },
                             body: JSON.stringify({
                                 guest_name: formData.name,
-                                email: formData.phone, // using phone as email (adjust as needed)
+                                phone: formData.phone, // using phone as email (adjust as needed)
                                 check_in: formData.checkIn,
                                 check_out: formData.checkOut,
                                 room_type: formData.roomTypes.map(r => r.name).join(", "),
@@ -1077,6 +1077,7 @@
         });
 
         
+
 
            
     </script>
