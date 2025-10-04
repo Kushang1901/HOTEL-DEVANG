@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Your Stay | Hotel Devang Dwarka</title>
     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dn45xyazy/image/upload/v1749986380/android-chrome-192x192_cnl2ib.png">
+
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdF5d0rAAAAACf99Q4OCtdHlvA6fF7CmC0sCjbc"></script>
     <style>
         * {
             margin: 0;
@@ -592,7 +594,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="checkIn">Check-in Date *</label>
-                           <input type="date" id="checkIn" class="form-control" required onclick="this.showPicker()">
+                            <input type="date" id="checkIn" class="form-control" required onclick="this.showPicker()">
                         </div>
                         <div class="form-group">
                             <label for="checkOut">Check-out Date *</label>
@@ -721,13 +723,19 @@
                 </button>
 
 
-
+                <button class="g-recaptcha"
+                        data-sitekey="reCAPTCHA_site_key"
+                        data-callback='onSubmit'
+                        data-action='submit'>
+                    Submit
+                </button>
             </form>
         </div>
     </div>
     <a href="https://wa.me/919824402132" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
         <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1754210588/whatsapp_4008228_vjl1qc.png" alt="WhatsApp">
     </a>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdF5d0rAAAAACf99Q4OCtdHlvA6fF7CmC0sCjbc"></script>
 
     <script>
         // Hotel owner's WhatsApp number (replace with actual number)
@@ -861,166 +869,166 @@
 
 
 
-            // Validate form
-            function validateForm() {
-                const errorMessage = document.getElementById('errorMessage');
-                const errors = [];
+        // Validate form
+        function validateForm() {
+            const errorMessage = document.getElementById('errorMessage');
+            const errors = [];
 
-                // Check required fields
-                const requiredFields = [
-                    { id: 'guestName', name: 'Full Name' },
-                    { id: 'guestPhone', name: 'Contact Number' },
-                    { id: 'checkIn', name: 'Check-in Date' },
-                    { id: 'checkOut', name: 'Check-out Date' },
-                    { id: 'numPersons', name: 'Number of Persons' }
-                ];
+            // Check required fields
+            const requiredFields = [
+                { id: 'guestName', name: 'Full Name' },
+                { id: 'guestPhone', name: 'Contact Number' },
+                { id: 'checkIn', name: 'Check-in Date' },
+                { id: 'checkOut', name: 'Check-out Date' },
+                { id: 'numPersons', name: 'Number of Persons' }
+            ];
 
-                requiredFields.forEach(field => {
-                    const element = document.getElementById(field.id);
-                    if (!element.value.trim()) {
-                        errors.push(`${field.name} is required`);
-                    }
-                });
-
-                // ✅ Check room type selection (multi-select checkboxes)
-                const selectedRooms = document.querySelectorAll('input[name="roomType[]"]:checked');
-                if (selectedRooms.length === 0) {
-                    errors.push('Please select at least one room type');
+            requiredFields.forEach(field => {
+                const element = document.getElementById(field.id);
+                if (!element.value.trim()) {
+                    errors.push(`${field.name} is required`);
                 }
+            });
 
-                // ✅ Person and room logic
-                const numPersonsInput = document.getElementById('numPersons');
-                let numPersons = numPersonsInput.value;
-
-                if (numPersons === 'other') {
-                    const customPersons = document.getElementById('customPersons').value;
-                    if (!customPersons || parseInt(customPersons) < 1) {
-                        errors.push('Please enter a valid number of persons.');
-                    } else {
-                        numPersons = customPersons;
-                    }
-                }
-
-                const totalPersons = parseInt(numPersons, 10);
-                const totalRooms = selectedRooms.length;
-
-                // ⚠️ Each room can accommodate up to 5 persons
-                if (totalPersons > totalRooms * 5) {
-                    errors.push(`Maximum 5 persons are allowed per room. You selected ${totalRooms} room(s), but entered ${totalPersons} persons. Please select additional rooms.`);
-                }
-
-                // ✅ Mattress logic
-                const extraMattressChecked = document.getElementById('extraMattress').checked;
-                if (totalPersons > totalRooms * 2 && totalPersons <= totalRooms * 5 && !extraMattressChecked) {
-                    errors.push('For more than 2 persons per room, please select the extra mattress option (₹300 per mattress per night).');
-                }
-
-                // ✅ Phone number format check
-                const phone = document.getElementById('guestPhone').value;
-                if (phone && !/^\+?[\d\s\-\(\)]{10,}$/.test(phone)) {
-                    errors.push('Please enter a valid phone number.');
-                }
-
-                // Show errors if any
-                if (errors.length > 0) {
-                    errorMessage.innerHTML = errors.join('<br>');
-                    errorMessage.style.display = 'block';
-                    errorMessage.scrollIntoView({ behavior: 'smooth' });
-                    return false;
-                }
-
-                errorMessage.style.display = 'none';
-                return true;
+            // ✅ Check room type selection (multi-select checkboxes)
+            const selectedRooms = document.querySelectorAll('input[name="roomType[]"]:checked');
+            if (selectedRooms.length === 0) {
+                errors.push('Please select at least one room type');
             }
 
-            function sendWhatsAppMessage(formData) {
-                const message = createWhatsAppMessage(formData);
-                const whatsappUrl = `https://wa.me/919824402132?text=${encodeURIComponent(message)}`;
-                console.log("Redirecting to WhatsApp:", whatsappUrl);
-                window.open(whatsappUrl, '_blank');
-            }
+            // ✅ Person and room logic
+            const numPersonsInput = document.getElementById('numPersons');
+            let numPersons = numPersonsInput.value;
 
-
-
-
-            // Get form data
-            function getFormData() {
-                const extraMattress = document.getElementById('extraMattress').checked;
-
-                // Collect all selected room types (checkboxes)
-                const selectedRoomElements = document.querySelectorAll('input[name="roomType[]"]:checked');
-                const selectedRooms = Array.from(selectedRoomElements).map(el => {
-                    return {
-                        type: el.value,
-                        name: ROOM_TYPES[el.value].name,
-                        price: ROOM_TYPES[el.value].price
-                    };
-                });
-
-                return {
-                    name: document.getElementById('guestName').value,
-                    phone: document.getElementById('guestPhone').value,
-                    checkIn: document.getElementById('checkIn').value,
-                    checkOut: document.getElementById('checkOut').value,
-                    numPersons: document.getElementById('numPersons').value === 'other'
-                        ? document.getElementById('customPersons').value
-                        : document.getElementById('numPersons').value,
-
-                    roomTypes: selectedRooms,
-                    extraMattress: extraMattress,
-                    specialRequests: document.getElementById('specialRequests').value
-                };
-            }
-
-            function handlePersonChange(select) {
-                const wrapper = document.getElementById('customPersonsWrapper');
-                const customInput = document.getElementById('customPersons');
-
-                if (select.value === 'other') {
-                    wrapper.style.display = 'block';
-                    customInput.required = true;
+            if (numPersons === 'other') {
+                const customPersons = document.getElementById('customPersons').value;
+                if (!customPersons || parseInt(customPersons) < 1) {
+                    errors.push('Please enter a valid number of persons.');
                 } else {
-                    wrapper.style.display = 'none';
-                    customInput.required = false;
-                    customInput.value = ''; // Clear if switching back
+                    numPersons = customPersons;
                 }
             }
 
-            // Create WhatsApp message
-            function createWhatsAppMessage(data) {
-                const checkInDate = new Date(data.checkIn).toLocaleDateString('en-IN');
-                const checkOutDate = new Date(data.checkOut).toLocaleDateString('en-IN');
+            const totalPersons = parseInt(numPersons, 10);
+            const totalRooms = selectedRooms.length;
 
-                let message = `🏨 *HOTEL DEVANG DWARKA - BOOKING REQUEST*\n\n`;
-                message += `📝 *Guest Details:*\n`;
-                message += `👤 Name: ${data.name}\n`;
-                message += `📞 Phone: ${data.phone}\n\n`;
-
-                message += `📅 *Booking Details:*\n`;
-                message += `📅 Check-in: ${checkInDate}\n`;
-                message += `📅 Check-out: ${checkOutDate}\n`;
-                message += `👥 Number of Persons: ${data.numPersons}\n\n`;
-
-                message += `🏨 *Room Details:*\n`;
-                data.roomTypes.forEach(room => {
-                    message += `🛏️ Room Type: ${room.name}\n`;
-                    message += `💰 Price: ${room.price}/night\n`;
-                });
-
-                if (data.extraMattress) {
-                    message += `\n🛏️ Extra Mattress: Yes (₹300/night)\n`;
-                }
-
-                if (data.specialRequests) {
-                    message += `\n💌 *Special Requests:*\n${data.specialRequests}\n`;
-                }
-
-                message += `\n✨ Please confirm room availability and booking details. Thank you!\n\n`;
-                message += `📍 *Hotel Devang Dwarka*\n`;
-                message += `🌐 Visit: hoteldevang.com`;
-
-                return message;
+            // ⚠️ Each room can accommodate up to 5 persons
+            if (totalPersons > totalRooms * 5) {
+                errors.push(`Maximum 5 persons are allowed per room. You selected ${totalRooms} room(s), but entered ${totalPersons} persons. Please select additional rooms.`);
             }
+
+            // ✅ Mattress logic
+            const extraMattressChecked = document.getElementById('extraMattress').checked;
+            if (totalPersons > totalRooms * 2 && totalPersons <= totalRooms * 5 && !extraMattressChecked) {
+                errors.push('For more than 2 persons per room, please select the extra mattress option (₹300 per mattress per night).');
+            }
+
+            // ✅ Phone number format check
+            const phone = document.getElementById('guestPhone').value;
+            if (phone && !/^\+?[\d\s\-\(\)]{10,}$/.test(phone)) {
+                errors.push('Please enter a valid phone number.');
+            }
+
+            // Show errors if any
+            if (errors.length > 0) {
+                errorMessage.innerHTML = errors.join('<br>');
+                errorMessage.style.display = 'block';
+                errorMessage.scrollIntoView({ behavior: 'smooth' });
+                return false;
+            }
+
+            errorMessage.style.display = 'none';
+            return true;
+        }
+
+        function sendWhatsAppMessage(formData) {
+            const message = createWhatsAppMessage(formData);
+            const whatsappUrl = `https://wa.me/919824402132?text=${encodeURIComponent(message)}`;
+            console.log("Redirecting to WhatsApp:", whatsappUrl);
+            window.open(whatsappUrl, '_blank');
+        }
+
+
+
+
+        // Get form data
+        function getFormData() {
+            const extraMattress = document.getElementById('extraMattress').checked;
+
+            // Collect all selected room types (checkboxes)
+            const selectedRoomElements = document.querySelectorAll('input[name="roomType[]"]:checked');
+            const selectedRooms = Array.from(selectedRoomElements).map(el => {
+                return {
+                    type: el.value,
+                    name: ROOM_TYPES[el.value].name,
+                    price: ROOM_TYPES[el.value].price
+                };
+            });
+
+            return {
+                name: document.getElementById('guestName').value,
+                phone: document.getElementById('guestPhone').value,
+                checkIn: document.getElementById('checkIn').value,
+                checkOut: document.getElementById('checkOut').value,
+                numPersons: document.getElementById('numPersons').value === 'other'
+                    ? document.getElementById('customPersons').value
+                    : document.getElementById('numPersons').value,
+
+                roomTypes: selectedRooms,
+                extraMattress: extraMattress,
+                specialRequests: document.getElementById('specialRequests').value
+            };
+        }
+
+        function handlePersonChange(select) {
+            const wrapper = document.getElementById('customPersonsWrapper');
+            const customInput = document.getElementById('customPersons');
+
+            if (select.value === 'other') {
+                wrapper.style.display = 'block';
+                customInput.required = true;
+            } else {
+                wrapper.style.display = 'none';
+                customInput.required = false;
+                customInput.value = ''; // Clear if switching back
+            }
+        }
+
+        // Create WhatsApp message
+        function createWhatsAppMessage(data) {
+            const checkInDate = new Date(data.checkIn).toLocaleDateString('en-IN');
+            const checkOutDate = new Date(data.checkOut).toLocaleDateString('en-IN');
+
+            let message = `🏨 *HOTEL DEVANG DWARKA - BOOKING REQUEST*\n\n`;
+            message += `📝 *Guest Details:*\n`;
+            message += `👤 Name: ${data.name}\n`;
+            message += `📞 Phone: ${data.phone}\n\n`;
+
+            message += `📅 *Booking Details:*\n`;
+            message += `📅 Check-in: ${checkInDate}\n`;
+            message += `📅 Check-out: ${checkOutDate}\n`;
+            message += `👥 Number of Persons: ${data.numPersons}\n\n`;
+
+            message += `🏨 *Room Details:*\n`;
+            data.roomTypes.forEach(room => {
+                message += `🛏️ Room Type: ${room.name}\n`;
+                message += `💰 Price: ${room.price}/night\n`;
+            });
+
+            if (data.extraMattress) {
+                message += `\n🛏️ Extra Mattress: Yes (₹300/night)\n`;
+            }
+
+            if (data.specialRequests) {
+                message += `\n💌 *Special Requests:*\n${data.specialRequests}\n`;
+            }
+
+            message += `\n✨ Please confirm room availability and booking details. Thank you!\n\n`;
+            message += `📍 *Hotel Devang Dwarka*\n`;
+            message += `🌐 Visit: hoteldevang.com`;
+
+            return message;
+        }
 
 
         // Show success message
@@ -1028,25 +1036,25 @@
             const successDiv = document.createElement('div');
             successDiv.className = 'success-message';
             successDiv.style.cssText = `
-                            position: fixed;
-                            top: 50%;
-                            left: 50%;
-                            transform: translate(-50%, -50%);
-                            background: linear-gradient(135deg, #25D366, #128C7E);
-                            color: white;
-                            padding: 2rem;
-                            border-radius: 15px;
-                            text-align: center;
-                            z-index: 10000;
-                            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-                            animation: fadeInUp 0.5s ease-out;
-                        `;
+                                            position: fixed;
+                                            top: 50%;
+                                            left: 50%;
+                                            transform: translate(-50%, -50%);
+                                            background: linear-gradient(135deg, #25D366, #128C7E);
+                                            color: white;
+                                            padding: 2rem;
+                                            border-radius: 15px;
+                                            text-align: center;
+                                            z-index: 10000;
+                                            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                                            animation: fadeInUp 0.5s ease-out;
+                                        `;
 
             successDiv.innerHTML = `
-                            <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Booking Request Sent! ✅</h3>
-                            <p style="margin-bottom: 1.5rem;">We've sent your booking details to Hotel Devang Dwarka via WhatsApp.</p>
-                            <p>Please wait for confirmation from our staff.</p>
-                        `;
+                                            <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Booking Request Sent! ✅</h3>
+                                            <p style="margin-bottom: 1.5rem;">We've sent your booking details to Hotel Devang Dwarka via WhatsApp.</p>
+                                            <p>Please wait for confirmation from our staff.</p>
+                                        `;
 
             document.body.appendChild(successDiv);
 
@@ -1076,20 +1084,46 @@
             prevScrollPos = currentScrollPos;
         });
 
+        //security v3
+        grecaptcha.ready(function () {
+            document.getElementById("bookingForm").addEventListener("submit", function (event) {
+                event.preventDefault(); // stop normal form submit
+
+                grecaptcha.execute('6LdF5d0rAAAAACf99Q4OCtdHlvA6fF7CmC0sCjbc', { action: 'submit' }).then(function (token) {
+                    // create hidden input for token
+                    var input = document.createElement("input");
+                    input.type = "hidden";
+                    input.name = "g-recaptcha-response";
+                    input.value = token;
+                    document.getElementById("bookingForm").appendChild(input);
+
+                    // now submit the form
+                    event.target.submit();
+                });
+            });
+        });
+        
+            function onClick(e) {
+                e.preventDefault();
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6LdF5d0rAAAAACf99Q4OCtdHlvA6fF7CmC0sCjbc', { action: 'submit' }).then(function (token) {
+                    // Add your logic to submit to your backend server here.
+                });
+            });
+          }
+    
+
         
 
-
-           
     </script>
-    <script> 
-            window.addEventListener("load", function () {
-                document.getElementById("preloader").style.display = "none";
-            });
+    <script>
+        window.addEventListener("load", function () {
+            document.getElementById("preloader").style.display = "none";
+        });
     </script>
 
-    
-    
+
+
 
 </body>
 </html>
-
