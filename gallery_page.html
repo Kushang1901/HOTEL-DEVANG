@@ -8,6 +8,7 @@
     <meta name="description" content="Browse the photo gallery of Hotel Devang in Dwarka. View pictures of our Deluxe, Super Deluxe, and Suite Rooms, hotel interiors, and amenities near Dwarkadhish Temple.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://hoteldevang.com/gallery_page.html">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <meta property="og:title" content="Hotel Gallery | Hotel Devang Dwarka">
     <meta property="og:description" content="See photos of Hotel Devang in Dwarka – rooms, interiors, and facilities. Explore why we are among the best hotels near Dwarkadhish Temple for family and business stays.">
@@ -396,6 +397,36 @@
                 margin: 0 auto;
             }
 
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+            .breadcrumb a {
+                color: rgba(255,255,255,0.8);
+                text-decoration: none;
+                font-weight: 500;
+            }
+
+                .breadcrumb a:hover {
+                    color: white;
+                }
+
+            .breadcrumb i {
+                color: #fff;
+                margin: 0 8px;
+            }
+
+            .breadcrumb span {
+                color: #fff;
+                font-weight: 600;
+            }
+
+
         /* Footer */
         footer {
             background: #8b0000;
@@ -587,20 +618,20 @@
 </head>
 <body>
 
-<div id="preloader">
-  <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1750791182/Untitled_design_bqjxji.gif" alt="Loading..." />
-</div>
+    <div id="preloader">
+        <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1750791182/Untitled_design_bqjxji.gif" alt="Loading..." />
+    </div>
     <!-- Header -->
-<div id="scroll-progress"></div>
+    <div id="scroll-progress"></div>
 
     <header>
         <nav>
             <div class="logo">
-  <a href="index.html">
-    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749707119/logo-photoaidcom-cropped_vjedul.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
-    Hotel Devang
-  </a>
-</div>
+                <a href="index.html">
+                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749707119/logo-photoaidcom-cropped_vjedul.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
+                    Hotel Devang
+                </a>
+            </div>
 
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <ul class="nav-links" id="navLinks">
@@ -612,7 +643,7 @@
                 <li><a href="booking_page.html">Booking</a></li>
                 <li><a href="dwarka_attractions.html">Nearby Attractions</a></li>
                 <li><a href="policies_page.html">Policies</a></li>
-		 <li><a href="contact_page.html">Contact Us</a></li>
+                <li><a href="contact_page.html">Contact Us</a></li>
             </ul>
         </nav>
     </header>
@@ -622,8 +653,15 @@
         <div class="hero-content">
             <h1>Hotel Devang Gallery</h1>
             <p>Explore our beautiful accommodations and serene surroundings in sacred Dwarka</p>
+
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Our Gallery</span>
+            </div>
         </div>
     </section>
+
 
     <!-- Gallery Container -->
     <section class="gallery-container">
@@ -638,7 +676,7 @@
                 <button class="filter-btn active" onclick="filterGallery('all')">All Images</button>
                 <button class="filter-btn" onclick="filterGallery('rooms')">Guest Rooms</button>
                 <button class="filter-btn" onclick="filterGallery('bathrooms')">Bathrooms</button>
-		<button class="filter-btn" onclick="filterGallery('outdoor location')">Outdoor Location</button>
+                <button class="filter-btn" onclick="filterGallery('outdoor location')">Outdoor Location</button>
                 <button class="filter-btn" onclick="filterGallery('interiors')">Interiors</button>
                 <button class="filter-btn" onclick="filterGallery('exterior')">Exterior & Garden</button>
                 <button class="filter-btn" onclick="filterGallery('near temple')">Near Temple</button>
@@ -832,38 +870,39 @@
                 </div>
             </div>
             <div class="footer-bottom">
-    <p>&copy; 2025 Hotel Devang. All rights reserved. | 
-        Developed by <a href="https://kushang-acharya.onrender.com" target="_blank" style="color: gold ">Kushang Acharya</a>
-    </p>
-</div>
+                <p>
+                    &copy; 2025 Hotel Devang. All rights reserved. |
+                    Developed by <a href="https://kushang-acharya.onrender.com" target="_blank" style="color: gold ">Kushang Acharya</a>
+                </p>
+            </div>
 
         </div>
 
-<a href="https://wa.me/919824402132" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
-  <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1754210588/whatsapp_4008228_vjl1qc.png" alt="WhatsApp">
-</a>
+        <a href="https://wa.me/919824402132" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+            <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1754210588/whatsapp_4008228_vjl1qc.png" alt="WhatsApp">
+        </a>
 
     </footer>
 
     <script>
         // Gallery data
         const galleryData = [
-    { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749663632/R7_t908jw.jpg', title: 'Super Deluxe Room', description: 'Spacious and comfortable room with modern amenities and traditional touch' },
-    { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749663633/R10_urhfho.jpg', title: 'Premium Suite', description: 'Luxurious suite with separate living area and enhanced comfort' },
-    { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749733608/sofa_tazpih.jpg', title: 'Family Room', description: 'Perfect for families with children, spacious and well-appointed' },
-    { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749664943/Bathroom_ris49e.jpg', title: 'Spacious Bathroom', description: 'Clean and contemporary bathroom with all essential amenities' },
-    { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749664658/Balcony_izjhbw.jpg', title: 'Room Balcony', description: 'Private balcony with city views and comfortable seating' },
-    { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749632049/LAL_6503_formphotoeditor.com_phqtjh.jpg', title: 'Functionable Venue', description: 'A hotel which gives facility of celebrating the fashionable functions .' },
-    { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749630261/lobby_1_azwve0.jpg', title: 'Hotel Lobby', description: 'Welcoming lobby with traditional decor and modern comfort' },
-    { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749734009/reception_ph1e7p.jpg', title: 'Reception Area', description: '24/7 reception desk with friendly and helpful staff' },
-    { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749628980/confernecr_hall_wnhtro.jpg', title: 'Meeting Area', description: 'Clean and spacious meeting area for taking proper decisions .' },
-    { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749629682/exterior_vhqmhh.jpg', title: 'Hotel Exterior', description: 'Heritage-style architecture blending tradition with modernity' },
-    { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749735242/trees_ceyxb0.jpg', title: 'Garden Area', description: 'Peaceful garden space for relaxation and meditation' },
-    { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1750161977/parking_2_cgina7.jpg', title: 'Parking Facility', description: 'Safe and secure parking space for our guests' },
-    { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749629929/streets_xwdick.jpg', title: 'Dwarka Streets', description: 'Vibrant streets of sacred Dwarka near our hotel' },
-    { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749630692/temple_view_1_fn97qp.jpg', title: 'Nearby Temple', description: 'Close proximity to Dwarkadhish Temple and other sacred sites' },
-    { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749630909/city_view_utvs8g.jpg', title: 'City View', description: 'Beautiful views of the sacred city from our hotel' }
-];
+            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749663632/R7_t908jw.jpg', title: 'Super Deluxe Room', description: 'Spacious and comfortable room with modern amenities and traditional touch' },
+            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749663633/R10_urhfho.jpg', title: 'Premium Suite', description: 'Luxurious suite with separate living area and enhanced comfort' },
+            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749733608/sofa_tazpih.jpg', title: 'Family Room', description: 'Perfect for families with children, spacious and well-appointed' },
+            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749664943/Bathroom_ris49e.jpg', title: 'Spacious Bathroom', description: 'Clean and contemporary bathroom with all essential amenities' },
+            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749664658/Balcony_izjhbw.jpg', title: 'Room Balcony', description: 'Private balcony with city views and comfortable seating' },
+            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749632049/LAL_6503_formphotoeditor.com_phqtjh.jpg', title: 'Functionable Venue', description: 'A hotel which gives facility of celebrating the fashionable functions .' },
+            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749630261/lobby_1_azwve0.jpg', title: 'Hotel Lobby', description: 'Welcoming lobby with traditional decor and modern comfort' },
+            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749734009/reception_ph1e7p.jpg', title: 'Reception Area', description: '24/7 reception desk with friendly and helpful staff' },
+            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749628980/confernecr_hall_wnhtro.jpg', title: 'Meeting Area', description: 'Clean and spacious meeting area for taking proper decisions .' },
+            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749629682/exterior_vhqmhh.jpg', title: 'Hotel Exterior', description: 'Heritage-style architecture blending tradition with modernity' },
+            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749735242/trees_ceyxb0.jpg', title: 'Garden Area', description: 'Peaceful garden space for relaxation and meditation' },
+            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1750161977/parking_2_cgina7.jpg', title: 'Parking Facility', description: 'Safe and secure parking space for our guests' },
+            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749629929/streets_xwdick.jpg', title: 'Dwarka Streets', description: 'Vibrant streets of sacred Dwarka near our hotel' },
+            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749630692/temple_view_1_fn97qp.jpg', title: 'Nearby Temple', description: 'Close proximity to Dwarkadhish Temple and other sacred sites' },
+            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749630909/city_view_utvs8g.jpg', title: 'City View', description: 'Beautiful views of the sacred city from our hotel' }
+        ];
 
 
         let currentImageIndex = 0;
@@ -873,7 +912,7 @@
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
         }
-        
+
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
@@ -886,11 +925,11 @@
         function filterGallery(category) {
             const galleryItems = document.querySelectorAll('.gallery-item');
             const filterBtns = document.querySelectorAll('.filter-btn');
-            
+
             // Update active filter button
             filterBtns.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
-            
+
             // Show/hide gallery items
             galleryItems.forEach(item => {
                 if (category === 'all' || item.dataset.category === category) {
@@ -909,11 +948,11 @@
             const lightboxImage = document.getElementById('lightboxImage');
             const lightboxTitle = document.getElementById('lightboxTitle');
             const lightboxDescription = document.getElementById('lightboxDescription');
-            
+
             lightboxImage.src = galleryData[index].src;
             lightboxTitle.textContent = galleryData[index].title;
             lightboxDescription.textContent = galleryData[index].description;
-            
+
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -938,14 +977,14 @@
             const lightboxImage = document.getElementById('lightboxImage');
             const lightboxTitle = document.getElementById('lightboxTitle');
             const lightboxDescription = document.getElementById('lightboxDescription');
-            
+
             lightboxImage.src = galleryData[currentImageIndex].src;
             lightboxTitle.textContent = galleryData[currentImageIndex].title;
             lightboxDescription.textContent = galleryData[currentImageIndex].description;
         }
 
         // Keyboard navigation for lightbox
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             const lightbox = document.getElementById('lightbox');
             if (lightbox.classList.contains('active')) {
                 if (e.key === 'Escape') {
@@ -959,27 +998,27 @@
         });
 
         // Close lightbox when clicking outside the image
-        document.getElementById('lightbox').addEventListener('click', function(e) {
+        document.getElementById('lightbox').addEventListener('click', function (e) {
             if (e.target === this) {
                 closeLightbox();
             }
         });
 
         // Add scroll effect to header
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
-    header.style.background = 'linear-gradient(135deg, rgba(139, 0, 0, 0.95) 0%, rgba(178, 34, 34, 0.95) 100%)';
-} else {
-    header.style.background = 'linear-gradient(135deg, #8b0000 0%, #b22222 100%)';
-}
-window.addEventListener("scroll", function () {
-    const progress = document.getElementById("scroll-progress");
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = (scrollTop / docHeight) * 100;
-    progress.style.width = scrollPercent + "%";
-});
+                header.style.background = 'linear-gradient(135deg, rgba(139, 0, 0, 0.95) 0%, rgba(178, 34, 34, 0.95) 100%)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #8b0000 0%, #b22222 100%)';
+            }
+            window.addEventListener("scroll", function () {
+                const progress = document.getElementById("scroll-progress");
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = (scrollTop / docHeight) * 100;
+                progress.style.width = scrollPercent + "%";
+            });
 
         });
 
@@ -989,7 +1028,7 @@ window.addEventListener("scroll", function () {
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver(function (entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
@@ -1032,30 +1071,30 @@ window.addEventListener("scroll", function () {
             imageObserver.observe(img);
         });
 
-// Smooth hide/show navbar on scroll
-let prevScrollPos = window.pageYOffset;
+        // Smooth hide/show navbar on scroll
+        let prevScrollPos = window.pageYOffset;
 
-window.addEventListener("scroll", function () {
-    const currentScrollPos = window.pageYOffset;
+        window.addEventListener("scroll", function () {
+            const currentScrollPos = window.pageYOffset;
 
-    if (prevScrollPos > currentScrollPos) {
-        // Scrolling up - show navbar
-        document.querySelector("header").style.top = "0";
-    } else {
-        // Scrolling down - hide navbar
-        document.querySelector("header").style.top = "-100px";
-    }
+            if (prevScrollPos > currentScrollPos) {
+                // Scrolling up - show navbar
+                document.querySelector("header").style.top = "0";
+            } else {
+                // Scrolling down - hide navbar
+                document.querySelector("header").style.top = "-100px";
+            }
 
-    prevScrollPos = currentScrollPos;
-});
+            prevScrollPos = currentScrollPos;
+        });
 
     </script>
 
-<script>
-  window.addEventListener("load", function () {
-    document.getElementById("preloader").style.display = "none";
-  });
-</script>
+    <script>
+        window.addEventListener("load", function () {
+            document.getElementById("preloader").style.display = "none";
+        });
+    </script>
 
 </body>
 </html>

@@ -8,6 +8,7 @@
     <meta name="description" content="Discover the facilities at Hotel Devang in Dwarka – free WiFi, parking, room service, AC deluxe rooms, and family-friendly amenities near Dwarkadhish Temple. Comfort and convenience for every guest.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://hoteldevang.com/facilities_page.html">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <meta property="og:title" content="Hotel Facilities | Hotel Devang Dwarka">
     <meta property="og:description" content="Enjoy premium facilities at Hotel Devang, Dwarka – WiFi, parking, room service, air-conditioned rooms, and family-friendly amenities near Dwarkadhish Temple.">
@@ -330,6 +331,34 @@
             .photo-box:hover {
                 background: rgba(255,255,255,0.2);
                 border-color: #ffd700;
+            }
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+            .breadcrumb a {
+                color: rgba(255,255,255,0.8);
+                text-decoration: none;
+                font-weight: 500;
+            }
+
+                .breadcrumb a:hover {
+                    color: white;
+                }
+
+            .breadcrumb i {
+                color: #fff;
+                margin: 0 8px;
+            }
+
+            .breadcrumb span {
+                color: #fff;
+                font-weight: 600;
             }
 
         /* Event Functions Section */
@@ -679,22 +708,22 @@
 </head>
 <body>
 
-<div id="preloader">
-  <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1750791182/Untitled_design_bqjxji.gif" alt="Loading..." />
-</div>
-<div id="scroll-progress"></div>
+    <div id="preloader">
+        <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1750791182/Untitled_design_bqjxji.gif" alt="Loading..." />
+    </div>
+    <div id="scroll-progress"></div>
 
     <!-- Header -->
     <header>
 
 
         <nav>
-           <div class="logo">
-  <a href="index.html">
-    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749707119/logo-photoaidcom-cropped_vjedul.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
-    Hotel Devang
-  </a>
-</div>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749707119/logo-photoaidcom-cropped_vjedul.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
+                    Hotel Devang
+                </a>
+            </div>
 
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <ul class="nav-links" id="navLinks">
@@ -706,7 +735,7 @@
                 <li><a href="booking_page.html">Booking</a></li>
                 <li><a href="dwarka_attractions.html">Nearby Attractions</a></li>
                 <li><a href="policies_page.html">Policies</a></li>
-		 <li><a href="contact_page.html">Contact Us</a></li>
+                <li><a href="contact_page.html">Contact Us</a></li>
             </ul>
         </nav>
     </header>
@@ -716,7 +745,15 @@
         <div class="container">
             <h1>Our Facilities</h1>
             <p>Complete event solutions for all your special occasions in the sacred city of Dwarka</p>
+
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Facilities</span>
+            </div>
         </div>
+    </section>
+
     </section>
 
     <!-- Facilities Overview -->
@@ -736,7 +773,7 @@
             <p style="text-align: center; font-size: 1.1rem; margin-bottom: 3rem; opacity: 0.9;">
                 Three spacious halls equipped to host various types of functions and celebrations
             </p>
-            
+
             <div class="halls-grid">
                 <!-- AC Hall -->
                 <div class="hall-card">
@@ -801,7 +838,7 @@
                         </div>
                     </div>
                 </div>
-               
+
                 <div class="lightbox-overlay" id="lightboxOverlay">
                     <span id="lightboxClose">&times;</span>
                     <img id="lightboxImg" src="" alt="Enlarged Image">
@@ -850,7 +887,7 @@
             <p style="text-align: center; font-size: 1.1rem; margin-bottom: 3rem;">
                 Celebrate every special moment with our comprehensive event services
             </p>
-            
+
             <div class="functions-grid">
                 <div class="function-card">
                     <span class="function-icon">🚩</span>
@@ -903,7 +940,7 @@
             <p style="text-align: center; font-size: 1.1rem; margin-bottom: 3rem; color: #666;">
                 Three expansive outdoor venues perfect for grand wedding celebrations and large gatherings
             </p>
-            
+
             <div class="grounds-container">
                 <div class="ground-card">
                     <div class="ground-image">🌸</div>
@@ -917,25 +954,25 @@
                             <li>Ample parking space</li>
                             <li>Professional lighting arrangements</li>
                         </ul>
-                        
+
                         <div class="photo-section" style="background: #f8f9fa; color: #333;">
                             <h4 style="color: #1a237e;">📸 Ground Photos</h4>
                             <div class="photo-placeholder">
                                 <div class="photo-box" style="background: none; border: none; padding: 0;">
-    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666016/GV2_ypce46.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-</div>
+                                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666016/GV2_ypce46.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                                </div>
 
-                            <div class="photo-box" style="background: none; border: none; padding: 0;">
-    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666016/GV3_nkumiy.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-</div>
+                                <div class="photo-box" style="background: none; border: none; padding: 0;">
+                                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666016/GV3_nkumiy.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                                </div>
 
-                            <div class="photo-box" style="background: none; border: none; padding: 0;">
-    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666017/GV4_cbnmfj.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-</div>
+                                <div class="photo-box" style="background: none; border: none; padding: 0;">
+                                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666017/GV4_cbnmfj.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                                </div>
 
-				<div class="photo-box" style="background: none; border: none; padding: 0;">
-    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666016/GV1_onbmbk.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-</div>
+                                <div class="photo-box" style="background: none; border: none; padding: 0;">
+                                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666016/GV1_onbmbk.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                                </div>
 
 
                             </div>
@@ -955,25 +992,25 @@
                             <li>Photo-friendly scenic backdrop</li>
                             <li>Comfortable guest seating areas</li>
                         </ul>
-                        
+
                         <div class="photo-section" style="background: #f8f9fa; color: #333;">
                             <h4 style="color: #1a237e;">📸 Ground Photos</h4>
                             <div class="photo-placeholder">
                                 <div class="photo-box" style="background: none; border: none; padding: 0;">
-   				<img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749632051/LAL_6956_formphotoeditor.com_c51lsm.jpg" alt="Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-</div>
+                                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749632051/LAL_6956_formphotoeditor.com_c51lsm.jpg" alt="Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                                </div>
 
                                 <div class="photo-box" style="background: none; border: none; padding: 0;">
-    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666185/GRH1_ofnlgv.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-</div>
+                                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666185/GRH1_ofnlgv.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                                </div>
 
-                            <div class="photo-box" style="background: none; border: none; padding: 0;">
-    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666186/GRH2_dk6ij9.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-</div>
+                                <div class="photo-box" style="background: none; border: none; padding: 0;">
+                                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666186/GRH2_dk6ij9.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                                </div>
 
-                            <div class="photo-box" style="background: none; border: none; padding: 0;">
-    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666186/GRH3_bwzzal.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-</div>
+                                <div class="photo-box" style="background: none; border: none; padding: 0;">
+                                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666186/GRH3_bwzzal.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                                </div>
 
 
                             </div>
@@ -993,24 +1030,24 @@
                             <li>Cost-effective venue option</li>
                             <li>Easy access for vendors and setup</li>
                         </ul>
-                        
+
                         <div class="photo-section" style="background: #f8f9fa; color: #333;">
                             <h4 style="color: #1a237e;">📸 Ground Photos</h4>
                             <div class="photo-placeholder">
                                 <div class="photo-box" style="background: none; border: none; padding: 0;">
-   				<img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666017/MG2_xtlnq3.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-</div>
-                              <div class="photo-box" style="background: none; border: none; padding: 0;">
-                                <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666018/MG4_ktlm4i.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-</div>
+                                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666017/MG2_xtlnq3.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                                </div>
+                                <div class="photo-box" style="background: none; border: none; padding: 0;">
+                                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666018/MG4_ktlm4i.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                                </div>
 
                                 <div class="photo-box" style="background: none; border: none; padding: 0;">
-    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666017/MG1_l3qvjp.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-</div>
+                                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749666017/MG1_l3qvjp.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                                </div>
 
-				<div class="photo-box" style="background: none; border: none; padding: 0;">
-    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749667304/MG5_vcevrm.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-</div>
+                                <div class="photo-box" style="background: none; border: none; padding: 0;">
+                                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749667304/MG5_vcevrm.jpg" alt="Big Celebration Ground" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                                </div>
 
 
                             </div>
@@ -1075,17 +1112,18 @@
                     </ul>
                 </div>
             </div>
-           <div class="footer-bottom">
-    <p>&copy; 2025 Hotel Devang. All rights reserved. | 
-        Developed by <a href="https://kushang-acharya.onrender.com" target="_blank" style="color: gold ">Kushang Acharya</a>
-    </p>
-</div>
+            <div class="footer-bottom">
+                <p>
+                    &copy; 2025 Hotel Devang. All rights reserved. |
+                    Developed by <a href="https://kushang-acharya.onrender.com" target="_blank" style="color: gold ">Kushang Acharya</a>
+                </p>
+            </div>
 
         </div>
 
-<a href="https://wa.me/919824402132" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
-  <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1754210588/whatsapp_4008228_vjl1qc.png" alt="WhatsApp">
-</a>
+        <a href="https://wa.me/919824402132" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+            <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1754210588/whatsapp_4008228_vjl1qc.png" alt="WhatsApp">
+        </a>
 
     </footer>
 
@@ -1095,7 +1133,7 @@
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
         }
-        
+
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
@@ -1103,7 +1141,7 @@
                 navLinks.classList.remove('active');
             });
         });
-        
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1117,59 +1155,59 @@
                 }
             });
         });
-        
+
         // Add scroll effect to header
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
-    header.style.background = 'linear-gradient(135deg, rgba(139, 0, 0, 0.95) 0%, rgba(178, 34, 34, 0.95) 100%)';
-} else {
-    header.style.background = 'linear-gradient(135deg, #8b0000 0%, #b22222 100%)';
-}
+                header.style.background = 'linear-gradient(135deg, rgba(139, 0, 0, 0.95) 0%, rgba(178, 34, 34, 0.95) 100%)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #8b0000 0%, #b22222 100%)';
+            }
 
         });
-        
+
         // Animate elements on scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
         };
-        
-        const observer = new IntersectionObserver(function(entries) {
+
+        const observer = new IntersectionObserver(function (entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.animation = 'fadeInUp 1s ease-out forwards';
                 }
             });
         }, observerOptions);
-        
+
         // Observe elements for animation
         document.querySelectorAll('.hall-card, .function-card, .ground-card, .facilities-intro').forEach(el => {
             observer.observe(el);
         });
-// Smooth hide/show navbar on scroll
-let prevScrollPos = window.pageYOffset;
+        // Smooth hide/show navbar on scroll
+        let prevScrollPos = window.pageYOffset;
 
-window.addEventListener("scroll", function () {
-    const currentScrollPos = window.pageYOffset;
+        window.addEventListener("scroll", function () {
+            const currentScrollPos = window.pageYOffset;
 
-    if (prevScrollPos > currentScrollPos) {
-        // Scrolling up - show navbar
-        document.querySelector("header").style.top = "0";
-    } else {
-        // Scrolling down - hide navbar
-        document.querySelector("header").style.top = "-100px";
-    }
+            if (prevScrollPos > currentScrollPos) {
+                // Scrolling up - show navbar
+                document.querySelector("header").style.top = "0";
+            } else {
+                // Scrolling down - hide navbar
+                document.querySelector("header").style.top = "-100px";
+            }
 
-    prevScrollPos = currentScrollPos;
-});
-window.addEventListener("scroll", function () {
-    const progress = document.getElementById("scroll-progress");
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = (scrollTop / docHeight) * 100;
-    progress.style.width = scrollPercent + "%";
-});
+            prevScrollPos = currentScrollPos;
+        });
+        window.addEventListener("scroll", function () {
+            const progress = document.getElementById("scroll-progress");
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            progress.style.width = scrollPercent + "%";
+        });
 
         document.addEventListener("DOMContentLoaded", () => {
             const overlay = document.getElementById("lightboxOverlay");
@@ -1197,13 +1235,13 @@ window.addEventListener("scroll", function () {
             });
         });
 
-        </script>
+    </script>
 
-<script>
-  window.addEventListener("load", function () {
-    document.getElementById("preloader").style.display = "none";
-  });
-</script>
+    <script>
+        window.addEventListener("load", function () {
+            document.getElementById("preloader").style.display = "none";
+        });
+    </script>
 
 </body>
 </html>

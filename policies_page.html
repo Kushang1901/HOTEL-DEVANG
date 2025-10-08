@@ -8,7 +8,7 @@
     <meta name="description" content="Read Hotel Devang policies for your stay in Dwarka. Check-in and check-out timings, booking rules, cancellation policy, and guest guidelines for a comfortable experience near Dwarkadhish Temple.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://hoteldevang.com/policies_page.html">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <meta property="og:title" content="Hotel Policies | Hotel Devang Dwarka">
     <meta property="og:description" content="Know Hotel Devang policies – check-in & check-out timings, booking & cancellation rules, and guest stay guidelines. Stay worry-free near Dwarkadhish Temple, Dwarka.">
     <meta property="og:url" content="https://hoteldevang.com/policies_page.html">
@@ -291,7 +291,34 @@
             margin-top: 1rem;
             font-weight: 600;
         }
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
 
+            .breadcrumb a {
+                color: rgba(255,255,255,0.8);
+                text-decoration: none;
+                font-weight: 500;
+            }
+
+                .breadcrumb a:hover {
+                    color: white;
+                }
+
+            .breadcrumb i {
+                color: #fff;
+                margin: 0 8px;
+            }
+
+            .breadcrumb span {
+                color: #fff;
+                font-weight: 600;
+            }
         /* Important Notice Section */
         .important-notice {
             padding: 4rem 0;
@@ -598,6 +625,11 @@
             <div class="container">
                 <h1>Hotel Policies</h1>
                 <p>Please review our policies to ensure a comfortable and pleasant stay at Hotel Devang in sacred Dwarka</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Hotel Policies</span>
+                </div>
             </div>
         </section>
 

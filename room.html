@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	
     <title>Hotel Rooms in Dwarka | Deluxe, Super Deluxe & Suite Stays at Hotel Devang</title>
     <meta name="description" content="Explore Hotel Devang rooms in Dwarka – choose from Deluxe, Super Deluxe, and Suite rooms with premium amenities. Perfect for family stays and business travelers near Dwarkadhish Temple.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://hoteldevang.com/room.html">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <meta property="og:title" content="Hotel Rooms in Dwarka | Hotel Devang Near Dwarkadhish Temple">
     <meta property="og:description" content="Stay at Hotel Devang, Dwarka – Deluxe, Super Deluxe & Suite Rooms with modern comfort, family-friendly amenities, and easy access to Dwarkadhish Temple.">
@@ -417,6 +417,36 @@
             font-weight: bold;
         }
 
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+            .breadcrumb a {
+                color: rgba(255,255,255,0.8);
+                text-decoration: none;
+                font-weight: 500;
+            }
+
+                .breadcrumb a:hover {
+                    color: white;
+                }
+
+            .breadcrumb i {
+                color: #fff;
+                margin: 0 8px;
+            }
+
+            .breadcrumb span {
+                color: #fff;
+                font-weight: 600;
+            }
+
+
         /* Contact CTA */
         .contact-cta {
             background: linear-gradient(135deg, #8B0000 0%, #B22222 100%);
@@ -659,8 +689,13 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-<h1> <span class="hotel-name"></span> Rooms & Rates</h1>      
-      <p>Choose from our 7 categories of comfortable accommodations, all featuring double beds for your perfect stay in sacred Dwarka</p>
+            <h1> <span class="hotel-name"></span> Rooms & Rates</h1>
+            <p>Choose from our 7 categories of comfortable accommodations, all featuring double beds for your perfect stay in sacred Dwarka</p>
+        </div>
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>Rooms</span>
         </div>
     </section>
 
