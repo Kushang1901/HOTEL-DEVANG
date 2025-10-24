@@ -1,27 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
-	<url>
-		<loc>https://www.hoteldevang.com/index.html/</loc>
-		<priority>1.0</priority>
-	</url>
-	<url>
-		<loc>https://www.hoteldevang.com/room.html</loc>
-		<priority>0.9</priority>
-	</url>
-	<url>
-		<loc>https://www.hoteldevang.com/booking_page.html</loc>
-		<priority>0.9</priority>
-	</url>
-	<url>
-		<loc>https://www.hoteldevang.com/gallery_page.html</loc>
-		<priority>0.8</priority>
-	</url>
-	<url>
-		<loc>https://www.hoteldevang.com/contact_page.html</loc>
-		<priority>0.8</priority>
-	</url>
-	<url>
-		<loc>https://www.hoteldevang.com/about_us.html</loc>
-		<priority>0.7</priority>
-	</url>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- Homepage -->
+    <url>
+        <loc>https://www.hoteldevang.com/</loc>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Main Navigation Pages -->
+    <url>
+        <loc>https://www.hoteldevang.com/room.html</loc>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.hoteldevang.com/booking_page.html</loc>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.hoteldevang.com/gallery_page.html</loc>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.hoteldevang.com/facilities_page.html</loc>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.hoteldevang.com/dwarka_attractions.html</loc>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.hoteldevang.com/policies_page.html</loc>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.hoteldevang.com/contact_page.html</loc>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.hoteldevang.com/about_us.html</loc>
+        <priority>0.7</priority>
+    </url>
+
 </urlset>
