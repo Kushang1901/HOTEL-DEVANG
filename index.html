@@ -193,6 +193,10 @@
             padding: 2rem;
             animation: fadeInUp 1s ease-out;
             padding-top: 6rem;
+            position: relative;
+            z-index: 20;
+            text-align: center;
+            color: #fff;
         }
 
         .hero h1 {
@@ -324,7 +328,9 @@
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749491973/office_1_jvfbtg.jpg');
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat; /* ✅ prevents tiling */
         }
+
 
         .slide2 {
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dn45xyazy/image/upload/v1750707469/s2_nrsx3l.jpg');
@@ -999,6 +1005,7 @@
             const liner = document.querySelector('.slide-liner');
             let currentSlide = 0;
             let direction = 'left';
+            let slideTimer;
 
             function showSlide(index, direction) {
                 slides.forEach(slide => {
@@ -1021,7 +1028,7 @@
 
             function startLiner() {
                 liner.style.animation = 'none';
-                void liner.offsetWidth; // restart animation
+                void liner.offsetWidth; // restart CSS animation
                 liner.style.animation = 'linerProgress 4s linear forwards';
             }
 
@@ -1032,10 +1039,17 @@
                 startLiner();
             }
 
-            showSlide(currentSlide, direction);
-            startLiner();
-            setInterval(nextSlide, 4000);
+            function startSlideshow() {
+                clearInterval(slideTimer); // prevent duplicates
+                showSlide(currentSlide, direction);
+                startLiner();
+                slideTimer = setInterval(nextSlide, 4000);
+            }
 
+            // ✅ start slideshow once only
+            startSlideshow();
+
+            // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -1049,6 +1063,7 @@
                 });
             });
         });
+
 
 
         // ✅ Scroll progress bar
