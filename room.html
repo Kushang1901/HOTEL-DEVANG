@@ -21,6 +21,17 @@
     <meta name="ICBM" content="22.2442, 68.9685">
 
     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dn45xyazy/image/upload/v1749986380/android-chrome-192x192_cnl2ib.png">
+    <!-- Google Tag Manager -->
+    <script>
+    (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-N3LGLXJN');</script>
+    <!-- End Google Tag Manager -->
     <script type="application/ld+json">
         {
           "@context": "https://schema.org",
@@ -29,6 +40,15 @@
           "url": "https://www.hoteldevang.com/room.html",
           "description": "Explore our Deluxe, Super Deluxe, and Suite rooms at Hotel Devang for a comfortable and memorable stay."
         }
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VCKHH3P6R3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-VCKHH3P6R3');
     </script>
 
     <style>
@@ -253,12 +273,14 @@
             }
 
         .room-image {
-            height: 250px;
-            background-size: cover;
+            height: 310px;
+            background-size: contain; /* Show full image */
+            background-repeat: no-repeat;
             background-position: center;
             position: relative;
-            overflow: hidden;
+            cursor: pointer;
         }
+
 
         .room-badge {
             position: absolute;
@@ -366,32 +388,53 @@
 
         /* Room Images */
         .standard-ac {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749663633/R3_ecxega.jpg');
+            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1760876307/IMG_7407_e1dmv0.jpg');
         }
 
         .standard-non-ac {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749733434/SNAC_jfrviw.jpg');
+            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1760876299/IMG_7410_hefnpc.jpg');
         }
 
         .deluxe-ac {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749663633/R12_eikbqa.jpg');
+            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1760876257/IMG_7418_ypt29i.jpg');
         }
 
         .deluxe-non-ac {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749663632/R11_mdgi9o.jpg');
+            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1760876235/IMG_7420_mnusg7.jpg');
         }
 
         .super-deluxe-ac {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749733338/SDA_qsn0ar.jpg');
+            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1760876385/IMG_7389_doax2y.jpg');
         }
 
         .super-deluxe-non-ac {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749663632/R4_t6r4h9.jpg');
+            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1760876362/IMG_7393_dudqb2.jpg');
         }
 
         .suite-ac {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749663633/R10_urhfho.jpg');
+            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1760876428/IMG_7382_ryjx98.jpg');
         }
+
+        .room-size {
+            background: linear-gradient(90deg, #b71c1c, #f9d976, #f39c12); /* deep red → soft gold gradient */
+            color: #fff;
+            font-weight: bold;
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 10px;
+            margin: 10px 0;
+            font-size: 15px;
+            letter-spacing: 0.4px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+            .room-size:hover {
+                transform: scale(1.05);
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            }
+
+
 
         /* Important Notice */
         .important-notice {
@@ -663,35 +706,40 @@
     </style>
 </head>
 <body>
-
-<div id="preloader">
-  <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1750791182/Untitled_design_bqjxji.gif" alt="Loading..." />
-</div>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3LGLXJN"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="preloader">
+        <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1750791182/Untitled_design_bqjxji.gif" alt="Loading..." />
+    </div>
     <!-- Header -->
-<div id="scroll-progress"></div>
+    <div id="scroll-progress"></div>
 
     <header>
 
         <nav>
-          <div class="logo">
-  <a href="index.html">
-    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749707119/logo-photoaidcom-cropped_vjedul.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
-    Hotel Devang
-  </a>
-</div>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749707119/logo-photoaidcom-cropped_vjedul.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
+                    Hotel Devang
+                </a>
+            </div>
 
-             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about_us.html">About Us</a></li>
                 <li><a href="room.html" class="active">Rooms</a></li>
-		<li><a href="gallery_page.html">Gallery</a></li>
+                <li><a href="gallery_page.html">Gallery</a></li>
                 <li><a href="facilities_page.html">Facilities</a></li>
                 <li><a href="booking_page.html">Booking</a></li>
                 <li><a href="dwarka_attractions.html">Nearby Attractions</a></li>
                 <li><a href="policies_page.html">Policies</a></li>
-		 <li><a href="contact_page.html">Contact Us</a></li>
+                <li><a href="contact_page.html">Contact Us</a></li>
             </ul>
         </nav>
     </header>
@@ -715,7 +763,7 @@
             <div class="section-header">
                 <h2>Accommodation Options</h2>
                 <p>All rooms feature comfortable double beds. For groups of more than 2 persons, we provide extra mattresses to ensure everyone has a comfortable stay.</p>
-		<p><u>Important</u> : And extra charges may apply as per Government rules.</p>
+                <p><u>Important</u> : And extra charges may apply as per Government rules.</p>
             </div>
 
             <div class="room-grid">
@@ -727,6 +775,7 @@
                     <div class="room-content">
                         <h3 class="room-title">Standard AC Room</h3>
                         <p class="room-subtitle">Comfortable & Air-Conditioned</p>
+                        <p class="room-size">📏 Total Area: 100 sq.ft</p>
                         <p class="room-description">
                             Perfect for families and couples seeking comfort with modern amenities. These well-appointed rooms offer a peaceful retreat after a day of temple visits and spiritual activities.
                         </p>
@@ -757,7 +806,7 @@
                                     <span class="amenity-icon">🪑</span>
                                     <span>Seating Area</span>
                                 </div>
-				<div class="amenity-item">
+                                <div class="amenity-item">
                                     <span class="amenity-icon">☕</span>
                                     <span>Tea/Coffee Service</span>
                                 </div>
@@ -782,6 +831,7 @@
                     <div class="room-content">
                         <h3 class="room-title">Standard Non-AC Room</h3>
                         <p class="room-subtitle">Comfortable & Economical</p>
+                        <p class="room-size">📏 Total Area: 100 sq.ft</p>
                         <p class="room-description">
                             Ideal for pilgrims looking for clean, comfortable accommodation at affordable rates. These rooms provide all essential amenities for a pleasant stay.
                         </p>
@@ -812,7 +862,7 @@
                                     <span class="amenity-icon">🪑</span>
                                     <span>Seating Area</span>
                                 </div>
-				<div class="amenity-item">
+                                <div class="amenity-item">
                                     <span class="amenity-icon">☕</span>
                                     <span>Tea/Coffee Service</span>
                                 </div>
@@ -837,6 +887,7 @@
                     <div class="room-content">
                         <h3 class="room-title">Deluxe AC Room</h3>
                         <p class="room-subtitle">Spacious & Premium</p>
+                        <p class="room-size">📏 Total Area: 168 sq.ft</p>
                         <p class="room-description">
                             Enhanced comfort with additional space and upgraded amenities. Perfect for families who desire extra comfort during their spiritual journey in Dwarka.
                         </p>
@@ -872,7 +923,7 @@
                         <div class="room-footer">
                             <div>
                                 <div class="room-price">₹1,600/night  + Govt. Tax</div>
-                               <b> <div class="price-note">*Prices may vary by season</div></b>
+                                <b> <div class="price-note">*Prices may vary by season</div></b>
                             </div>
                             <a href="booking_page.html" class="book-btn">Book Now</a>
 
@@ -888,6 +939,7 @@
                     <div class="room-content">
                         <h3 class="room-title">Deluxe Non-AC Room</h3>
                         <p class="room-subtitle">Spacious & Well-Ventilated</p>
+                        <p class="room-size">📏 Total Area: 168 sq.ft</p>
                         <p class="room-description">
                             Larger rooms with enhanced amenities and natural ventilation. Great for guests who prefer natural air circulation while enjoying premium comfort.
                         </p>
@@ -923,7 +975,7 @@
                         <div class="room-footer">
                             <div>
                                 <div class="room-price">₹1,300/night  + Govt. Tax</div>
-                               <b> <div class="price-note">*Prices may vary by season</div></b>
+                                <b> <div class="price-note">*Prices may vary by season</div></b>
                             </div>
                             <a href="booking_page.html" class="book-btn">Book Now</a>
                         </div>
@@ -938,6 +990,7 @@
                     <div class="room-content">
                         <h3 class="room-title">Super Deluxe AC Room</h3>
                         <p class="room-subtitle">Luxury & Elegance</p>
+                        <p class="room-size">📏 Total Area: 220 sq.ft</p>
                         <p class="room-description">
                             Experience luxury accommodation with premium amenities and elegant interiors. Perfect for guests seeking the finest comfort during their stay in sacred Dwarka.
                         </p>
@@ -974,7 +1027,7 @@
                         <div class="room-footer">
                             <div>
                                 <div class="room-price">₹1,800/night + Govt. Tax</div>
-                               <b> <div class="price-note">*Prices may vary by season</div></b>
+                                <b> <div class="price-note">*Prices may vary by season</div></b>
                             </div>
                             <a href="booking_page.html" class="book-btn">Book Now</a>
                         </div>
@@ -982,7 +1035,7 @@
                 </div>
 
 
-                           <!-- Super Deluxe Non-AC Room -->
+                <!-- Super Deluxe Non-AC Room -->
                 <div class="room-card">
                     <div class="room-image super-deluxe-non-ac">
                         <div class="room-badge">Premium</div>
@@ -990,6 +1043,7 @@
                     <div class="room-content">
                         <h3 class="room-title">Super Deluxe Non-AC Room</h3>
                         <p class="room-subtitle">Premium Comfort with Natural Air</p>
+                        <p class="room-size">📏 Total Area: 220 sq.ft</p>
                         <p class="room-description">
                             Luxury accommodation with excellent natural ventilation and premium amenities. Ideal for guests who appreciate comfort while staying connected to nature.
                         </p>
@@ -1004,33 +1058,33 @@
                                     <span class="amenity-icon">🛏️</span>
                                     <span>Luxury Double Bed</span>
                                 </div>
-                               <div class="amenity-item">
-    			<span class="amenity-icon">📺</span>
-    				<span>Smart TV</span>
-				</div>
-				<div class="amenity-item">
-   			 <span class="amenity-icon">🚿</span>
-   			 <span>Private Bathroom</span>
-				</div>
-				<div class="amenity-item">
-  			  <span class="amenity-icon">🪑</span>
-  			  <span>Luxury Furniture</span>
-				</div>
-				<div class="amenity-item">
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">📺</span>
+                                    <span>Smart TV</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🚿</span>
+                                    <span>Private Bathroom</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🪑</span>
+                                    <span>Luxury Furniture</span>
+                                </div>
+                                <div class="amenity-item">
                                     <span class="amenity-icon">☕</span>
                                     <span>Tea/Coffee Service</span>
                                 </div>
 
-</div> 
-</div> <div class="room-footer">
-    <div>
-        <div class="room-price">₹1,500/night + Govt. Tax</div>
-        <b><div class="price-note">*Prices may vary by season</div></b>
-    </div>
-    <a href="booking_page.html" class="book-btn">Book Now</a>
-</div>
-</div> 
-</div>
+                            </div>
+                        </div> <div class="room-footer">
+                            <div>
+                                <div class="room-price">₹1,500/night + Govt. Tax</div>
+                                <b><div class="price-note">*Prices may vary by season</div></b>
+                            </div>
+                            <a href="booking_page.html" class="book-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Suite AC Room -->
                 <div class="room-card">
@@ -1040,6 +1094,7 @@
                     <div class="room-content">
                         <h3 class="room-title">Suite AC Room</h3>
                         <p class="room-subtitle">Spacious Suite with Separate Living Area</p>
+                        <p class="room-size">📏 Total Area: 420 sq.ft</p>
                         <p class="room-description">
                             Our most luxurious accommodation featuring a separate living area, bedroom, and premium amenities. Perfect for extended stays, VIP guests, and families seeking the ultimate comfort experience in Dwarka.
                         </p>
@@ -1087,59 +1142,89 @@
                         <div class="room-footer">
                             <div>
                                 <div class="room-price">₹2,800/night + Govt. Tax</div>
-                               <b> <div class="price-note">*Prices may vary by season</div></b>
+                                <b> <div class="price-note">*Prices may vary by season</div></b>
                             </div>
                             <a href="booking_page.html" class="book-btn">Book Now</a>
                         </div>
                     </div>
                 </div>
 
-<a href="https://wa.me/919824402132" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
-  <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1754210588/whatsapp_4008228_vjl1qc.png" alt="WhatsApp">
-</a>
+                <a href="https://wa.me/919824402132" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1754210588/whatsapp_4008228_vjl1qc.png" alt="WhatsApp">
+                </a>
 
-<script>
-function toggleMenu() {
-    const navLinks = document.querySelector('.nav-links');
-    navLinks.classList.toggle('active');
-}
+                <div id="imageModal" class="modal" style="display:none;">
+                    <span class="close" style="position:absolute;top:20px;right:35px;font-size:40px;color:white;cursor:pointer;">&times;</span>
+                    <img class="modal-content" id="modalImg" style="max-width:90%;max-height:90%;margin:auto;display:block;border-radius:10px;">
+                </div>
 
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        document.querySelector('.nav-links').classList.remove('active');
-    });
-});
-// Smooth hide/show navbar on scroll
-let prevScrollPos = window.pageYOffset;
+                <script>
+                    function toggleMenu() {
+                        const navLinks = document.querySelector('.nav-links');
+                        navLinks.classList.toggle('active');
+                    }
 
-window.addEventListener("scroll", function () {
-    const currentScrollPos = window.pageYOffset;
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.addEventListener('click', () => {
+                            document.querySelector('.nav-links').classList.remove('active');
+                        });
+                    });
+                    // Smooth hide/show navbar on scroll
+                    let prevScrollPos = window.pageYOffset;
 
-    if (prevScrollPos > currentScrollPos) {
-        // Scrolling up - show navbar
-        document.querySelector("header").style.top = "0";
-    } else {
-        // Scrolling down - hide navbar
-        document.querySelector("header").style.top = "-100px";
-    }
+                    window.addEventListener("scroll", function () {
+                        const currentScrollPos = window.pageYOffset;
 
-    prevScrollPos = currentScrollPos;
-});
-window.addEventListener("scroll", function () {
-    const progress = document.getElementById("scroll-progress");
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = (scrollTop / docHeight) * 100;
-    progress.style.width = scrollPercent + "%";
-});
+                        if (prevScrollPos > currentScrollPos) {
+                            // Scrolling up - show navbar
+                            document.querySelector("header").style.top = "0";
+                        } else {
+                            // Scrolling down - hide navbar
+                            document.querySelector("header").style.top = "-100px";
+                        }
 
-</script>
+                        prevScrollPos = currentScrollPos;
+                    });
+                    window.addEventListener("scroll", function () {
+                        const progress = document.getElementById("scroll-progress");
+                        const scrollTop = window.scrollY;
+                        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                        const scrollPercent = (scrollTop / docHeight) * 100;
+                        progress.style.width = scrollPercent + "%";
+                    });
 
-<script>
-  window.addEventListener("load", function () {
-    document.getElementById("preloader").style.display = "none";
-  });
-</script>
+                    document.querySelectorAll('.room-image').forEach(image => {
+                        image.addEventListener('click', () => {
+                            const modal = document.getElementById('imageModal');
+                            const modalImg = document.getElementById('modalImg');
+                            const bg = window.getComputedStyle(image).backgroundImage;
+                            const imgUrl = bg.slice(5, -2); // extract URL
+                            modalImg.src = imgUrl;
+                            modal.style.display = 'flex';
+                            modal.style.justifyContent = 'center';
+                            modal.style.alignItems = 'center';
+                            modal.style.backgroundColor = 'rgba(0,0,0,0.9)';
+                            modal.style.position = 'fixed';
+                            modal.style.top = 0;
+                            modal.style.left = 0;
+                            modal.style.width = '100%';
+                            modal.style.height = '100%';
+                            modal.style.zIndex = 10000;
+                        });
+                    });
+
+                    document.querySelector('.close').onclick = () => {
+                        document.getElementById('imageModal').style.display = 'none';
+                    };
+                    document.getElementById('imageModal').onclick = (e) => {
+                        if (e.target === e.currentTarget) e.currentTarget.style.display = 'none';
+                    };
+
+
+                    window.addEventListener("load", function () {
+                        document.getElementById("preloader").style.display = "none";
+                    });
+                </script>
 
 </body>
 </html>
