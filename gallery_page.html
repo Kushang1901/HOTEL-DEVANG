@@ -562,6 +562,159 @@
             }
         }
 
+        /* ============================= */
+        /* 🎥 Hotel Devang Video Section */
+        /* ============================= */
+
+        .custom-video-section {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 5rem 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-content-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            width: 100%;
+            max-width: 1200px;
+            flex-wrap: wrap;
+        }
+
+        /* Left Side: Text */
+        .video-text-content {
+            flex: 1 1 45%;
+            text-align: left;
+            color: #333;
+        }
+
+            .video-text-content h2 {
+                font-size: 2.4rem;
+                color: #8b0000;
+                margin-bottom: 1.5rem;
+                font-weight: 700;
+            }
+
+            .video-text-content p {
+                font-size: 1rem;
+                line-height: 1.7;
+                color: #555;
+                margin-bottom: 1rem;
+            }
+
+        .video-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background: linear-gradient(45deg, #caa035, #8b0000);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(202, 160, 53, 0.4);
+        }
+
+            .cta-button:hover {
+                background: linear-gradient(45deg, #daa520, #ffd700);
+                transform: translateY(-3px);
+                box-shadow: 0 6px 20px rgba(218, 165, 32, 0.5);
+            }
+
+            .cta-button.secondary {
+                background: linear-gradient(45deg, #8b0000, #b22222);
+            }
+
+        /* Right Side: Video */
+        .video-wrapper {
+            position: relative;
+            flex: 1 1 50%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s ease;
+        }
+
+            .video-wrapper:hover {
+                transform: scale(1.02);
+            }
+
+        .vimeo-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+            .vimeo-container iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: none;
+                border-radius: 20px;
+            }
+
+        /* Overlay */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7));
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: opacity 0.4s ease;
+            z-index: 2;
+        }
+
+            .video-overlay h2 {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+                color: #ffd700;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+            }
+
+        #playBtn {
+            background: linear-gradient(45deg, #caa035, #8b0000);
+            border: none;
+            color: white;
+            border-radius: 50%;
+            width: 65px;
+            height: 65px;
+            font-size: 1.4rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(202, 160, 53, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            #playBtn:hover {
+                transform: scale(1.1);
+                box-shadow: 0 6px 20px rgba(202, 160, 53, 0.6);
+            }
+
+        .video-wrapper.playing .video-overlay {
+            opacity: 0;
+            pointer-events: none;
+        }
+
         /* Responsive Design */
         @media (max-width: 1024px) {
             .nav-links {
@@ -575,6 +728,16 @@
 
             .gallery-grid {
                 grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+
+            .video-text-content h2 {
+                font-size: 2rem;
+            }
+
+            #playBtn {
+                width: 60px;
+                height: 60px;
+                font-size: 1.2rem;
             }
         }
 
@@ -682,6 +845,7 @@
                     opacity: 1;
                     transform: translateY(0);
                 }
+            }
 
                 .lightbox-info h3 {
                     font-size: 1.2rem;
@@ -718,11 +882,92 @@
                     max-height: 80vh;
                     object-fit: contain;
                 }
+
+            .custom-video-section {
+                padding: 3rem 1rem;
+            }
+
+            .video-text-content h2 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .video-text-content p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+                margin-bottom: 0.8rem;
+            }
+
+            .video-cta {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+            }
+
+            .cta-button {
+                width: 80%;
+                text-align: center;
+            }
+
+            .video-wrapper {
+                width: 100%;
+                border-radius: 12px;
+            }
+
+            .video-overlay h2 {
+                font-size: 1.5rem;
+                padding: 0 1rem;
+            }
+
+            #playBtn {
+                width: 55px;
+                height: 55px;
+                font-size: 1.1rem;
+            }
             }
 
         @media (max-width: 600px) {
             #preloader img {
                 width: 100px; /* or any smaller size you prefer */
+            }
+        }
+
+
+        @media (max-width: 992px) {
+            .video-content-wrapper {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .video-text-content {
+                flex: 1 1 100%;
+                text-align: center;
+            }
+
+            .video-wrapper {
+                flex: 1 1 100%;
+                margin-top: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-text-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .video-overlay h2 {
+                font-size: 1.3rem;
+            }
+
+            #playBtn {
+                width: 50px;
+                height: 50px;
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                width: 80%;
+                text-align: center;
             }
         }
     </style>
@@ -943,6 +1188,47 @@
         </div>
     </div>
 
+    <section class="custom-video-section">
+        <div class="video-content-wrapper">
+
+            <!-- Left side: Text content -->
+            <div class="video-text-content">
+                <h2>Experience Hotel Devang</h2>
+                <p>Welcome to Hotel Devang, your spiritual sanctuary in the holy city of Dwarka. Nestled in the heart of this sacred destination, our hotel offers a perfect blend of comfort, tradition, and modern amenities.</p>
+                <p>Just steps away from the revered Dwarkadhish Temple, we provide pilgrims and travelers with a peaceful retreat after their spiritual journey. Our well-appointed rooms, warm hospitality, and convenient location make us the ideal choice for your stay in Dwarka.</p>
+                <p>Watch our video tour to explore our facilities, rooms, and the serene ambiance that awaits you at Hotel Devang. Discover why guests from around the world choose us for their pilgrimage and vacation needs.</p>
+
+                <div class="video-cta">
+                    <a href="booking_page.html" class="cta-button">Book Your Stay</a>
+                    <a href="contact_page.html" class="cta-button secondary">Contact Us</a>
+                </div>
+            </div>
+
+            <!-- Right side: Video -->
+            <div class="video-wrapper">
+                <div class="vimeo-container">
+                    <iframe id="hotelVideo"
+                            src="https://player.vimeo.com/video/1132181206?badge=0&autopause=0&muted=1&autoplay=0&loop=0"
+                            frameborder="0"
+                            allow="autoplay; fullscreen; picture-in-picture"
+                            allowfullscreen
+                            title="Hotel Devang – Virtual Tour">
+                    </iframe>
+                </div>
+
+                <!-- Overlay -->
+                <div class="video-overlay">
+                    <h2>Hotel Devang – A Virtual Tour</h2>
+                    <button id="playBtn"><i class="fas fa-play"></i></button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
+   
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1001,6 +1287,23 @@
     </footer>
 
     <script>
+
+        const iframe = document.getElementById("hotelVideo");
+        const wrapper = document.querySelector(".video-wrapper");
+        const playBtn = document.getElementById("playBtn");
+
+        // Vimeo Player API
+        const player = new Vimeo.Player(iframe);
+
+        playBtn.addEventListener("click", () => {
+            player.play();
+            wrapper.classList.add("playing");
+        });
+
+        player.on("pause", () => {
+            wrapper.classList.remove("playing");
+        });
+
         // Gallery data
         const galleryData = [
             { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1760876384/IMG_7390_qdn52z.jpg', title: 'Super Deluxe Room', description: 'Spacious and comfortable room with modern amenities and traditional touch' },
