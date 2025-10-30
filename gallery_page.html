@@ -715,6 +715,24 @@
             pointer-events: none;
         }
 
+        @media (max-width: 992px) {
+            .video-content-wrapper {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .video-text-content {
+                flex: 1 1 100%;
+                text-align: center;
+            }
+
+            .video-wrapper {
+                flex: 1 1 100%;
+                margin-top: 2rem;
+            }
+        }
+
+
         /* Responsive Design */
         @media (max-width: 1024px) {
             .nav-links {
@@ -741,7 +759,12 @@
             }
         }
 
+       
+
+        /* 📱 Unified Mobile Styles (max-width: 768px) */
         @media (max-width: 768px) {
+
+            /* ---------- HEADER + MENU ---------- */
             .menu-toggle {
                 display: block;
             }
@@ -751,26 +774,24 @@
                 justify-content: center;
             }
 
-
-
             .nav-links {
                 position: fixed;
-                top: 70px; /* Positioned below header */
+                top: 70px;
                 left: 0;
-                width: 100%; /* Full width overlay */
-                background: #880000; /* Same maroon color as header */
+                width: 100%;
+                background: #880000;
                 flex-direction: column;
                 align-items: center;
                 padding: 1rem 0;
                 gap: 0;
-                clip-path: circle(0px at 90% -10%); /* Hidden by default */
-                transition: clip-path 0.5s ease-out; /* Smooth animation */
-                pointer-events: none; /* Disabled when hidden */
+                clip-path: circle(0px at 90% -10%);
+                transition: clip-path 0.5s ease-out;
+                pointer-events: none;
             }
 
                 .nav-links.active {
-                    clip-path: circle(1000px at 90% -10%); /* Reveals menu with circular animation */
-                    pointer-events: all; /* Enables interaction */
+                    clip-path: circle(1000px at 90% -10%);
+                    pointer-events: all;
                 }
 
                 .nav-links li {
@@ -781,14 +802,14 @@
                 .nav-links a {
                     display: block;
                     padding: 1rem;
-                    border-radius: 0;
-                    border-bottom: 1px solid rgba(255,255,255,0.1); /* Separator lines */
+                    border-bottom: 1px solid rgba(255,255,255,0.1);
                 }
 
             .hero-content h1 {
                 font-size: 2.2rem;
             }
 
+            /* ---------- GALLERY ---------- */
             .gallery-grid {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
                 gap: 1.5rem;
@@ -847,84 +868,119 @@
                 }
             }
 
-                .lightbox-info h3 {
-                    font-size: 1.2rem;
-                    color: #ffd700;
-                    margin-bottom: 0.4rem;
-                }
-
-                .lightbox-info p {
-                    font-size: 0.9rem;
-                    color: #ddd;
-                    line-height: 1.3;
-                }
-
-                .lightbox-close {
-                    top: 10px;
-                    right: 10px;
-                    font-size: 1.8rem;
-                    background: rgba(0,0,0,0.5);
-                    border-radius: 50%;
-                    padding: 0.3rem;
-                }
-
-                .lightbox-nav {
-                    top: 50%;
-                    transform: translateY(-50%);
-                    background: rgba(0,0,0,0.4);
-                    padding: 0.8rem;
-                    font-size: 1.5rem;
-                }
-
-                .lightbox img {
-                    width: 100%;
-                    height: auto;
-                    max-height: 80vh;
-                    object-fit: contain;
-                }
-
-            .custom-video-section {
-                padding: 3rem 1rem;
+            .lightbox-info h3 {
+                font-size: 1.2rem;
+                color: #ffd700;
+                margin-bottom: 0.4rem;
             }
 
-            .video-text-content h2 {
-                font-size: 2rem;
-                margin-bottom: 1rem;
+            .lightbox-info p {
+                font-size: 0.9rem;
+                color: #ddd;
+                line-height: 1.3;
             }
 
-            .video-text-content p {
-                font-size: 0.95rem;
-                line-height: 1.6;
-                margin-bottom: 0.8rem;
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+                font-size: 1.8rem;
+                background: rgba(0,0,0,0.5);
+                border-radius: 50%;
+                padding: 0.3rem;
             }
 
-            .video-cta {
-                flex-direction: column;
+            .lightbox-nav {
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(0,0,0,0.4);
+                padding: 0.8rem;
+                font-size: 1.5rem;
+            }
+
+
+            /* ---------- VIDEO SECTION ---------- */
+            /* Keep vertical order */
+            .video-content-wrapper {
+                display: flex !important;
+                flex-direction: column !important;
                 align-items: center;
-                gap: 0.8rem;
             }
 
-            .cta-button {
-                width: 80%;
+            /* Title + paragraphs */
+            .video-text-content {
+                order: 1 !important;
                 text-align: center;
             }
 
+            /* VIDEO styling fix */
             .video-wrapper {
+                order: 2 !important;
                 width: 100%;
+                max-width: 600px;
+                margin-top: 1rem;
+            }
+
+            .vimeo-container {
+                position: relative;
+                width: 100%;
+                padding-bottom: 56.25%; /* keeps 16:9 ratio */
+                height: 0;
+                overflow: hidden;
                 border-radius: 12px;
             }
 
-            .video-overlay h2 {
-                font-size: 1.5rem;
-                padding: 0 1rem;
+                .vimeo-container iframe {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                }
+
+            /* BUTTONS styling fix */
+            .video-cta {
+                order: 3 !important;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+                margin-top: 1.5rem;
             }
 
-            #playBtn {
-                width: 55px;
-                height: 55px;
-                font-size: 1.1rem;
+            .cta-button {
+                display: flex; /* centers text vertically & horizontally */
+                justify-content: center;
+                align-items: center;
+                min-width: 260px; /* slightly wider for text comfort */
+                max-width: 300px;
+                padding: 1rem 2rem; /* more breathing space */
+                background: linear-gradient(45deg, #caa035, #8b0000);
+                color: #fff;
+                text-decoration: none;
+                border-radius: 50px;
+                font-weight: 600;
+                font-size: 1rem;
+                letter-spacing: 0.5px; /* gives polished spacing */
+                white-space: nowrap;
+                box-shadow: 0 4px 15px rgba(202, 160, 53, 0.4);
+                transition: all 0.3s ease;
             }
-            }
+
+                /* Secondary button color */
+                .cta-button.secondary {
+                    background: linear-gradient(45deg, #8b0000, #b22222);
+                }
+
+                /* Hover effect */
+                .cta-button:hover {
+                    transform: translateY(-3px);
+                    box-shadow: 0 6px 20px rgba(202, 160, 53, 0.5);
+                }
+
+        }
+
+
 
         @media (max-width: 600px) {
             #preloader img {
@@ -933,22 +989,7 @@
         }
 
 
-        @media (max-width: 992px) {
-            .video-content-wrapper {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .video-text-content {
-                flex: 1 1 100%;
-                text-align: center;
-            }
-
-            .video-wrapper {
-                flex: 1 1 100%;
-                margin-top: 2rem;
-            }
-        }
+        
 
         @media (max-width: 480px) {
             .video-text-content h2 {
@@ -1190,44 +1231,34 @@
 
     <section class="custom-video-section">
         <div class="video-content-wrapper">
-
-            <!-- Left side: Text content -->
             <div class="video-text-content">
                 <h2>Experience Hotel Devang</h2>
                 <p>Welcome to Hotel Devang, your spiritual sanctuary in the holy city of Dwarka. Nestled in the heart of this sacred destination, our hotel offers a perfect blend of comfort, tradition, and modern amenities.</p>
                 <p>Just steps away from the revered Dwarkadhish Temple, we provide pilgrims and travelers with a peaceful retreat after their spiritual journey. Our well-appointed rooms, warm hospitality, and convenient location make us the ideal choice for your stay in Dwarka.</p>
                 <p>Watch our video tour to explore our facilities, rooms, and the serene ambiance that awaits you at Hotel Devang. Discover why guests from around the world choose us for their pilgrimage and vacation needs.</p>
-
-                <div class="video-cta">
-                    <a href="booking_page.html" class="cta-button">Book Your Stay</a>
-                    <a href="contact_page.html" class="cta-button secondary">Contact Us</a>
-                </div>
             </div>
 
-            <!-- Right side: Video -->
             <div class="video-wrapper">
                 <div class="vimeo-container">
-                    <iframe id="hotelVideo"
-                            src="https://player.vimeo.com/video/1132181206?badge=0&autopause=0&muted=1&autoplay=0&loop=0"
+                    <iframe src="https://player.vimeo.com/video/1132181206?badge=0&autopause=0&muted=1"
                             frameborder="0"
                             allow="autoplay; fullscreen; picture-in-picture"
                             allowfullscreen
                             title="Hotel Devang – Virtual Tour">
                     </iframe>
                 </div>
-
-                <!-- Overlay -->
-                <div class="video-overlay">
-                    <h2>Hotel Devang – A Virtual Tour</h2>
-                    <button id="playBtn"><i class="fas fa-play"></i></button>
-                </div>
             </div>
 
+            <div class="video-cta">
+                <a href="booking_page.html" class="cta-button">Book your stay</a>
+                <a href="contact_page.html" class="cta-button secondary">Contact Us</a>
+            </div>
         </div>
     </section>
 
+
     <script src="https://player.vimeo.com/api/player.js"></script>
-   
+
 
     <!-- Footer -->
     <footer>
