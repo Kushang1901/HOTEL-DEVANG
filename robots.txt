@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Prevent search engines from accessing backend or non-public areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /backend/
+Disallow: /node_modules/
+Disallow: /uploads/
+Disallow: /temp/
+Disallow: /private/
+Disallow: /test/
+
+# Sitemap location
+Sitemap: https://www.hoteldevang.com/sitemap.xml
+
+# End of robots.txt
