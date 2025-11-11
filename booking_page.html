@@ -71,20 +71,24 @@
             }
 
 
+        /* ==========================
+NAVIGATION STYLES (FIXED)
+========================== */
+
         .nav-links {
             display: flex;
             list-style: none;
             gap: 1rem;
             flex-wrap: nowrap;
-            overflow: hidden; /* ✅ prevent scrollbars */
-            white-space: nowrap; /* ✅ keep items in one line */
+            overflow: visible; /* ✅ FIXED: allow glow and border to show fully */
+            white-space: nowrap; /* keep items on one line */
             justify-content: flex-start;
             margin-left: 0.5rem;
         }
 
-
-
             .nav-links a {
+                display: inline-flex; /* ✅ keeps shape consistent */
+                align-items: center;
                 color: white;
                 text-decoration: none;
                 transition: all 0.3s ease;
@@ -92,22 +96,59 @@
                 border-radius: 25px;
                 font-size: 0.9rem;
                 white-space: nowrap;
+                position: relative;
+                background: none !important; /* remove any previous gradients */
             }
 
-                .nav-links a:hover {
-                    background: rgba(255,255,255,0.2);
+                /* Hover effect (only for non-active links) */
+                .nav-links a:hover:not(.active) {
+                    background: rgba(255, 255, 255, 0.2);
                     transform: translateY(-2px);
                 }
 
-
-                .nav-links a:hover {
-                    background: rgba(255,255,255,0.2);
+                /* Remove any leftover pseudo-elements from old styles */
+                .nav-links a::before,
+                .nav-links a::after {
+                    content: none !important;
+                    background: none !important;
                 }
 
+                /* === Active Page Highlight (Perfect Circular Gold) === */
                 .nav-links a.active {
-                    background: rgba(255,255,255,0.3);
+                    color: #ffd700 !important; /* golden text */
+                    border: 2px solid #caa035; /* gold border */
+                    background: transparent !important;
+                    border-radius: 50px; /* smooth full circle shape */
+                    padding: 0.6rem 1.2rem;
                     font-weight: 600;
+                    box-shadow: 0 0 10px rgba(202, 160, 53, 0.6);
+                    transition: all 0.3s ease;
+                    position: relative;
+                    z-index: 2; /* ✅ ensures glow is visible over nearby items */
                 }
+
+                    /* Hover effect for active link */
+                    .nav-links a.active:hover {
+                        background: rgba(202, 160, 53, 0.1);
+                        transform: scale(1.05);
+                        box-shadow: 0 0 15px rgba(202, 160, 53, 0.8);
+                    }
+
+        @keyframes goldPulse {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(202,160,53,0.6);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(202,160,53,0.9);
+            }
+        }
+
+        .nav-links a.active {
+            animation: goldPulse 3s infinite ease-in-out;
+        }
+
+
 
         .menu-toggle {
             display: none;
@@ -722,20 +763,21 @@
                         <textarea id="specialRequests" class="form-control" rows="3" placeholder="e.g. Need 2 rooms: 1 Deluxe AC + 1 Standard Non-AC..."></textarea>
                     </div>
                 </div>
-                
+
+
                 <button type="submit"
-         class="whatsapp-btn"
-         id="whatsappBtn">
-     <span class="whatsapp-icon">📱</span>
-     Book via WhatsApp
- </button>
+                        class="whatsapp-btn"
+                        id="whatsappBtn">
+                    <span class="whatsapp-icon">📱</span>
+                    Book via WhatsApp
+                </button>
             </form>
         </div>
     </div>
     <a href="https://wa.me/919824402132" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
         <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1754210588/whatsapp_4008228_vjl1qc.png" alt="WhatsApp">
     </a>
-
+    
 
     <script>
         // Hotel owner's WhatsApp number
@@ -996,6 +1038,23 @@
         // Hide preloader
         window.addEventListener("load", function () {
             document.getElementById("preloader").style.display = "none";
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const currentPage = window.location.pathname.split("/").pop();
+            const navLinks = document.querySelectorAll(".nav-links a");
+
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute("href");
+
+                // Highlight current page link automatically
+                if (linkPage === currentPage ||
+                    (linkPage === "index.html" && (currentPage === "" || currentPage === "/"))) {
+                    link.classList.add("active");
+                } else {
+                    link.classList.remove("active");
+                }
+            });
         });
     </script>
 

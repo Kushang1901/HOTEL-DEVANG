@@ -21,6 +21,35 @@
     <meta name="ICBM" content="22.2442, 68.9685">
 
     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dn45xyazy/image/upload/v1749986380/android-chrome-192x192_cnl2ib.png">
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-N3LGLXJN');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VCKHH3P6R3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-VCKHH3P6R3');
+    </script>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "name": "Contact Hotel Devang",
+          "url": "https://www.hoteldevang.com/facilities_page.html",
+          "description": "Get in touch with Hotel Devang for booking inquiries or customer support."
+        }
+    </script>
     <style>
         * {
             margin: 0;
@@ -76,21 +105,24 @@
             }
 
 
+        /* ==========================
+NAVIGATION STYLES (FIXED)
+========================== */
+
         .nav-links {
             display: flex;
             list-style: none;
             gap: 1rem;
             flex-wrap: nowrap;
-            overflow: hidden; /* ✅ prevent scrollbars */
-            white-space: nowrap; /* ✅ keep items in one line */
+            overflow: visible; /* ✅ FIXED: allow glow and border to show fully */
+            white-space: nowrap; /* keep items on one line */
             justify-content: flex-start;
             margin-left: 0.5rem;
         }
 
-
-
-
             .nav-links a {
+                display: inline-flex; /* ✅ keeps shape consistent */
+                align-items: center;
                 color: white;
                 text-decoration: none;
                 transition: all 0.3s ease;
@@ -98,12 +130,59 @@
                 border-radius: 25px;
                 font-size: 0.9rem;
                 white-space: nowrap;
+                position: relative;
+                background: none !important; /* remove any previous gradients */
             }
 
-                .nav-links a:hover {
-                    background: rgba(255,255,255,0.2);
+                /* Hover effect (only for non-active links) */
+                .nav-links a:hover:not(.active) {
+                    background: rgba(255, 255, 255, 0.2);
                     transform: translateY(-2px);
                 }
+
+                /* Remove any leftover pseudo-elements from old styles */
+                .nav-links a::before,
+                .nav-links a::after {
+                    content: none !important;
+                    background: none !important;
+                }
+
+                /* === Active Page Highlight (Perfect Circular Gold) === */
+                .nav-links a.active {
+                    color: #ffd700 !important; /* golden text */
+                    border: 2px solid #caa035; /* gold border */
+                    background: transparent !important;
+                    border-radius: 50px; /* smooth full circle shape */
+                    padding: 0.6rem 1.2rem;
+                    font-weight: 600;
+                    box-shadow: 0 0 10px rgba(202, 160, 53, 0.6);
+                    transition: all 0.3s ease;
+                    position: relative;
+                    z-index: 2; /* ✅ ensures glow is visible over nearby items */
+                }
+
+                    /* Hover effect for active link */
+                    .nav-links a.active:hover {
+                        background: rgba(202, 160, 53, 0.1);
+                        transform: scale(1.05);
+                        box-shadow: 0 0 15px rgba(202, 160, 53, 0.8);
+                    }
+
+        @keyframes goldPulse {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(202,160,53,0.6);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(202,160,53,0.9);
+            }
+        }
+
+        .nav-links a.active {
+            animation: goldPulse 3s infinite ease-in-out;
+        }
+
+
 
         /* Mobile menu toggle */
         .menu-toggle {
@@ -332,6 +411,7 @@
                 background: rgba(255,255,255,0.2);
                 border-color: #ffd700;
             }
+
         .breadcrumb {
             display: flex;
             align-items: center;
@@ -707,7 +787,12 @@
     </style>
 </head>
 <body>
-
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3LGLXJN"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div id="preloader">
         <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1750791182/Untitled_design_bqjxji.gif" alt="Loading..." />
     </div>
@@ -731,7 +816,7 @@
                 <li><a href="about_us.html">About Us</a></li>
                 <li><a href="room.html">Rooms</a></li>
                 <li><a href="gallery_page.html">Gallery</a></li>
-                <li><a href="facilities.html" style="background: rgba(255,255,255,0.2);">Facilities</a></li>
+                <li><a href="facilities_page.html" class="active">Facilities</a></li>
                 <li><a href="booking_page.html">Booking</a></li>
                 <li><a href="dwarka_attractions.html">Nearby Attractions</a></li>
                 <li><a href="policies_page.html">Policies</a></li>
@@ -1232,6 +1317,23 @@
             // Close when clicking outside image
             overlay.addEventListener("click", (e) => {
                 if (e.target === overlay) overlay.style.display = "none";
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const currentPage = window.location.pathname.split("/").pop();
+            const navLinks = document.querySelectorAll(".nav-links a");
+
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute("href");
+
+                // Highlight current page link automatically
+                if (linkPage === currentPage ||
+                    (linkPage === "index.html" && (currentPage === "" || currentPage === "/"))) {
+                    link.classList.add("active");
+                } else {
+                    link.classList.remove("active");
+                }
             });
         });
 

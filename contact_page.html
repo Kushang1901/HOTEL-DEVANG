@@ -20,6 +20,17 @@
     <meta name="ICBM" content="22.2442, 68.9685">
 
     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dn45xyazy/image/upload/v1749986380/android-chrome-192x192_cnl2ib.png">
+    <!-- Google Tag Manager -->
+    <script>
+    (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-N3LGLXJN');</script>
+    <!-- End Google Tag Manager -->
     <script type="application/ld+json">
         {
           "@context": "https://schema.org",
@@ -29,7 +40,15 @@
           "description": "Get in touch with Hotel Devang for booking inquiries or customer support."
         }
     </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VCKHH3P6R3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
+        gtag('config', 'G-VCKHH3P6R3');
+    </script>
     <style>
         * {
             margin: 0;
@@ -66,6 +85,8 @@
             padding: 0 1rem; /* Consistent padding */
         }
 
+
+
         .logo {
             font-size: 1.6rem;
             font-weight: bold;
@@ -84,18 +105,24 @@
             }
 
 
+        /* ==========================
+   NAVIGATION STYLES (FIXED)
+   ========================== */
+
         .nav-links {
             display: flex;
             list-style: none;
             gap: 1rem;
             flex-wrap: nowrap;
-            overflow: hidden; /* ✅ prevent scrollbars */
-            white-space: nowrap; /* ✅ keep items in one line */
+            overflow: visible; /* ✅ FIXED: allow glow and border to show fully */
+            white-space: nowrap; /* keep items on one line */
             justify-content: flex-start;
             margin-left: 0.5rem;
         }
 
             .nav-links a {
+                display: inline-flex; /* ✅ keeps shape consistent */
+                align-items: center;
                 color: white;
                 text-decoration: none;
                 transition: all 0.3s ease;
@@ -103,12 +130,60 @@
                 border-radius: 25px;
                 font-size: 0.9rem;
                 white-space: nowrap;
+                position: relative;
+                background: none !important; /* remove any previous gradients */
             }
 
-                .nav-links a:hover {
-                    background: rgba(255,255,255,0.2);
+                /* Hover effect (only for non-active links) */
+                .nav-links a:hover:not(.active) {
+                    background: rgba(255, 255, 255, 0.2);
                     transform: translateY(-2px);
                 }
+
+                /* Remove any leftover pseudo-elements from old styles */
+                .nav-links a::before,
+                .nav-links a::after {
+                    content: none !important;
+                    background: none !important;
+                }
+
+                /* === Active Page Highlight (Perfect Circular Gold) === */
+                .nav-links a.active {
+                    color: #ffd700 !important; /* golden text */
+                    border: 2px solid #caa035; /* gold border */
+                    background: transparent !important;
+                    border-radius: 50px; /* smooth full circle shape */
+                    padding: 0.6rem 1.2rem;
+                    font-weight: 600;
+                    box-shadow: 0 0 10px rgba(202, 160, 53, 0.6);
+                    transition: all 0.3s ease;
+                    position: relative;
+                    z-index: 2; /* ✅ ensures glow is visible over nearby items */
+                }
+
+                    /* Hover effect for active link */
+                    .nav-links a.active:hover {
+                        background: rgba(202, 160, 53, 0.1);
+                        transform: scale(1.05);
+                        box-shadow: 0 0 15px rgba(202, 160, 53, 0.8);
+                    }
+
+        @keyframes goldPulse {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(202,160,53,0.6);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(202,160,53,0.9);
+            }
+        }
+
+        .nav-links a.active {
+            animation: goldPulse 3s infinite ease-in-out;
+        }
+
+
+
 
         /* Mobile menu toggle */
         .menu-toggle {
@@ -527,37 +602,43 @@
         .contact-info, .map-container {
             animation: fadeInUp 1s ease-out;
         }
-        }
+        
     </style>
 </head>
 <body>
-
-<div id="preloader">
-  <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1750791182/Untitled_design_bqjxji.gif" alt="Loading..." />
-</div>
-<div id="scroll-progress"></div>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3LGLXJN"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="preloader">
+        <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1750791182/Untitled_design_bqjxji.gif" alt="Loading..." />
+    </div>
+    <div id="scroll-progress"></div>
 
     <!-- Header -->
     <header>
         <nav>
             <div class="logo">
-  <a href="index.html">
-    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749707119/logo-photoaidcom-cropped_vjedul.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
-    Hotel Devang
-  </a>
-</div>	
+                <a href="index.html">
+                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749707119/logo-photoaidcom-cropped_vjedul.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
+                    Hotel Devang
+                </a>
+            </div>
 
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about_us.html">About Us</a></li>
                 <li><a href="room.html">Rooms</a></li>
-		<li><a href="gallery_page.html">Gallery</a></li>
+                <li><a href="gallery_page.html">Gallery</a></li>
                 <li><a href="facilities_page.html">Facilities</a></li>
                 <li><a href="booking_page.html">Booking</a></li>
                 <li><a href="dwarka_attractions.html">Nearby Attractions</a></li>
                 <li><a href="policies_page.html">Policies</a></li>
-		<li><a href="contact_page.html">Contact Us</a></li>
+                <li><a href="contact_page.html">Contact Us</a></li>
+
 
             </ul>
         </nav>
@@ -616,19 +697,18 @@
         </div>
     </section>
 
-   <!-- 360° Virtual Tour Section -->
-<section class="full-map-section">
-    <div class="full-map-container">
-        <h2 class="full-map-title">🏨 360° Virtual Tour of Hotel Devang</h2>
-        <iframe 
-            class="full-map-frame"
-            src="https://www.google.com/maps/embed?pb=!4v1750965330087!6m8!1m7!1sw_pJh_fKot_LVoHA_pZNgA!2m2!1d22.24191922539002!2d68.96085116793732!3f169.43!4f-2.3499999999999943!5f0.7820865974627469" 
-            allowfullscreen 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-    </div>
-</section>
+    <!-- 360° Virtual Tour Section -->
+    <section class="full-map-section">
+        <div class="full-map-container">
+            <h2 class="full-map-title">🏨 360° Virtual Tour of Hotel Devang</h2>
+            <iframe class="full-map-frame"
+                    src="https://www.google.com/maps/embed?pb=!4v1750965330087!6m8!1m7!1sw_pJh_fKot_LVoHA_pZNgA!2m2!1d22.24191922539002!2d68.96085116793732!3f169.43!4f-2.3499999999999943!5f0.7820865974627469"
+                    allowfullscreen
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
 
     <!-- Call to Action -->
     <section class="cta-section">
@@ -647,13 +727,14 @@
     <!-- Footer -->
     <footer>
         <div class="footer-bottom">
-    <p>&copy; 2025 Hotel Devang. All rights reserved. | 
-        Developed by <a href="https://kushang-acharya.onrender.com" target="_blank" style="color: gold ">Kushang Acharya</a>
-    </p>
-</div>
-<a href="https://wa.me/919824402132" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
-  <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1754210588/whatsapp_4008228_vjl1qc.png" alt="WhatsApp">
-</a>
+            <p>
+                &copy; 2025 Hotel Devang. All rights reserved. |
+                Developed by <a href="https://kushang-acharya.onrender.com" target="_blank" style="color: gold ">Kushang Acharya</a>
+            </p>
+        </div>
+        <a href="https://wa.me/919824402132" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+            <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1754210588/whatsapp_4008228_vjl1qc.png" alt="WhatsApp">
+        </a>
 
     </footer>
 
@@ -663,7 +744,7 @@
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
         }
-        
+
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
@@ -671,7 +752,7 @@
                 navLinks.classList.remove('active');
             });
         });
-        
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -685,16 +766,16 @@
                 }
             });
         });
-        
+
         // Add scroll effect to header
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const header = document.querySelector('header');
             // NEW CODE (dark red header on scroll)
-if (window.scrollY > 100) {
-    header.style.background = 'linear-gradient(135deg, rgba(139, 0, 0, 0.95) 0%, rgba(178, 34, 34, 0.95) 100%)';
-} else {
-    header.style.background = 'linear-gradient(135deg, #8b0000 0%, #b22222 100%)';
-}
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, rgba(139, 0, 0, 0.95) 0%, rgba(178, 34, 34, 0.95) 100%)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #8b0000 0%, #b22222 100%)';
+            }
         });
 
         // Animate contact items on scroll
@@ -702,50 +783,68 @@ if (window.scrollY > 100) {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
-        
-        const observer = new IntersectionObserver(function(entries) {
+
+        const observer = new IntersectionObserver(function (entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
                 }
             });
         }, observerOptions);
-        
+
         // Observe contact items for animation
         document.querySelectorAll('.contact-item').forEach(el => {
             observer.observe(el);
         });
-	// Smooth hide/show navbar on scroll
-let prevScrollPos = window.pageYOffset;
+        // Smooth hide/show navbar on scroll
+        let prevScrollPos = window.pageYOffset;
 
-window.addEventListener("scroll", function () {
-    const currentScrollPos = window.pageYOffset;
+        window.addEventListener("scroll", function () {
+            const currentScrollPos = window.pageYOffset;
 
-    if (prevScrollPos > currentScrollPos) {
-        // Scrolling up - show navbar
-        document.querySelector("header").style.top = "0";
-    } else {
-        // Scrolling down - hide navbar
-        document.querySelector("header").style.top = "-100px";
-    }
+            if (prevScrollPos > currentScrollPos) {
+                // Scrolling up - show navbar
+                document.querySelector("header").style.top = "0";
+            } else {
+                // Scrolling down - hide navbar
+                document.querySelector("header").style.top = "-100px";
+            }
 
-    prevScrollPos = currentScrollPos;
-});
-window.addEventListener("scroll", function () {
-    const progress = document.getElementById("scroll-progress");
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = (scrollTop / docHeight) * 100;
-    progress.style.width = scrollPercent + "%";
-});
+            prevScrollPos = currentScrollPos;
+        });
+        window.addEventListener("scroll", function () {
+            const progress = document.getElementById("scroll-progress");
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            progress.style.width = scrollPercent + "%";
+        });
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const currentPage = window.location.pathname.split("/").pop();
+            const navLinks = document.querySelectorAll(".nav-links a");
+
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute("href");
+
+                // Highlight current page link automatically
+                if (linkPage === currentPage ||
+                    (linkPage === "index.html" && (currentPage === "" || currentPage === "/"))) {
+                    link.classList.add("active");
+                } else {
+                    link.classList.remove("active");
+                }
+            });
+        });
 
     </script>
 
-<script>
-  window.addEventListener("load", function () {
-    document.getElementById("preloader").style.display = "none";
-  });
-</script>
+    <script>
+        window.addEventListener("load", function () {
+            document.getElementById("preloader").style.display = "none";
+        });
+    </script>
 
 </body>
 </html>
