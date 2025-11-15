@@ -23,7 +23,7 @@
     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dn45xyazy/image/upload/v1749986380/android-chrome-192x192_cnl2ib.png">
     <!-- Google Tag Manager -->
     <script>
-    (function (w, d, s, l, i) {
+        (function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
                 'gtm.start':
                     new Date().getTime(), event: 'gtm.js'
@@ -49,6 +49,15 @@
         gtag('js', new Date());
 
         gtag('config', 'G-VCKHH3P6R3');
+    </script>
+    <script src="https://js.sentry-cdn.com/75b3dcfe5cb88404268bc936d6da08ae.min.js"
+            crossorigin="anonymous"></script>
+    <script>
+        Sentry.onLoad(function () {
+            Sentry.init({
+                // You can add configuration later if needed
+            });
+        });
     </script>
 
     <style>
@@ -107,8 +116,8 @@
 
 
         /* ==========================
-NAVIGATION STYLES (FIXED)
-========================== */
+        NAVIGATION STYLES (FIXED)
+        ========================== */
 
         .nav-links {
             display: flex;

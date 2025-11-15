@@ -102,6 +102,16 @@
           ]
         }
     </script>
+    <script src="https://js.sentry-cdn.com/75b3dcfe5cb88404268bc936d6da08ae.min.js"
+            crossorigin="anonymous"></script>
+    <script>
+        Sentry.onLoad(function () {
+            Sentry.init({
+                // You can add configuration later if needed
+            });
+        });
+    </script>
+
 
     <style>
         * {
@@ -159,8 +169,8 @@
 
 
         /* ==========================
-NAVIGATION STYLES (FIXED)
-========================== */
+        NAVIGATION STYLES (FIXED)
+        ========================== */
 
         .nav-links {
             display: flex;

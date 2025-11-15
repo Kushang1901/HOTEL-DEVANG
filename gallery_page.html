@@ -59,6 +59,16 @@
           "description": "Get in touch with Hotel Devang for booking inquiries or customer support."
         }
     </script>
+    <script src="https://js.sentry-cdn.com/75b3dcfe5cb88404268bc936d6da08ae.min.js"
+            crossorigin="anonymous"></script>
+    <script>
+        Sentry.onLoad(function () {
+            Sentry.init({
+                // You can add configuration later if needed
+            });
+        });
+    </script>
+
     <style>
         * {
             margin: 0;
@@ -115,8 +125,8 @@
 
 
         /* ==========================
-NAVIGATION STYLES (FIXED)
-========================== */
+        NAVIGATION STYLES (FIXED)
+        ========================== */
 
         .nav-links {
             display: flex;
@@ -809,7 +819,7 @@ NAVIGATION STYLES (FIXED)
             }
         }
 
-       
+
 
         /* 📱 Unified Mobile Styles (max-width: 768px) */
         @media (max-width: 768px) {
@@ -1027,7 +1037,6 @@ NAVIGATION STYLES (FIXED)
                     transform: translateY(-3px);
                     box-shadow: 0 6px 20px rgba(202, 160, 53, 0.5);
                 }
-
         }
 
 
@@ -1039,7 +1048,7 @@ NAVIGATION STYLES (FIXED)
         }
 
 
-        
+
 
         @media (max-width: 480px) {
             .video-text-content h2 {
