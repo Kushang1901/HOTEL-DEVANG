@@ -765,18 +765,17 @@
                     </div>
                 </div>
 
+                <div id="cf-turnstile-container"
+                     class="cf-turnstile"
+                     data-sitekey="0x4AAAAAACBDjNrYJas_IAhC"
+                     data-callback="onTurnstileSuccess"
+                     data-size="normal"
+                     data-theme="light">
+                </div>
 
                 <button type="submit"
                         class="whatsapp-btn"
                         id="whatsappBtn">
-                    <!-- Cloudflare Turnstile (Invisible Widget) -->
-                    <div id="cf-turnstile-container"
-                         class="cf-turnstile"
-                         data-sitekey="0x4AAAAAACBDjNrYJas_IAhC"
-                         data-callback="onTurnstileSuccess"
-                         data-size="invisible">
-                    </div>
-
                     <span class="whatsapp-icon">📱</span>
                     Book via WhatsApp
                 </button>
@@ -1068,18 +1067,23 @@
 
         // ======== CLOUDFLARE TURNSTILE FOR WHATSAPP BUTTON ========
 
-        // Trigger Turnstile when WhatsApp button is clicked
-        document.getElementById('whatsappBtn').addEventListener('click', function (e) {
+        // Handle WhatsApp button click with visible Cloudflare Turnstile check
+        document.getElementById("whatsappBtn").addEventListener("click", function (e) {
             e.preventDefault();
-            turnstile.execute("cf-turnstile-container");
-        });
 
-        // After Turnstile verifies user → send WhatsApp booking message
-        function onTurnstileSuccess(token) {
+            // Check if Turnstile verification is completed
+            const turnstileToken = turnstile.getResponse("cf-turnstile-container");
+
+            if (!turnstileToken) {
+                alert("Please verify you are human before booking.");
+                return;
+            }
+
+            // If verified → collect form data and send WhatsApp message
             const formData = getFormData();
             sendWhatsAppMessage(formData);
             showSuccessMessage();
-        }
+        });
 
     </script>
 
