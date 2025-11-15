@@ -15,564 +15,565 @@
           "description": "Book your stay at Hotel Devang easily through our online booking page and check room availability."
         }
     </script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            min-height: 100vh;
-        }
-
-        header {
-            background: #880000;
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            transition: top 0.4s ease-in-out;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem; /* Consistent padding */
-        }
-
-        .logo {
-            font-size: 1.6rem;
-            font-weight: bold;
-            white-space: nowrap;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            margin-left: 0; /* Remove negative margin */
-            flex-shrink: 0; /* Prevent logo from shrinking */
-        }
-
-
-            .logo a {
-                display: flex;
-                align-items: center;
-                text-decoration: none;
-                color: white;
-            }
-
-
-        /* ==========================
-NAVIGATION STYLES (FIXED)
-========================== */
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 1rem;
-            flex-wrap: nowrap;
-            overflow: visible; /* ✅ FIXED: allow glow and border to show fully */
-            white-space: nowrap; /* keep items on one line */
-            justify-content: flex-start;
-            margin-left: 0.5rem;
-        }
-
-            .nav-links a {
-                display: inline-flex; /* ✅ keeps shape consistent */
-                align-items: center;
-                color: white;
-                text-decoration: none;
-                transition: all 0.3s ease;
-                padding: 0.5rem 1rem;
-                border-radius: 25px;
-                font-size: 0.9rem;
-                white-space: nowrap;
-                position: relative;
-                background: none !important; /* remove any previous gradients */
-            }
-
-                /* Hover effect (only for non-active links) */
-                .nav-links a:hover:not(.active) {
-                    background: rgba(255, 255, 255, 0.2);
-                    transform: translateY(-2px);
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
                 }
 
-                /* Remove any leftover pseudo-elements from old styles */
-                .nav-links a::before,
-                .nav-links a::after {
-                    content: none !important;
-                    background: none !important;
+                body {
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    line-height: 1.6;
+                    color: #333;
+                    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+                    min-height: 100vh;
                 }
 
-                /* === Active Page Highlight (Perfect Circular Gold) === */
-                .nav-links a.active {
-                    color: #ffd700 !important; /* golden text */
-                    border: 2px solid #caa035; /* gold border */
-                    background: transparent !important;
-                    border-radius: 50px; /* smooth full circle shape */
-                    padding: 0.6rem 1.2rem;
-                    font-weight: 600;
-                    box-shadow: 0 0 10px rgba(202, 160, 53, 0.6);
-                    transition: all 0.3s ease;
-                    position: relative;
-                    z-index: 2; /* ✅ ensures glow is visible over nearby items */
+                header {
+                    background: #880000;
+                    color: white;
+                    padding: 1rem 0;
+                    position: fixed;
+                    width: 100%;
+                    top: 0;
+                    z-index: 1000;
+                    backdrop-filter: blur(10px);
+                    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+                    transition: top 0.4s ease-in-out;
                 }
 
-                    /* Hover effect for active link */
-                    .nav-links a.active:hover {
-                        background: rgba(202, 160, 53, 0.1);
-                        transform: scale(1.05);
-                        box-shadow: 0 0 15px rgba(202, 160, 53, 0.8);
+                nav {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 0 1rem; /* Consistent padding */
+                }
+
+                .logo {
+                    font-size: 1.6rem;
+                    font-weight: bold;
+                    white-space: nowrap;
+                    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+                    margin-left: 0; /* Remove negative margin */
+                    flex-shrink: 0; /* Prevent logo from shrinking */
+                }
+
+
+                    .logo a {
+                        display: flex;
+                        align-items: center;
+                        text-decoration: none;
+                        color: white;
                     }
 
-        @keyframes goldPulse {
-            0%, 100% {
-                box-shadow: 0 0 10px rgba(202,160,53,0.6);
-            }
 
-            50% {
-                box-shadow: 0 0 20px rgba(202,160,53,0.9);
-            }
-        }
+                /* ==========================
+        NAVIGATION STYLES (FIXED)
+        ========================== */
 
-        .nav-links a.active {
-            animation: goldPulse 3s infinite ease-in-out;
-        }
-
-
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-
-        /* Main Content */
-        .booking-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 120px 2rem 2rem;
-        }
-
-        .booking-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .booking-title {
-            font-size: 3rem;
-            color: #8b0000;
-            margin-bottom: 1rem;
-            font-weight: bold;
-        }
-
-        .booking-subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 2rem;
-        }
-
-        .whatsapp-info {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 15px;
-            text-align: center;
-            margin-bottom: 2rem;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
-        }
-
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background: #ffffff; /* or any background color */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-
-            #preloader img {
-                width: 200px;
-                height: auto;
-            }
-
-        #scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 4px;
-            background: linear-gradient(to right, #880000, #caa035);
-            z-index: 10000; /* 🔥 ensure it stays above header */
-            transition: width 0.2s ease-out;
-        }
-
-        .whatsapp-info h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .booking-form {
-            background: white;
-            border-radius: 25px;
-            padding: 3rem;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-            .booking-form::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                height: 5px;
-                background: linear-gradient(45deg, #ffd700, #ffed4a);
-            }
-
-        .form-section {
-            margin-bottom: 2rem;
-        }
-
-        .section-title {
-            font-size: 1.4rem;
-            color: #8b0000;
-            margin-bottom: 1rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-            .form-group label {
-                display: block;
-                margin-bottom: 0.5rem;
-                font-weight: 600;
-                color: #8b0000;
-                font-size: 1rem;
-            }
-
-        .form-control {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background: #f8f9fa;
-        }
-
-            .form-control:focus {
-                outline: none;
-                border-color: #ffd700;
-                background: white;
-                box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
-            }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .room-type-selection {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .room-option {
-            border: 2px solid #e9ecef;
-            border-radius: 15px;
-            padding: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: #f8f9fa;
-            position: relative;
-        }
-
-            .room-option:hover {
-                border-color: #ffd700;
-                transform: translateY(-2px);
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            }
-
-            .room-option.selected {
-                border-color: #8b0000;
-                background: linear-gradient(135deg, rgba(139, 0, 0, 0.05), rgba(255, 215, 0, 0.05));
-            }
-
-            .room-option input[type="radio"] {
-                position: absolute;
-                opacity: 0;
-            }
-
-        .room-name {
-            font-weight: bold;
-            color: #8b0000;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .room-price {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #b22222;
-        }
-
-        .room-features {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 0.5rem;
-        }
-
-        .extra-mattress-section {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
-            border: 1px solid #ffd700;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-            .checkbox-group input[type="checkbox"] {
-                width: 20px;
-                height: 20px;
-                accent-color: #8b0000;
-            }
-
-            .checkbox-group label {
-                margin-bottom: 0;
-                font-size: 1rem;
-            }
-
-        .whatsapp-btn {
-            width: 100%;
-            padding: 1.5rem;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-            .whatsapp-btn:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
-            }
-
-            .whatsapp-btn:disabled {
-                opacity: 0.6;
-                cursor: not-allowed;
-                transform: none;
-            }
-
-        .whatsapp-icon {
-            font-size: 1.5rem;
-        }
-
-
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 9999;
-            background-color: #25D366;
-            border-radius: 50%;
-            padding: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-        }
-
-            .whatsapp-float:hover {
-                transform: scale(1.1);
-            }
-
-            .whatsapp-float img {
-                width: 36px;
-                height: 36px;
-                display: block;
-            }
-
-        .form-note {
-            background: #f8f9fa;
-            border-left: 4px solid #8b0000;
-            padding: 1rem;
-            margin-bottom: 2rem;
-            border-radius: 0 8px 8px 0;
-        }
-
-            .form-note p {
-                margin: 0;
-                color: #666;
-                font-size: 0.9rem;
-            }
-
-        .error-message {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            display: none;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .logo {
-                margin: 0 auto;
-                justify-content: center;
-            }
-
-
-
-            .nav-links {
-                position: fixed;
-                top: 70px; /* Positioned below header */
-                left: 0;
-                width: 100%; /* Full width overlay */
-                background: #880000; /* Same maroon color as header */
-                flex-direction: column;
-                align-items: center;
-                padding: 1rem 0;
-                gap: 0;
-                clip-path: circle(0px at 90% -10%); /* Hidden by default */
-                transition: clip-path 0.5s ease-out; /* Smooth animation */
-                pointer-events: none; /* Disabled when hidden */
-            }
-
-                .nav-links.active {
-                    clip-path: circle(1000px at 90% -10%); /* Reveals menu with circular animation */
-                    pointer-events: all; /* Enables interaction */
+                .nav-links {
+                    display: flex;
+                    list-style: none;
+                    gap: 1rem;
+                    flex-wrap: nowrap;
+                    overflow: visible; /* ✅ FIXED: allow glow and border to show fully */
+                    white-space: nowrap; /* keep items on one line */
+                    justify-content: flex-start;
+                    margin-left: 0.5rem;
                 }
 
-                .nav-links li {
-                    width: 100%;
+                    .nav-links a {
+                        display: inline-flex; /* ✅ keeps shape consistent */
+                        align-items: center;
+                        color: white;
+                        text-decoration: none;
+                        transition: all 0.3s ease;
+                        padding: 0.5rem 1rem;
+                        border-radius: 25px;
+                        font-size: 0.9rem;
+                        white-space: nowrap;
+                        position: relative;
+                        background: none !important; /* remove any previous gradients */
+                    }
+
+                        /* Hover effect (only for non-active links) */
+                        .nav-links a:hover:not(.active) {
+                            background: rgba(255, 255, 255, 0.2);
+                            transform: translateY(-2px);
+                        }
+
+                        /* Remove any leftover pseudo-elements from old styles */
+                        .nav-links a::before,
+                        .nav-links a::after {
+                            content: none !important;
+                            background: none !important;
+                        }
+
+                        /* === Active Page Highlight (Perfect Circular Gold) === */
+                        .nav-links a.active {
+                            color: #ffd700 !important; /* golden text */
+                            border: 2px solid #caa035; /* gold border */
+                            background: transparent !important;
+                            border-radius: 50px; /* smooth full circle shape */
+                            padding: 0.6rem 1.2rem;
+                            font-weight: 600;
+                            box-shadow: 0 0 10px rgba(202, 160, 53, 0.6);
+                            transition: all 0.3s ease;
+                            position: relative;
+                            z-index: 2; /* ✅ ensures glow is visible over nearby items */
+                        }
+
+                            /* Hover effect for active link */
+                            .nav-links a.active:hover {
+                                background: rgba(202, 160, 53, 0.1);
+                                transform: scale(1.05);
+                                box-shadow: 0 0 15px rgba(202, 160, 53, 0.8);
+                            }
+
+                @keyframes goldPulse {
+                    0%, 100% {
+                        box-shadow: 0 0 10px rgba(202,160,53,0.6);
+                    }
+
+                    50% {
+                        box-shadow: 0 0 20px rgba(202,160,53,0.9);
+                    }
+                }
+
+                .nav-links a.active {
+                    animation: goldPulse 3s infinite ease-in-out;
+                }
+
+
+
+                .menu-toggle {
+                    display: none;
+                    background: none;
+                    border: none;
+                    color: white;
+                    font-size: 1.8rem;
+                    cursor: pointer;
+                    padding: 0.5rem;
+                }
+
+
+                /* Main Content */
+                .booking-container {
+                    max-width: 1000px;
+                    margin: 0 auto;
+                    padding: 120px 2rem 2rem;
+                }
+
+                .booking-header {
                     text-align: center;
+                    margin-bottom: 3rem;
                 }
 
-                .nav-links a {
-                    display: block;
+                .booking-title {
+                    font-size: 3rem;
+                    color: #8b0000;
+                    margin-bottom: 1rem;
+                    font-weight: bold;
+                }
+
+                .booking-subtitle {
+                    font-size: 1.2rem;
+                    color: #666;
+                    margin-bottom: 2rem;
+                }
+
+                .whatsapp-info {
+                    background: linear-gradient(135deg, #25D366, #128C7E);
+                    color: white;
+                    padding: 1.5rem;
+                    border-radius: 15px;
+                    text-align: center;
+                    margin-bottom: 2rem;
+                    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+                }
+
+                #preloader {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 100%;
+                    background: #ffffff; /* or any background color */
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 9999;
+                }
+
+                    #preloader img {
+                        width: 200px;
+                        height: auto;
+                    }
+
+                #scroll-progress {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 0%;
+                    height: 4px;
+                    background: linear-gradient(to right, #880000, #caa035);
+                    z-index: 10000; /* 🔥 ensure it stays above header */
+                    transition: width 0.2s ease-out;
+                }
+
+                .whatsapp-info h3 {
+                    font-size: 1.3rem;
+                    margin-bottom: 0.5rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 0.5rem;
+                }
+
+                .booking-form {
+                    background: white;
+                    border-radius: 25px;
+                    padding: 3rem;
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                    .booking-form::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        height: 5px;
+                        background: linear-gradient(45deg, #ffd700, #ffed4a);
+                    }
+
+                .form-section {
+                    margin-bottom: 2rem;
+                }
+
+                .section-title {
+                    font-size: 1.4rem;
+                    color: #8b0000;
+                    margin-bottom: 1rem;
+                    font-weight: bold;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                }
+
+                .form-group {
+                    margin-bottom: 1.5rem;
+                }
+
+                    .form-group label {
+                        display: block;
+                        margin-bottom: 0.5rem;
+                        font-weight: 600;
+                        color: #8b0000;
+                        font-size: 1rem;
+                    }
+
+                .form-control {
+                    width: 100%;
                     padding: 1rem;
-                    border-radius: 0;
-                    border-bottom: 1px solid rgba(255,255,255,0.1);
+                    border: 2px solid #e9ecef;
+                    border-radius: 12px;
+                    font-size: 1rem;
+                    transition: all 0.3s ease;
+                    background: #f8f9fa;
                 }
 
-            .booking-title {
-                font-size: 2.2rem;
-            }
+                    .form-control:focus {
+                        outline: none;
+                        border-color: #ffd700;
+                        background: white;
+                        box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+                    }
 
-            .booking-form {
-                padding: 2rem;
-            }
+                .form-row {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 1rem;
+                }
 
-            .form-row {
-                grid-template-columns: 1fr;
-            }
+                .room-type-selection {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                    gap: 1rem;
+                    margin-bottom: 1.5rem;
+                }
 
-            .room-type-selection {
-                grid-template-columns: 1fr;
-            }
+                .room-option {
+                    border: 2px solid #e9ecef;
+                    border-radius: 15px;
+                    padding: 1.5rem;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    background: #f8f9fa;
+                    position: relative;
+                }
 
-            .checkbox-group {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
-        }
+                    .room-option:hover {
+                        border-color: #ffd700;
+                        transform: translateY(-2px);
+                        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                    }
 
-        @media (max-width: 600px) {
-            #preloader img {
-                width: 100px; /* or any smaller size you prefer */
-            }
-        }
+                    .room-option.selected {
+                        border-color: #8b0000;
+                        background: linear-gradient(135deg, rgba(139, 0, 0, 0.05), rgba(255, 215, 0, 0.05));
+                    }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
+                    .room-option input[type="radio"] {
+                        position: absolute;
+                        opacity: 0;
+                    }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+                .room-name {
+                    font-weight: bold;
+                    color: #8b0000;
+                    margin-bottom: 0.5rem;
+                    font-size: 1.1rem;
+                }
 
-        .booking-form {
-            animation: fadeInUp 0.6s ease-out;
-        }
+                .room-price {
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                    color: #b22222;
+                }
 
-        /* Loading state */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #25D366;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
+                .room-features {
+                    font-size: 0.9rem;
+                    color: #666;
+                    margin-top: 0.5rem;
+                }
 
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
+                .extra-mattress-section {
+                    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+                    border: 1px solid #ffd700;
+                    border-radius: 12px;
+                    padding: 1.5rem;
+                    margin-bottom: 1.5rem;
+                }
 
-            100% {
-                transform: rotate(360deg);
-            }
-        }
+                .checkbox-group {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    margin-bottom: 1rem;
+                }
+
+                    .checkbox-group input[type="checkbox"] {
+                        width: 20px;
+                        height: 20px;
+                        accent-color: #8b0000;
+                    }
+
+                    .checkbox-group label {
+                        margin-bottom: 0;
+                        font-size: 1rem;
+                    }
+
+                .whatsapp-btn {
+                    width: 100%;
+                    padding: 1.5rem;
+                    background: linear-gradient(135deg, #25D366, #128C7E);
+                    color: white;
+                    border: none;
+                    border-radius: 50px;
+                    font-size: 1.3rem;
+                    font-weight: bold;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 1rem;
+                }
+
+                    .whatsapp-btn:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+                    }
+
+                    .whatsapp-btn:disabled {
+                        opacity: 0.6;
+                        cursor: not-allowed;
+                        transform: none;
+                    }
+
+                .whatsapp-icon {
+                    font-size: 1.5rem;
+                }
+
+
+                .whatsapp-float {
+                    position: fixed;
+                    bottom: 20px;
+                    right: 20px;
+                    z-index: 9999;
+                    background-color: #25D366;
+                    border-radius: 50%;
+                    padding: 8px;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                    transition: transform 0.3s ease;
+                }
+
+                    .whatsapp-float:hover {
+                        transform: scale(1.1);
+                    }
+
+                    .whatsapp-float img {
+                        width: 36px;
+                        height: 36px;
+                        display: block;
+                    }
+
+                .form-note {
+                    background: #f8f9fa;
+                    border-left: 4px solid #8b0000;
+                    padding: 1rem;
+                    margin-bottom: 2rem;
+                    border-radius: 0 8px 8px 0;
+                }
+
+                    .form-note p {
+                        margin: 0;
+                        color: #666;
+                        font-size: 0.9rem;
+                    }
+
+                .error-message {
+                    background: #f8d7da;
+                    color: #721c24;
+                    border: 1px solid #f5c6cb;
+                    padding: 1rem;
+                    border-radius: 8px;
+                    margin-bottom: 1rem;
+                    display: none;
+                }
+
+                /* Responsive Design */
+                @media (max-width: 768px) {
+                    .menu-toggle {
+                        display: block;
+                    }
+
+                    .logo {
+                        margin: 0 auto;
+                        justify-content: center;
+                    }
+
+
+
+                    .nav-links {
+                        position: fixed;
+                        top: 70px; /* Positioned below header */
+                        left: 0;
+                        width: 100%; /* Full width overlay */
+                        background: #880000; /* Same maroon color as header */
+                        flex-direction: column;
+                        align-items: center;
+                        padding: 1rem 0;
+                        gap: 0;
+                        clip-path: circle(0px at 90% -10%); /* Hidden by default */
+                        transition: clip-path 0.5s ease-out; /* Smooth animation */
+                        pointer-events: none; /* Disabled when hidden */
+                    }
+
+                        .nav-links.active {
+                            clip-path: circle(1000px at 90% -10%); /* Reveals menu with circular animation */
+                            pointer-events: all; /* Enables interaction */
+                        }
+
+                        .nav-links li {
+                            width: 100%;
+                            text-align: center;
+                        }
+
+                        .nav-links a {
+                            display: block;
+                            padding: 1rem;
+                            border-radius: 0;
+                            border-bottom: 1px solid rgba(255,255,255,0.1);
+                        }
+
+                    .booking-title {
+                        font-size: 2.2rem;
+                    }
+
+                    .booking-form {
+                        padding: 2rem;
+                    }
+
+                    .form-row {
+                        grid-template-columns: 1fr;
+                    }
+
+                    .room-type-selection {
+                        grid-template-columns: 1fr;
+                    }
+
+                    .checkbox-group {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 0.5rem;
+                    }
+                }
+
+                @media (max-width: 600px) {
+                    #preloader img {
+                        width: 100px; /* or any smaller size you prefer */
+                    }
+                }
+
+                /* Animations */
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+
+                .booking-form {
+                    animation: fadeInUp 0.6s ease-out;
+                }
+
+                /* Loading state */
+                .loading {
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    border: 3px solid #f3f3f3;
+                    border-top: 3px solid #25D366;
+                    border-radius: 50%;
+                    animation: spin 1s linear infinite;
+                }
+
+                @keyframes spin {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
     </style>
 </head>
 <body>
@@ -768,6 +769,14 @@ NAVIGATION STYLES (FIXED)
                 <button type="submit"
                         class="whatsapp-btn"
                         id="whatsappBtn">
+                    <!-- Cloudflare Turnstile (Invisible Widget) -->
+                    <div id="cf-turnstile-container"
+                         class="cf-turnstile"
+                         data-sitekey="0x4AAAAAACBDjNrYJas_IAhC"
+                         data-callback="onTurnstileSuccess"
+                         data-size="invisible">
+                    </div>
+
                     <span class="whatsapp-icon">📱</span>
                     Book via WhatsApp
                 </button>
@@ -1056,6 +1065,22 @@ NAVIGATION STYLES (FIXED)
                 }
             });
         });
+
+        // ======== CLOUDFLARE TURNSTILE FOR WHATSAPP BUTTON ========
+
+        // Trigger Turnstile when WhatsApp button is clicked
+        document.getElementById('whatsappBtn').addEventListener('click', function (e) {
+            e.preventDefault();
+            turnstile.execute("cf-turnstile-container");
+        });
+
+        // After Turnstile verifies user → send WhatsApp booking message
+        function onTurnstileSuccess(token) {
+            const formData = getFormData();
+            sendWhatsAppMessage(formData);
+            showSuccessMessage();
+        }
+
     </script>
 
 
