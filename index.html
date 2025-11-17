@@ -847,6 +847,27 @@
                 background-position: center;
                 background-repeat: no-repeat;
             }
+
+            @media (max-width: 768px) {
+                .about-content {
+                    grid-template-columns: 1fr !important;
+                    gap: 2rem !important;
+                }
+
+                .about-video {
+                    padding: 4px !important; /* slightly smaller border padding */
+                    border-radius: 16px !important;
+                }
+
+                    .about-video video {
+                        width: 100%;
+                        height: auto;
+                        max-height: 320px; /* prevents video from becoming too tall */
+                        border-radius: 12px !important;
+                        object-fit: cover; /* keeps video framed properly */
+                    }
+            }
+
         }
 
         /* Extra small screens */
@@ -969,18 +990,33 @@
 
     <!-- About Section -->
     <section class="about" id="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>About Our Hotel</h2>
-                    <p>Nestled in the heart of sacred Dwarka, our heritage type hotel offers a perfect blend of traditional hospitality and modern comfort. Located in Gujarat's spiritual capital, we provide an authentic experience for pilgrims and travelers alike.</p>
-                    <p>With 43 well-appointed rooms, we ensure every guest enjoys a peaceful and memorable stay while exploring the divine city of Lord Krishna. Our strategic location makes it easy to visit all major temples and attractions in Dwarka.</p>
-                    <p>From families on pilgrimage to solo travelers seeking spiritual solace, we welcome everyone with open arms and genuine care that reflects the true spirit of Gujarat's hospitality.</p>
-                </div>
-                <div class="about-image"></div>
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>About Our Hotel</h2>
+                <p>Nestled in the heart of sacred Dwarka, our heritage type hotel offers a perfect blend of traditional hospitality and modern comfort. Located in Gujarat's spiritual capital, we provide an authentic experience for pilgrims and travelers alike.</p>
+                <p>With 43 well-appointed rooms, we ensure every guest enjoys a peaceful and memorable stay while exploring the divine city of Lord Krishna. Our strategic location makes it easy to visit all major temples and attractions in Dwarka.</p>
+                <p>From families on pilgrimage to solo travelers seeking spiritual solace, we welcome everyone with open arms and genuine care that reflects the true spirit of Gujarat's hospitality.</p>
             </div>
+
+            <!-- 🎥 Video with Golden + Dark Red Gradient Border -->
+            <div class="about-video" style="
+                border-radius: 20px;
+                overflow: hidden;
+                padding: 6px;
+                background: linear-gradient(135deg, #caa035, #880000);
+                box-shadow: 0 25px 45px rgba(0,0,0,0.15);
+            ">
+                <video width="100%" autoplay muted loop playsinline preload="auto" style="border-radius: 14px;">
+                    <source src="https://res.cloudinary.com/dn45xyazy/video/upload/v1763406699/Generate_a_realistic_202511180038_zppn0w.mp4" type="video/mp4">
+                </video>
+
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Highlights Section -->
     <section class="highlights" id="amenities">
