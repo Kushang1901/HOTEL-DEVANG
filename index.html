@@ -555,11 +555,13 @@
             font-size: 1rem;
             line-height: 1.6;
         }
-       
+
+        /* Hover Effect */
         #accept-cookies:hover {
             background: #FFD700;
             transform: scale(1.05);
         }
+
 
         /* Room Stats */
         .room-stats {
@@ -906,15 +908,22 @@
                 width: 100px; /* or any smaller size you prefer */
             }
 
-            #cookie-banner {
+            #cookie-modal div {
+                width: 90%;
+                padding: 15px;
+            }
+
+            #cookie-modal h3 {
+                font-size: 16px;
+            }
+
+            #cookie-modal p {
                 font-size: 13px;
-                padding: 10px;
-                line-height: 1.6;
             }
 
             #accept-cookies {
-                display: block;
-                margin: 8px auto 0 auto;
+                font-size: 13px;
+                padding: 8px 20px;
             }
         }
 
@@ -1073,37 +1082,48 @@
         </div>
     </section>
 
-    <!-- 🍪 Sleek Cookie Consent Bar -->
-    <div id="cookie-banner" style="
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    background: #8B0000;
-    color: #fff;
-    padding: 8px 15px;
-    font-size: 14px;
-    text-align: center;
-    display: none;
-    z-index: 9999;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.25);
+    <!-- 🍪 Centered Cookie Consent Modal -->
+    <div id="cookie-modal" style="
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: none; /* appears only for new users */
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 ">
-        <span>
-            We use cookies to improve your experience at Hotel Devang.
-        </span>
-        <button id="accept-cookies" style="
-        background: #D4AF37;
-        color: #000;
-        border: none;
-        padding: 6px 14px;
-        margin-left: 10px;
-        border-radius: 25px;
-        font-size: 13px;
-        cursor: pointer;
-        display: inline-block;
-        transition: all 0.3s ease;
+
+        <div style="
+    background: #ffffff;
+    padding: 25px 30px;
+    text-align: center;
+    max-width: 360px;
+    border-radius: 12px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  ">
+            <h3 style="color: #8B0000; margin-bottom: 10px;">🍪 Cookies & Privacy</h3>
+            <p style="color: #333; font-size: 14px; line-height: 1.5;">
+                We use cookies to improve your experience at <strong>Hotel Devang</strong>.
+                By clicking Accept, you agree to our privacy policy.
+            </p>
+
+            <button id="accept-cookies" style="
+      background: #D4AF37;
+      color: #000;
+      border: none;
+      margin-top: 15px;
+      padding: 10px 24px;
+      border-radius: 30px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
     ">
-            Accept
-        </button>
+                Accept
+            </button>
+        </div>
     </div>
 
     <!-- Footer -->
@@ -1330,23 +1350,28 @@
         };
 
         document.addEventListener("DOMContentLoaded", () => {
+            // 📌 Show popup only if user has NOT accepted
             if (!CookieManager.get("cookieConsent")) {
-                document.getElementById("cookie-banner").style.display = "block";
+                document.getElementById("cookie-modal").style.display = "flex";
             }
 
+            // 🎯 When Accept is clicked
             document.getElementById("accept-cookies").addEventListener("click", () => {
                 CookieManager.set("cookieConsent", "true", 180);
-                document.getElementById("cookie-banner").style.display = "none";
+                document.getElementById("cookie-modal").style.display = "none";
             });
 
+            // 🔑 Create or reuse Session ID
             let sessionID = CookieManager.get("sessionId");
             if (!sessionID) {
                 sessionID = Date.now() + "_" + Math.random().toString(36).substr(2, 9);
                 CookieManager.set("sessionId", sessionID, 1);
             }
 
+            // 🌐 Backend endpoint for logging
             const apiURL = "https://hotel-devang-booking.onrender.com/api/log-session";
 
+            // 📝 Log Page Visit
             fetch(apiURL, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -1358,6 +1383,7 @@
                 }),
             });
 
+            // 📝 Log Exit Time (auto works even when tab is closed)
             window.addEventListener("beforeunload", () => {
                 navigator.sendBeacon(apiURL, JSON.stringify({
                     sessionId: sessionID,
