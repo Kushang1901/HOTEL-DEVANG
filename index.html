@@ -990,32 +990,32 @@
 
     <!-- About Section -->
     <section class="about" id="about">
-    <div class="container">
-        <div class="about-content">
-            <div class="about-text">
-                <h2>About Our Hotel</h2>
-                <p>Nestled in the heart of sacred Dwarka, our heritage type hotel offers a perfect blend of traditional hospitality and modern comfort. Located in Gujarat's spiritual capital, we provide an authentic experience for pilgrims and travelers alike.</p>
-                <p>With 43 well-appointed rooms, we ensure every guest enjoys a peaceful and memorable stay while exploring the divine city of Lord Krishna. Our strategic location makes it easy to visit all major temples and attractions in Dwarka.</p>
-                <p>From families on pilgrimage to solo travelers seeking spiritual solace, we welcome everyone with open arms and genuine care that reflects the true spirit of Gujarat's hospitality.</p>
-            </div>
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Our Hotel</h2>
+                    <p>Nestled in the heart of sacred Dwarka, our heritage type hotel offers a perfect blend of traditional hospitality and modern comfort. Located in Gujarat's spiritual capital, we provide an authentic experience for pilgrims and travelers alike.</p>
+                    <p>With 43 well-appointed rooms, we ensure every guest enjoys a peaceful and memorable stay while exploring the divine city of Lord Krishna. Our strategic location makes it easy to visit all major temples and attractions in Dwarka.</p>
+                    <p>From families on pilgrimage to solo travelers seeking spiritual solace, we welcome everyone with open arms and genuine care that reflects the true spirit of Gujarat's hospitality.</p>
+                </div>
 
-            <!-- 🎥 Video with Golden + Dark Red Gradient Border -->
-            <div class="about-video" style="
+                <!-- 🎥 Video with Golden + Dark Red Gradient Border -->
+                <div class="about-video" style="
                 border-radius: 20px;
                 overflow: hidden;
                 padding: 6px;
                 background: linear-gradient(135deg, #caa035, #880000);
                 box-shadow: 0 25px 45px rgba(0,0,0,0.15);
             ">
-                <video width="100%" autoplay muted loop playsinline preload="auto" style="border-radius: 14px;">
-                    <source src="https://res.cloudinary.com/dn45xyazy/video/upload/v1763406699/Generate_a_realistic_202511180038_zppn0w.mp4" type="video/mp4">
-                </video>
+                    <video width="100%" autoplay muted loop playsinline preload="auto" style="border-radius: 14px;">
+                        <source src="https://res.cloudinary.com/dn45xyazy/video/upload/v1763406699/Generate_a_realistic_202511180038_zppn0w.mp4" type="video/mp4">
+                    </video>
+
+                </div>
 
             </div>
-
         </div>
-    </div>
-</section>
+    </section>
 
 
     <!-- Highlights Section -->
@@ -1056,6 +1056,18 @@
             </div>
         </div>
     </section>
+
+    <!-- 🍪 Cookie Consent Banner -->
+    <div id="cookie-banner" style="
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: #222; color: #fff; padding: 15px;
+    text-align: center; font-size: 14px; display: none; z-index: 9999;
+">
+        This website uses cookies to enhance your booking experience at Hotel Devang.
+        <button id="accept-cookies" style="margin-left: 10px; padding: 6px 12px; cursor:pointer;">
+            Accept
+        </button>
+    </div>
 
     <!-- Footer -->
     <footer id="contact">
@@ -1249,25 +1261,81 @@
         });
 
 
-        
-document.addEventListener("DOMContentLoaded", () => {
-      const currentPage = window.location.pathname.split("/").pop();
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const currentPage = window.location.pathname.split("/").pop();
             const navLinks = document.querySelectorAll(".nav-links a");
 
-      navLinks.forEach(link => {
-        const linkPage = link.getAttribute("href");
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute("href");
 
-            // Highlight current page link
-            if (linkPage === currentPage ||
-            (linkPage === "index.html" && (currentPage === "" || currentPage === "/"))) {
-                link.classList.add("active");
-        } else {
-                link.classList.remove("active");
-        }
-      });
-});
-   
+                // Highlight current page link
+                if (linkPage === currentPage ||
+                    (linkPage === "index.html" && (currentPage === "" || currentPage === "/"))) {
+                    link.classList.add("active");
+                } else {
+                    link.classList.remove("active");
+                }
+            });
+        });
 
+        // Cookie Manager
+        const CookieManager = {
+            set: (name, value, days = 7) => {
+                const expires = new Date(Date.now() + days * 864e5).toUTCString();
+                document.cookie = name + "=" + encodeURIComponent(value) + "; expires=" + expires + "; path=/";
+            },
+            get: (name) => {
+                return document.cookie.split('; ').reduce((r, v) => {
+                    const parts = v.split('=');
+                    return parts[0] === name ? decodeURIComponent(parts[1]) : r
+                }, null);
+            }
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // 👉 Show cookie consent only for first-time visitor
+            if (!CookieManager.get("cookieConsent")) {
+                document.getElementById("cookie-banner").style.display = "block";
+            }
+
+            document.getElementById("accept-cookies").addEventListener("click", () => {
+                CookieManager.set("cookieConsent", "true", 180);
+                document.getElementById("cookie-banner").style.display = "none";
+            });
+
+            // 🎫 Create or reuse sessionId (unique visitor tracking)
+            let sessionID = CookieManager.get("sessionId");
+            if (!sessionID) {
+                sessionID = Date.now() + "_" + Math.random().toString(36).substr(2, 9);
+                CookieManager.set("sessionId", sessionID, 1);
+            }
+
+            const apiURL = "https://hotel-devang.onrender.com/api/log-session";
+
+            // 📌 Log Page Visit (ENTRY)
+            fetch(apiURL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    sessionId: sessionID,
+                    page: window.location.pathname,
+                    eventType: "page_visit",
+                    timestamp: new Date().toISOString()
+                }),
+            });
+
+            // 📤 Log Page Exit (when closing or going to another site)
+            window.addEventListener("beforeunload", () => {
+                navigator.sendBeacon(apiURL, JSON.stringify({
+                    sessionId: sessionID,
+                    page: window.location.pathname,
+                    eventType: "page_exit",
+                    timestamp: new Date().toISOString()
+                }));
+            });
+        });
 
     </script>
 
