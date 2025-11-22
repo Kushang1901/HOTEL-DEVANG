@@ -1279,23 +1279,20 @@
             });
         });
 
-        // Cookie Manager
         const CookieManager = {
             set: (name, value, days = 7) => {
                 const expires = new Date(Date.now() + days * 864e5).toUTCString();
-                document.cookie = name + "=" + encodeURIComponent(value) + "; expires=" + expires + "; path=/";
+                document.cookie = name + "=" + encodeURIComponent(value) + ";expires=" + expires + ";path=/";
             },
             get: (name) => {
                 return document.cookie.split('; ').reduce((r, v) => {
                     const parts = v.split('=');
-                    return parts[0] === name ? decodeURIComponent(parts[1]) : r
+                    return parts[0] === name ? decodeURIComponent(parts[1]) : r;
                 }, null);
             }
         };
 
         document.addEventListener("DOMContentLoaded", () => {
-
-            // 👉 Show cookie consent only for first-time visitor
             if (!CookieManager.get("cookieConsent")) {
                 document.getElementById("cookie-banner").style.display = "block";
             }
@@ -1305,16 +1302,14 @@
                 document.getElementById("cookie-banner").style.display = "none";
             });
 
-            // 🎫 Create or reuse sessionId (unique visitor tracking)
             let sessionID = CookieManager.get("sessionId");
             if (!sessionID) {
                 sessionID = Date.now() + "_" + Math.random().toString(36).substr(2, 9);
                 CookieManager.set("sessionId", sessionID, 1);
             }
 
-            const apiURL = "https://hotel-devang.onrender.com/api/log-session";
+            const apiURL = "https://hotel-devang-booking.onrender.com/api/log-session";
 
-            // 📌 Log Page Visit (ENTRY)
             fetch(apiURL, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -1326,7 +1321,6 @@
                 }),
             });
 
-            // 📤 Log Page Exit (when closing or going to another site)
             window.addEventListener("beforeunload", () => {
                 navigator.sendBeacon(apiURL, JSON.stringify({
                     sessionId: sessionID,
