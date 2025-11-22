@@ -1084,47 +1084,42 @@
 
     <!-- 🍪 Centered Cookie Consent Modal -->
     <div id="cookie-modal" style="
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(0,0,0,0.6);
-  display: none; /* appears only for new users */
-  z-index: 99999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: none;
+  z-index: 99999; display: flex;
+  justify-content: center; align-items: center;
 ">
-
         <div style="
-    background: #ffffff;
-    padding: 25px 30px;
-    text-align: center;
-    max-width: 360px;
-    border-radius: 12px;
-    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #ffffff; padding: 25px 30px;
+    text-align: center; max-width: 380px;
+    border-radius: 12px; font-family: 'Segoe UI', Arial, sans-serif;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   ">
-            <h3 style="color: #8B0000; margin-bottom: 10px;">🍪 Cookies & Privacy</h3>
-            <p style="color: #333; font-size: 14px; line-height: 1.5;">
+            <h3 style="color: #8B0000;">🍪 Cookies & Privacy</h3>
+            <p style="font-size: 14px;">
                 We use cookies to improve your experience at <strong>Hotel Devang</strong>.
-                By clicking Accept, you agree to our privacy policy.
+                You can Accept or Reject tracking.
             </p>
 
-            <button id="accept-cookies" style="
-      background: #D4AF37;
-      color: #000;
-      border: none;
-      margin-top: 15px;
-      padding: 10px 24px;
-      border-radius: 30px;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: bold;
-    ">
-                Accept
-            </button>
+            <div style="margin-top: 15px;">
+                <button id="accept-cookies" style="
+        background: #D4AF37; color:#000; border:none;
+        padding: 8px 18px; border-radius:25px;
+        cursor:pointer; font-size:14px; margin-right:10px;">
+                    Accept
+                </button>
+
+                <button id="reject-cookies" style="
+        background:#ddd; color:#000; border:none;
+        padding:8px 18px; border-radius:25px;
+        cursor:pointer; font-size:14px;">
+                    Reject
+                </button>
+            </div>
         </div>
     </div>
+
 
     <!-- Footer -->
     <footer id="contact">
@@ -1350,28 +1345,44 @@
         };
 
         document.addEventListener("DOMContentLoaded", () => {
-            // 📌 Show popup only if user has NOT accepted
-            if (!CookieManager.get("cookieConsent")) {
+            const consent = CookieManager.get("cookieConsent");
+
+            // 👉 Show popup ONLY if user has not chosen
+            if (!consent) {
                 document.getElementById("cookie-modal").style.display = "flex";
             }
 
-            // 🎯 When Accept is clicked
+            // 👉 Accept: allow tracking
             document.getElementById("accept-cookies").addEventListener("click", () => {
-                CookieManager.set("cookieConsent", "true", 180);
+                CookieManager.set("cookieConsent", "accepted", 180);
+                document.getElementById("cookie-modal").style.display = "none";
+                enableTracking(); // 👈 Run tracking
+            });
+
+            // 👉 Reject: disable tracking
+            document.getElementById("reject-cookies").addEventListener("click", () => {
+                CookieManager.set("cookieConsent", "rejected", 180);
                 document.getElementById("cookie-modal").style.display = "none";
             });
 
-            // 🔑 Create or reuse Session ID
+            // 👉 If user previously accepted, tracking should work
+            if (consent === "accepted") {
+                enableTracking();
+            }
+        });
+
+        // ===============================
+        // 🟢 Tracking Function (Runs only if accepted)
+        // ===============================
+        function enableTracking() {
             let sessionID = CookieManager.get("sessionId");
             if (!sessionID) {
                 sessionID = Date.now() + "_" + Math.random().toString(36).substr(2, 9);
                 CookieManager.set("sessionId", sessionID, 1);
             }
 
-            // 🌐 Backend endpoint for logging
             const apiURL = "https://hotel-devang-booking.onrender.com/api/log-session";
 
-            // 📝 Log Page Visit
             fetch(apiURL, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -1383,7 +1394,6 @@
                 }),
             });
 
-            // 📝 Log Exit Time (auto works even when tab is closed)
             window.addEventListener("beforeunload", () => {
                 navigator.sendBeacon(apiURL, JSON.stringify({
                     sessionId: sessionID,
@@ -1392,7 +1402,7 @@
                     timestamp: new Date().toISOString()
                 }));
             });
-        });
+        }
 
     </script>
 
