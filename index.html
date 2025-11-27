@@ -440,6 +440,38 @@
             background-repeat: no-repeat;
         }
 
+        .slideshow-controls {
+            position: absolute;
+            bottom: 30px; /* Adjust height above yellow liner */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 15;
+        }
+
+        /* Button Style */
+        .slide-btn {
+            background: #caa035;
+            color: white;
+            border: none;
+            padding: 8px 14px; /* 🔽 smaller size */
+            font-size: 15px; /* 🔽 smaller icons */
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+            .slide-btn:hover {
+                background: #880000;
+                transform: scale(1.1);
+            }
+
+            .slide-btn:active {
+                transform: scale(0.92);
+            }
+
 
 
 
@@ -863,7 +895,7 @@
                 background-repeat: no-repeat;
             }
 
-            @media (max-width: 768px) {
+           
                 .about-content {
                     grid-template-columns: 1fr !important;
                     gap: 2rem !important;
@@ -881,7 +913,18 @@
                         border-radius: 12px !important;
                         object-fit: cover; /* keeps video framed properly */
                     }
+
+            .slideshow-controls {
+                bottom: 18px; /* move closer to the yellow liner */
+                gap: 10px; /* slightly reduce spacing */
             }
+
+            .slide-btn {
+                padding: 6px 12px; /* smaller buttons */
+                font-size: 13px; /* smaller icons */
+                box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            }
+            
 
         }
 
@@ -908,6 +951,16 @@
                 height: 3px; /* thinner for mobile */
                 border-radius: 2px;
                 box-shadow: 0 0 5px rgba(202, 160, 53, 0.6);
+            }
+
+            .slideshow-controls {
+                bottom: 12px;
+                gap: 8px;
+            }
+
+            .slide-btn {
+                padding: 5px 10px;
+                font-size: 12px;
             }
         }
 
@@ -1000,6 +1053,12 @@
             <p>Experience divine hospitality in the sacred city Dwarka . Your spiritual journey begins with our warm welcome and comfortable stay.</p>
             <a href="room.html" class="cta-button">Book Your Stay</a>
         </div>
+        <div class="slideshow-controls">
+            <button id="prevSlide" class="slide-btn">&#9664;</button>
+            <button id="playPauseSlide" class="slide-btn">&#10074;&#10074;</button>
+            <button id="nextSlide" class="slide-btn">&#9654;</button>
+        </div>
+
     </section>
 
 
@@ -1173,25 +1232,33 @@
             =============================== */
             const slides = document.querySelectorAll('.slide');
             const liner = document.querySelector('.slide-liner');
+
+            const prevBtn = document.getElementById("prevSlide");
+            const nextBtn = document.getElementById("nextSlide");
+            const playPauseBtn = document.getElementById("playPauseSlide");
+
             let currentSlide = 0;
             let direction = 'left';
             let slideTimer;
+            let isPlaying = true;
 
-            function showSlide(index, direction) {
+            function showSlide(index, dir = 'left') {
                 slides.forEach(slide => {
                     slide.classList.remove('active', 'previous', 'leftIn', 'rightIn');
                     slide.style.zIndex = '0';
                 });
+
                 const prevIndex = (index - 1 + slides.length) % slides.length;
                 slides[prevIndex].classList.add('previous');
+
                 const slide = slides[index];
                 slide.classList.add('active');
-                slide.classList.add(direction === 'left' ? 'leftIn' : 'rightIn');
+                slide.classList.add(dir === 'left' ? 'leftIn' : 'rightIn');
             }
 
             function startLiner() {
                 liner.style.animation = 'none';
-                void liner.offsetWidth;
+                void liner.offsetWidth; // force reflow
                 liner.style.animation = 'linerProgress 4s linear forwards';
             }
 
@@ -1209,9 +1276,50 @@
                 slideTimer = setInterval(nextSlide, 4000);
             }
 
+            function stopSlideshow() {
+                clearInterval(slideTimer);
+            }
+
+            // 🔁 Start auto slideshow initially
             startSlideshow();
+
+            // ▶ Next button
+            if (nextBtn) {
+                nextBtn.addEventListener("click", () => {
+                    stopSlideshow();
+                    nextSlide();
+                    if (isPlaying) startSlideshow();
+                });
+            }
+
+            // ◀ Previous button
+            if (prevBtn) {
+                prevBtn.addEventListener("click", () => {
+                    stopSlideshow();
+                    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                    direction = direction === 'left' ? 'right' : 'left';
+                    showSlide(currentSlide, direction);
+                    startLiner();
+                    if (isPlaying) startSlideshow();
+                });
+            }
+
+            // ⏯ Play / Pause button
+            if (playPauseBtn) {
+                playPauseBtn.addEventListener("click", function () {
+                    if (isPlaying) {
+                        stopSlideshow();
+                        this.innerHTML = "&#9658;"; // Play icon
+                    } else {
+                        startSlideshow();
+                        this.innerHTML = "&#10074;&#10074;"; // Pause icon
+                    }
+                    isPlaying = !isPlaying;
+                });
+            }
         });
 
+        // 🔻 Scroll progress bar
         window.addEventListener("scroll", function () {
             const progress = document.getElementById("scroll-progress");
             const scrollTop = window.scrollY;
@@ -1220,6 +1328,7 @@
             progress.style.width = scrollPercent + "%";
         });
 
+        // 🔻 Hide / show header on scroll
         let lastScrollTop = 0;
         const header = document.querySelector("header");
 
@@ -1227,16 +1336,14 @@
             let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
             if (currentScroll > lastScrollTop && currentScroll > 80) {
-                // scrolling down → hide navbar
-                header.style.top = "-100px";
+                header.style.top = "-100px"; // hide
             } else {
-                // scrolling up → show navbar
-                header.style.top = "0";
+                header.style.top = "0";      // show
             }
             lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
         });
-
     </script>
+
 
 
     <script>
