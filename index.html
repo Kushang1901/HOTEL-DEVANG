@@ -111,7 +111,28 @@
             });
         });
     </script>
-
+    <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '856389973418737');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+             src="https://www.facebook.com/tr?id=856389973418737&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Meta Pixel Code -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
         * {
@@ -299,6 +320,7 @@
             margin-bottom: 2rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
+
         #cookie-modal {
             pointer-events: auto;
         }
@@ -701,26 +723,69 @@
             border-top: 1px solid rgba(255,255,255,0.2);
         }
 
-        .whatsapp-float {
+        /* Floating Contact Widget */
+        .contact-widget {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 999;
-            background-color: #25D366;
-            padding: 8px; /* reduced from 10px */
-            border-radius: 50%;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
+            bottom: 25px;
+            right: 25px;
+            z-index: 9999;
         }
 
-            .whatsapp-float:hover {
+        .contact-main-btn {
+            width: 60px;
+            height: 60px;
+            background: #dba407;
+            border-radius: 50%;
+            border: none;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+            color: white;
+            font-size: 26px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+            .contact-main-btn:hover {
+                transform: scale(1.08);
+            }
+
+        .contact-options {
+            display: none;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .contact-option {
+            display: block;
+            width: 55px;
+            height: 55px;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.25);
+            color: #333;
+            font-size: 26px;
+            line-height: 55px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+            .contact-option:hover {
                 transform: scale(1.1);
             }
 
-            .whatsapp-float img {
-                width: 36px; /* reduced from 48px */
-                height: 36px;
-            }
+        .email {
+            color: #d44638;
+        }
+
+        .whatsapp {
+            color: #25D366;
+        }
+
+        .call {
+            color: #007bff;
+        }
+
+
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -895,24 +960,24 @@
                 background-repeat: no-repeat;
             }
 
-           
-                .about-content {
-                    grid-template-columns: 1fr !important;
-                    gap: 2rem !important;
-                }
 
-                .about-video {
-                    padding: 4px !important; /* slightly smaller border padding */
-                    border-radius: 16px !important;
-                }
+            .about-content {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
 
-                    .about-video video {
-                        width: 100%;
-                        height: auto;
-                        max-height: 320px; /* prevents video from becoming too tall */
-                        border-radius: 12px !important;
-                        object-fit: cover; /* keeps video framed properly */
-                    }
+            .about-video {
+                padding: 4px !important; /* slightly smaller border padding */
+                border-radius: 16px !important;
+            }
+
+                .about-video video {
+                    width: 100%;
+                    height: auto;
+                    max-height: 320px; /* prevents video from becoming too tall */
+                    border-radius: 12px !important;
+                    object-fit: cover; /* keeps video framed properly */
+                }
 
             .slideshow-controls {
                 bottom: 18px; /* move closer to the yellow liner */
@@ -924,8 +989,6 @@
                 font-size: 13px; /* smaller icons */
                 box-shadow: 0 2px 6px rgba(0,0,0,0.3);
             }
-            
-
         }
 
         /* Extra small screens */
@@ -985,6 +1048,26 @@
             #accept-cookies {
                 font-size: 13px;
                 padding: 8px 20px;
+            }
+
+
+            .contact-widget {
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .contact-main-btn {
+                width: 52px;
+                height: 52px;
+                font-size: 22px;
+            }
+
+            .contact-option {
+                width: 48px;
+                height: 48px;
+                font-size: 22px;
+                margin-bottom: 8px;
+                line-height: 48px;
             }
         }
 
@@ -1203,9 +1286,30 @@
             </div>
 
         </div>
-        <a href="https://wa.me/919824402132" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
-            <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1754210588/whatsapp_4008228_vjl1qc.png" alt="WhatsApp">
-        </a>
+        <!-- Floating Contact Widget -->
+        <div class="contact-widget">
+
+            <div class="contact-options" id="contactOptions">
+                <a href="tel:+919824402132" class="contact-option call">
+                    <i class="fas fa-phone-alt"></i>
+                </a>
+
+                <a href="https://wa.me/919824402132" target="_blank" class="contact-option whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+
+                <a href="mailto:info@hoteldevang.com" class="contact-option email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+
+            <button class="contact-main-btn" id="contactToggle">
+                <i class="fas fa-comments"></i>
+            </button>
+
+        </div>
+
+
 
     </footer>
 
@@ -1342,6 +1446,17 @@
             }
             lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
         });
+
+        
+            const contactToggle = document.getElementById("contactToggle");
+            const contactOptions = document.getElementById("contactOptions");
+
+        contactToggle.addEventListener("click", () => {
+                contactOptions.style.display =
+                contactOptions.style.display === "block" ? "none" : "block";
+        });
+    
+
     </script>
 
 
