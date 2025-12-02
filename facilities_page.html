@@ -668,48 +668,59 @@
             z-index: 9999;
         }
 
+        /* Main button */
         .contact-main-btn {
             width: 60px;
             height: 60px;
             background: #dba407;
             border-radius: 50%;
             border: none;
-            box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.25);
             color: white;
             font-size: 26px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: 0.35s ease;
         }
 
-            .contact-main-btn:hover {
-                transform: scale(1.08);
+            /* Rotate when opening */
+            .contact-main-btn.open {
+                transform: rotate(45deg) scale(1.1);
             }
 
+        /* Options container */
         .contact-options {
-            display: none;
-            margin-bottom: 15px;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 12px;
         }
 
+        /* Individual icons */
         .contact-option {
-            display: block;
             width: 55px;
             height: 55px;
-            margin-bottom: 10px;
             background: white;
             border-radius: 50%;
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.25);
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+            margin-bottom: 12px;
             color: #333;
-            font-size: 26px;
+            font-size: 24px;
             line-height: 55px;
             text-align: center;
-            transition: 0.3s;
+            opacity: 0;
+            transform: translateY(15px);
+            pointer-events: none;
+            transition: 0.35s ease;
         }
 
-            .contact-option:hover {
-                transform: scale(1.1);
+            /* Show with animation */
+            .contact-option.show {
+                opacity: 1;
+                transform: translateY(0);
+                pointer-events: auto;
             }
 
+        /* Icon colors */
         .email {
             color: #d44638;
         }
@@ -721,6 +732,20 @@
         .call {
             color: #007bff;
         }
+
+        /* Stagger animation delays */
+        .contact-option:nth-child(1) {
+            transition-delay: 0.05s;
+        }
+
+        .contact-option:nth-child(2) {
+            transition-delay: 0.10s;
+        }
+
+        .contact-option:nth-child(3) {
+            transition-delay: 0.15s;
+        }
+
 
         /* Animations */
         @keyframes fadeInUp {
@@ -1447,12 +1472,16 @@
             });
         });
 
-        const contactToggle = document.getElementById("contactToggle");
-        const contactOptions = document.getElementById("contactOptions");
+        const toggleBtn = document.getElementById("contactToggle");
+        const options = document.querySelectorAll(".contact-option");
 
-        contactToggle.addEventListener("click", () => {
-            contactOptions.style.display =
-                contactOptions.style.display === "block" ? "none" : "block";
+        toggleBtn.addEventListener("click", () => {
+
+            toggleBtn.classList.toggle("open");
+
+            options.forEach(option => {
+                option.classList.toggle("show");
+            });
         });
 
     </script>
