@@ -43,12 +43,79 @@
     <script type="application/ld+json">
         {
           "@context": "https://schema.org",
-          "@type": "ContactPage",
-          "name": "Contact Hotel Devang",
-          "url": "https://www.hoteldevang.com/policies_page.html",
-          "description": "Get in touch with Hotel Devang for booking inquiries or customer support."
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://hoteldevang.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Hotel Policies",
+              "item": "https://hoteldevang.com/policies_page.html"
+            }
+          ]
         }
     </script>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemPage",
+          "name": "Hotel Devang – Policies & Stay Rules",
+          "description": "Check-in timings, cancellation rules, guest guidelines, safety rules, and payment policies for staying at Hotel Devang, Dwarka.",
+          "url": "https://hoteldevang.com/policies_page.html"
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Hotel",
+          "name": "Hotel Devang",
+          "url": "https://hoteldevang.com/policies_page.html",
+          "policy": [
+            {
+              "@type": "HotelPolicy",
+              "name": "Check-in & Check-out",
+              "description": "Check-in 12:30 PM, Check-out 10:00 AM. Early check-in subject to availability. Late check-out may incur charges. Valid ID required.",
+              "additionalType": "CheckinPolicy"
+            },
+            {
+              "@type": "HotelPolicy",
+              "name": "Cancellation Policy",
+              "description": "Advance payments are non-refundable. Fraud bookings may be cancelled. Refunds initiated within 48 hours.",
+              "additionalType": "ReservationPolicy"
+            },
+            {
+              "@type": "HotelPolicy",
+              "name": "Payment Policy",
+              "description": "Cash, UPI, bank transfer, and card payments accepted. GST applicable.",
+              "additionalType": "PaymentPolicy"
+            },
+            {
+              "@type": "HotelPolicy",
+              "name": "Guest Policy",
+              "description": "Max occupancy as per room type. Extra charges apply for additional guests. Children under 5 stay free.",
+              "additionalType": "GuestPolicy"
+            },
+            {
+              "@type": "HotelPolicy",
+              "name": "Safety & Security",
+              "description": "CCTV surveillance in common areas. Fire safety equipment available. Guests responsible for valuables.",
+              "additionalType": "SafetyPolicy"
+            },
+            {
+              "@type": "HotelPolicy",
+              "name": "General Rules",
+              "description": "Vegetarian premises. No smoking indoors. No pets. Damage charges apply. Room cleaning before 12 PM.",
+              "additionalType": "GeneralPolicy"
+            }
+          ]
+        }
+    </script>
+
     <script src="https://js.sentry-cdn.com/75b3dcfe5cb88404268bc936d6da08ae.min.js"
             crossorigin="anonymous"></script>
     <script>
