@@ -595,6 +595,32 @@
             height: auto;
         }
 
+        .about-btn-wrapper {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .read-more-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #8A1E1E;
+            color: #fff;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid transparent;
+            transition: 0.3s;
+        }
+
+            .read-more-btn:hover {
+                background-color: transparent;
+                color: #8A1E1E;
+                border-color: #8A1E1E;
+            }
+
+
+
         /* Highlights Section */
         .highlights {
             padding: 5rem 0;
@@ -1221,17 +1247,33 @@
     </section>
 
     <!-- About Section -->
+    <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
             <div class="about-content">
+
                 <div class="about-text">
                     <h2>About Our Hotel</h2>
-                    <p>Nestled in the heart of sacred Dwarka, our heritage type hotel offers a perfect blend of traditional hospitality and modern comfort. Located in Gujarat's spiritual capital, we provide an authentic experience for pilgrims and travelers alike.</p>
-                    <p>With 43 well-appointed rooms, we ensure every guest enjoys a peaceful and memorable stay while exploring the divine city of Lord Krishna. Our strategic location makes it easy to visit all major temples and attractions in Dwarka.</p>
-                    <p>From families on pilgrimage to solo travelers seeking spiritual solace, we welcome everyone with open arms and genuine care that reflects the true spirit of Gujarat's hospitality.</p>
+
+                    <p>
+                        Nestled in the heart of sacred Dwarka, our heritage type hotel offers a perfect blend of traditional
+                        hospitality and modern comfort. Located in Gujarat's spiritual capital, we provide an authentic experience
+                        for pilgrims and travelers alike.
+                    </p>
+
+                    <p>
+                        With 43 well-appointed rooms, we ensure every guest enjoys a peaceful and memorable stay while exploring
+                        the divine city of Lord Krishna. Our strategic location makes it easy to visit all major temples and
+                        attractions in Dwarka.
+                    </p>
+
+                    <p>
+                        From families on pilgrimage to solo travelers seeking spiritual solace, we welcome everyone with open arms
+                        and genuine care that reflects the true spirit of Gujarat's hospitality.
+                    </p>
                 </div>
 
-                <!-- 🎥 Video with Golden + Dark Red Gradient Border -->
+                <!-- Video -->
                 <div class="about-video" style="
                 border-radius: 20px;
                 overflow: hidden;
@@ -1241,12 +1283,18 @@
                     <video width="100%" autoplay muted loop playsinline preload="auto" style="border-radius: 14px;">
                         <source src="https://res.cloudinary.com/dn45xyazy/video/upload/v1763406699/Generate_a_realistic_202511180038_zppn0w.mp4" type="video/mp4">
                     </video>
-
                 </div>
 
             </div>
+
+            <!-- ⭐ Button Centered Below Section ⭐ -->
+            <div class="about-btn-wrapper">
+                <a href="blog.html" class="read-more-btn">Read More</a>
+            </div>
+
         </div>
     </section>
+
 
 
     <!-- Highlights Section -->
@@ -1321,14 +1369,13 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Guest Services</h3>
-                    <ul>
-                        <li>24/7 Reception</li>
-                        <li>Room Service</li>
-                        <li>Travel Assistance</li>
-                        <li>Temple Guide Service</li>
-                        <li>Parking Facility</li>
-                    </ul>
+                    <h3>Follow Us</h3>
+                    <p>Stay connected for latest updates and special offers</p>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem; font-size: 1.5rem;">
+                        <a href="https://www.facebook.com/share/19h5JCa3Xp/?mibextid=wwXIfr"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/hoteldevang/"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -1500,7 +1547,7 @@
             lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
         });
 
-        
+
         const toggleBtn = document.getElementById("contactToggle");
         const options = document.querySelectorAll(".contact-option");
 
