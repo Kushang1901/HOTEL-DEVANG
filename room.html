@@ -508,6 +508,37 @@
                 margin: 0 auto;
             }
 
+        /* Smooth Zoom Modal Animation */
+        .modal {
+            display: none; /* hidden by default */
+            position: fixed;
+            inset: 0;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0,0,0,0.9);
+            z-index: 10000;
+            opacity: 0;
+            transform: scale(0.96);
+            transition: opacity 0.28s ease, transform 0.28s ease;
+        }
+
+            .modal.show {
+                display: flex; /* becomes flex when shown */
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            .modal .modal-content {
+                max-width: 90%;
+                max-height: 90%;
+                border-radius: 10px;
+                box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+                transition: transform 0.28s ease;
+                transform: scale(1);
+            }
+
+
+
         /* Room Grid */
         .room-grid {
             display: grid;
@@ -1520,6 +1551,8 @@
                         </div>
                     </div>
                 </div>
+                </div>
+            </section>
 
                 <!-- Floating Contact Widget -->
                 <div class="contact-widget">
@@ -1584,32 +1617,42 @@
                         progress.style.width = scrollPercent + "%";
                     });
 
+                    // Smooth Image Modal with Animation
                     document.querySelectorAll('.room-image').forEach(image => {
                         image.addEventListener('click', () => {
                             const modal = document.getElementById('imageModal');
                             const modalImg = document.getElementById('modalImg');
                             const bg = window.getComputedStyle(image).backgroundImage;
                             const imgUrl = bg.slice(5, -2); // extract URL
+
                             modalImg.src = imgUrl;
+
+                            // Show modal first (hidden state)
                             modal.style.display = 'flex';
-                            modal.style.justifyContent = 'center';
-                            modal.style.alignItems = 'center';
-                            modal.style.backgroundColor = 'rgba(0,0,0,0.9)';
-                            modal.style.position = 'fixed';
-                            modal.style.top = 0;
-                            modal.style.left = 0;
-                            modal.style.width = '100%';
-                            modal.style.height = '100%';
-                            modal.style.zIndex = 10000;
+
+                            // Add animation after short delay
+                            setTimeout(() => {
+                                modal.classList.add("show");
+                            }, 10);
                         });
                     });
 
+                    // Close button
                     document.querySelector('.close').onclick = () => {
-                        document.getElementById('imageModal').style.display = 'none';
+                        const modal = document.getElementById('imageModal');
+                        modal.classList.remove("show");
+                        setTimeout(() => { modal.style.display = 'none'; }, 300);
                     };
+
+                    // Close on background click
                     document.getElementById('imageModal').onclick = (e) => {
-                        if (e.target === e.currentTarget) e.currentTarget.style.display = 'none';
+                        if (e.target === e.currentTarget) {
+                            const modal = e.currentTarget;
+                            modal.classList.remove("show");
+                            setTimeout(() => { modal.style.display = 'none'; }, 300);
+                        }
                     };
+
 
 
                     window.addEventListener("load", function () {
@@ -1617,34 +1660,75 @@
                     });
 
                     document.addEventListener("DOMContentLoaded", () => {
-                        const currentPage = window.location.pathname.split("/").pop();
-                        const navLinks = document.querySelectorAll(".nav-links a");
+                        const images = document.querySelectorAll('.room-image');
+                        const modal = document.getElementById('imageModal');
+                        const modalImg = document.getElementById('modalImg');
+                        const closeBtn = document.querySelector('#imageModal .close');
 
-                        navLinks.forEach(link => {
-                            const linkPage = link.getAttribute("href");
+                        if (!modal || !modalImg) {
+                            console.warn("Modal elements not found.");
+                            return;
+                        }
 
-                            // Highlight current page link automatically
-                            if (linkPage === currentPage ||
-                                (linkPage === "index.html" && (currentPage === "" || currentPage === "/"))) {
-                                link.classList.add("active");
-                            } else {
-                                link.classList.remove("active");
-                            }
+                        // Helper: extract URL robustly from computed background-image
+                        function extractUrl(bgValue) {
+                            // bgValue examples: url("https://..."), url('https://...'), url(https://...)
+                            const m = bgValue && bgValue.match(/url\((?:'|"|)(.*?)(?:'|"|)\)/);
+                            return m ? m[1] : "";
+                        }
+
+                        images.forEach(image => {
+                            image.addEventListener('click', (e) => {
+                                const bg = window.getComputedStyle(image).backgroundImage;
+                                const url = extractUrl(bg);
+
+                                if (!url) {
+                                    console.warn("Could not extract image URL from background:", bg);
+                                    return;
+                                }
+
+                                modalImg.src = url;
+
+                                // show modal: ensure it becomes visible then add .show to trigger transition
+                                modal.style.display = 'flex';
+                                // allow one frame then add class so transition runs
+                                requestAnimationFrame(() => {
+                                    requestAnimationFrame(() => modal.classList.add('show'));
+                                });
+
+                                // Prevent body scroll while modal open
+                                document.documentElement.style.overflow = 'hidden';
+                                document.body.style.overflow = 'hidden';
+                            });
+                        });
+
+                        // Close helpers
+                        function closeModal() {
+                            modal.classList.remove('show');
+                            // wait for transition then hide
+                            setTimeout(() => {
+                                modal.style.display = 'none';
+                                modalImg.src = ""; // release memory / stop downloading if needed
+                                document.documentElement.style.overflow = '';
+                                document.body.style.overflow = '';
+                            }, 300);
+                        }
+
+                        if (closeBtn) {
+                            closeBtn.addEventListener('click', closeModal);
+                        }
+
+                        // click outside image to close
+                        modal.addEventListener('click', (e) => {
+                            if (e.target === modal) closeModal();
+                        });
+
+                        // close with Esc
+                        document.addEventListener('keydown', (e) => {
+                            if (e.key === 'Escape' && modal.classList.contains('show')) closeModal();
                         });
                     });
 
-                    
-                        const toggleBtn = document.getElementById("contactToggle");
-                        const options = document.querySelectorAll(".contact-option");
-
-                    toggleBtn.addEventListener("click", () => {
-
-                            toggleBtn.classList.toggle("open");
-
-                        options.forEach(option => {
-                            option.classList.toggle("show");
-                        });
-                    });
                 </script>
 
                
