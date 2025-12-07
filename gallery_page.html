@@ -438,13 +438,18 @@
             background: rgba(0,0,0,0.9);
             z-index: 2000;
             backdrop-filter: blur(10px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
         }
 
             .lightbox.active {
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                pointer-events: none;
             }
+
 
         .lightbox-content {
             position: relative;
@@ -525,6 +530,25 @@
                 margin-bottom: 0.5rem;
                 color: #ffd700;
             }
+
+        .lightbox.show {
+            pointer-events: auto !important;
+        }
+
+
+        .lightbox.active.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* Always disable lightbox clicks when NOT showing */
+        .lightbox:not(.show) {
+            pointer-events: none !important;
+        }
+
+
+
+
 
         /* Section Headers */
         .section-header {
@@ -1542,28 +1566,7 @@
         </div>
 
         <!-- Floating Contact Widget -->
-        <div class="contact-widget">
-
-            <div class="contact-options" id="contactOptions">
-                <a href="tel:+919824402132" class="contact-option call">
-                    <i class="fas fa-phone-alt"></i>
-                </a>
-
-                <a href="https://wa.me/919824402132" target="_blank" class="contact-option whatsapp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-
-                <a href="mailto:info@hoteldevang.com" class="contact-option email">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </div>
-
-            <button class="contact-main-btn" id="contactToggle">
-                <i class="fas fa-comments"></i>
-            </button>
-
-        </div>
-
+       
     </footer>
 
     <script>
@@ -1720,13 +1723,18 @@
         });
 
         // Contact widget
-        const toggleBtn = document.getElementById("contactToggle");
-        const options = document.querySelectorAll(".contact-option");
+        document.addEventListener("DOMContentLoaded", () => {
+            const toggleBtn = document.getElementById("contactToggle");
+            const options = document.querySelectorAll(".contact-option");
 
-        toggleBtn.addEventListener("click", () => {
-            toggleBtn.classList.toggle("open");
-            options.forEach(option => option.classList.toggle("show"));
+            if (!toggleBtn) return;
+
+            toggleBtn.addEventListener("click", () => {
+                toggleBtn.classList.toggle("open");
+                options.forEach(option => option.classList.toggle("show"));
+            });
         });
+
 
     </script>
 

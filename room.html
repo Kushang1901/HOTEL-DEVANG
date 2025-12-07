@@ -1583,6 +1583,9 @@
                 </div>
 
                 <script>
+                    /* -------------------------
+    MOBILE MENU TOGGLE
+ -------------------------- */
                     function toggleMenu() {
                         const navLinks = document.querySelector('.nav-links');
                         navLinks.classList.toggle('active');
@@ -1593,22 +1596,23 @@
                             document.querySelector('.nav-links').classList.remove('active');
                         });
                     });
-                    // Smooth hide/show navbar on scroll
+
+                    /* -------------------------
+                       NAVBAR HIDE/SHOW ON SCROLL
+                    -------------------------- */
                     let prevScrollPos = window.pageYOffset;
 
                     window.addEventListener("scroll", function () {
                         const currentScrollPos = window.pageYOffset;
+                        const header = document.querySelector("header");
 
-                        if (prevScrollPos > currentScrollPos) {
-                            // Scrolling up - show navbar
-                            document.querySelector("header").style.top = "0";
-                        } else {
-                            // Scrolling down - hide navbar
-                            document.querySelector("header").style.top = "-100px";
-                        }
-
+                        header.style.top = (prevScrollPos > currentScrollPos) ? "0" : "-100px";
                         prevScrollPos = currentScrollPos;
                     });
+
+                    /* -------------------------
+                       SCROLL PROGRESS BAR
+                    -------------------------- */
                     window.addEventListener("scroll", function () {
                         const progress = document.getElementById("scroll-progress");
                         const scrollTop = window.scrollY;
@@ -1617,117 +1621,88 @@
                         progress.style.width = scrollPercent + "%";
                     });
 
-                    // Smooth Image Modal with Animation
-                    document.querySelectorAll('.room-image').forEach(image => {
-                        image.addEventListener('click', () => {
-                            const modal = document.getElementById('imageModal');
-                            const modalImg = document.getElementById('modalImg');
-                            const bg = window.getComputedStyle(image).backgroundImage;
-                            const imgUrl = bg.slice(5, -2); // extract URL
-
-                            modalImg.src = imgUrl;
-
-                            // Show modal first (hidden state)
-                            modal.style.display = 'flex';
-
-                            // Add animation after short delay
-                            setTimeout(() => {
-                                modal.classList.add("show");
-                            }, 10);
-                        });
-                    });
-
-                    // Close button
-                    document.querySelector('.close').onclick = () => {
-                        const modal = document.getElementById('imageModal');
-                        modal.classList.remove("show");
-                        setTimeout(() => { modal.style.display = 'none'; }, 300);
-                    };
-
-                    // Close on background click
-                    document.getElementById('imageModal').onclick = (e) => {
-                        if (e.target === e.currentTarget) {
-                            const modal = e.currentTarget;
-                            modal.classList.remove("show");
-                            setTimeout(() => { modal.style.display = 'none'; }, 300);
-                        }
-                    };
-
-
-
+                    /* -------------------------
+                       PRELOADER
+                    -------------------------- */
                     window.addEventListener("load", function () {
                         document.getElementById("preloader").style.display = "none";
                     });
 
+                    /* -------------------------
+                       ROOM IMAGE MODAL (Smooth Zoom)
+                    -------------------------- */
                     document.addEventListener("DOMContentLoaded", () => {
+
                         const images = document.querySelectorAll('.room-image');
                         const modal = document.getElementById('imageModal');
                         const modalImg = document.getElementById('modalImg');
                         const closeBtn = document.querySelector('#imageModal .close');
 
-                        if (!modal || !modalImg) {
-                            console.warn("Modal elements not found.");
-                            return;
-                        }
-
-                        // Helper: extract URL robustly from computed background-image
+                        // Helper: extract clean URL
                         function extractUrl(bgValue) {
-                            // bgValue examples: url("https://..."), url('https://...'), url(https://...)
-                            const m = bgValue && bgValue.match(/url\((?:'|"|)(.*?)(?:'|"|)\)/);
-                            return m ? m[1] : "";
+                            const match = bgValue.match(/url\((?:'|"|)(.*?)(?:'|"|)\)/);
+                            return match ? match[1] : "";
                         }
 
+                        // When image clicked
                         images.forEach(image => {
-                            image.addEventListener('click', (e) => {
+                            image.addEventListener('click', () => {
                                 const bg = window.getComputedStyle(image).backgroundImage;
                                 const url = extractUrl(bg);
 
-                                if (!url) {
-                                    console.warn("Could not extract image URL from background:", bg);
-                                    return;
-                                }
-
                                 modalImg.src = url;
 
-                                // show modal: ensure it becomes visible then add .show to trigger transition
                                 modal.style.display = 'flex';
-                                // allow one frame then add class so transition runs
                                 requestAnimationFrame(() => {
                                     requestAnimationFrame(() => modal.classList.add('show'));
                                 });
 
-                                // Prevent body scroll while modal open
-                                document.documentElement.style.overflow = 'hidden';
                                 document.body.style.overflow = 'hidden';
+                                document.documentElement.style.overflow = 'hidden';
                             });
                         });
 
-                        // Close helpers
+                        // Close modal
                         function closeModal() {
                             modal.classList.remove('show');
-                            // wait for transition then hide
+
                             setTimeout(() => {
                                 modal.style.display = 'none';
-                                modalImg.src = ""; // release memory / stop downloading if needed
-                                document.documentElement.style.overflow = '';
+                                modalImg.src = "";
                                 document.body.style.overflow = '';
+                                document.documentElement.style.overflow = '';
                             }, 300);
                         }
 
-                        if (closeBtn) {
-                            closeBtn.addEventListener('click', closeModal);
-                        }
+                        // Click X
+                        if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
-                        // click outside image to close
-                        modal.addEventListener('click', (e) => {
+                        // Click outside image
+                        modal.addEventListener('click', e => {
                             if (e.target === modal) closeModal();
                         });
 
-                        // close with Esc
-                        document.addEventListener('keydown', (e) => {
-                            if (e.key === 'Escape' && modal.classList.contains('show')) closeModal();
+                        // ESC key
+                        document.addEventListener('keydown', e => {
+                            if (e.key === "Escape" && modal.classList.contains('show')) closeModal();
                         });
                     });
+
+                    /* -------------------------
+    CONTACT FLOATING WIDGET
+ -------------------------- */
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const toggleBtn = document.getElementById("contactToggle");
+                        const options = document.querySelectorAll(".contact-option");
+
+                        if (!toggleBtn) return;
+
+                        toggleBtn.addEventListener("click", () => {
+                            toggleBtn.classList.toggle("open");
+                            options.forEach(option => option.classList.toggle("show"));
+                        });
+                    });
+
 
                 </script>
 
