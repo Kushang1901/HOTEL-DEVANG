@@ -1551,162 +1551,161 @@
                         </div>
                     </div>
                 </div>
-                </div>
-            </section>
+            </div>
+    </section>
 
-                <!-- Floating Contact Widget -->
-                <div class="contact-widget">
+    <!-- Floating Contact Widget -->
+    <div class="contact-widget">
 
-                    <div class="contact-options" id="contactOptions">
-                        <a href="tel:+919824402132" class="contact-option call">
-                            <i class="fas fa-phone-alt"></i>
-                        </a>
+        <div class="contact-options" id="contactOptions">
+            <a href="tel:+919824402132" class="contact-option call">
+                <i class="fas fa-phone-alt"></i>
+            </a>
 
-                        <a href="https://wa.me/919824402132" target="_blank" class="contact-option whatsapp">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
+            <a href="https://wa.me/919824402132" target="_blank" class="contact-option whatsapp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
 
-                        <a href="mailto:info@hoteldevang.com" class="contact-option email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
+            <a href="mailto:info@hoteldevang.com" class="contact-option email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
 
-                    <button class="contact-main-btn" id="contactToggle">
-                        <i class="fas fa-comments"></i>
-                    </button>
+        <button class="contact-main-btn" id="contactToggle">
+            <i class="fas fa-comments"></i>
+        </button>
 
-                </div>
+    </div>
 
-                <div id="imageModal" class="modal" style="display:none;">
-                    <span class="close" style="position:absolute;top:20px;right:35px;font-size:40px;color:white;cursor:pointer;">&times;</span>
-                    <img class="modal-content" id="modalImg" style="max-width:90%;max-height:90%;margin:auto;display:block;border-radius:10px;">
-                </div>
+    <div id="imageModal" class="modal" style="display:none;">
+        <span class="close" style="position:absolute;top:20px;right:35px;font-size:40px;color:white;cursor:pointer;">&times;</span>
+        <img class="modal-content" id="modalImg" style="max-width:90%;max-height:90%;margin:auto;display:block;border-radius:10px;">
+    </div>
 
-                <script>
-                    /* -------------------------
-    MOBILE MENU TOGGLE
- -------------------------- */
-                    function toggleMenu() {
-                        const navLinks = document.querySelector('.nav-links');
-                        navLinks.classList.toggle('active');
-                    }
+    <script>
+        /* -------------------------
+MOBILE MENU TOGGLE
+-------------------------- */
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
 
-                    document.querySelectorAll('.nav-links a').forEach(link => {
-                        link.addEventListener('click', () => {
-                            document.querySelector('.nav-links').classList.remove('active');
-                        });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        /* -------------------------
+           NAVBAR HIDE/SHOW ON SCROLL
+        -------------------------- */
+        let prevScrollPos = window.pageYOffset;
+
+        window.addEventListener("scroll", function () {
+            const currentScrollPos = window.pageYOffset;
+            const header = document.querySelector("header");
+
+            header.style.top = (prevScrollPos > currentScrollPos) ? "0" : "-100px";
+            prevScrollPos = currentScrollPos;
+        });
+
+        /* -------------------------
+           SCROLL PROGRESS BAR
+        -------------------------- */
+        window.addEventListener("scroll", function () {
+            const progress = document.getElementById("scroll-progress");
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            progress.style.width = scrollPercent + "%";
+        });
+
+        /* -------------------------
+           PRELOADER
+        -------------------------- */
+        window.addEventListener("load", function () {
+            document.getElementById("preloader").style.display = "none";
+        });
+
+        /* -------------------------
+           ROOM IMAGE MODAL (Smooth Zoom)
+        -------------------------- */
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const images = document.querySelectorAll('.room-image');
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+            const closeBtn = document.querySelector('#imageModal .close');
+
+            // Helper: extract clean URL
+            function extractUrl(bgValue) {
+                const match = bgValue.match(/url\((?:'|"|)(.*?)(?:'|"|)\)/);
+                return match ? match[1] : "";
+            }
+
+            // When image clicked
+            images.forEach(image => {
+                image.addEventListener('click', () => {
+                    const bg = window.getComputedStyle(image).backgroundImage;
+                    const url = extractUrl(bg);
+
+                    modalImg.src = url;
+
+                    modal.style.display = 'flex';
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => modal.classList.add('show'));
                     });
 
-                    /* -------------------------
-                       NAVBAR HIDE/SHOW ON SCROLL
-                    -------------------------- */
-                    let prevScrollPos = window.pageYOffset;
+                    document.body.style.overflow = 'hidden';
+                    document.documentElement.style.overflow = 'hidden';
+                });
+            });
 
-                    window.addEventListener("scroll", function () {
-                        const currentScrollPos = window.pageYOffset;
-                        const header = document.querySelector("header");
+            // Close modal
+            function closeModal() {
+                modal.classList.remove('show');
 
-                        header.style.top = (prevScrollPos > currentScrollPos) ? "0" : "-100px";
-                        prevScrollPos = currentScrollPos;
-                    });
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    modalImg.src = "";
+                    document.body.style.overflow = '';
+                    document.documentElement.style.overflow = '';
+                }, 300);
+            }
 
-                    /* -------------------------
-                       SCROLL PROGRESS BAR
-                    -------------------------- */
-                    window.addEventListener("scroll", function () {
-                        const progress = document.getElementById("scroll-progress");
-                        const scrollTop = window.scrollY;
-                        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-                        const scrollPercent = (scrollTop / docHeight) * 100;
-                        progress.style.width = scrollPercent + "%";
-                    });
+            // Click X
+            if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
-                    /* -------------------------
-                       PRELOADER
-                    -------------------------- */
-                    window.addEventListener("load", function () {
-                        document.getElementById("preloader").style.display = "none";
-                    });
+            // Click outside image
+            modal.addEventListener('click', e => {
+                if (e.target === modal) closeModal();
+            });
 
-                    /* -------------------------
-                       ROOM IMAGE MODAL (Smooth Zoom)
-                    -------------------------- */
-                    document.addEventListener("DOMContentLoaded", () => {
-
-                        const images = document.querySelectorAll('.room-image');
-                        const modal = document.getElementById('imageModal');
-                        const modalImg = document.getElementById('modalImg');
-                        const closeBtn = document.querySelector('#imageModal .close');
-
-                        // Helper: extract clean URL
-                        function extractUrl(bgValue) {
-                            const match = bgValue.match(/url\((?:'|"|)(.*?)(?:'|"|)\)/);
-                            return match ? match[1] : "";
-                        }
-
-                        // When image clicked
-                        images.forEach(image => {
-                            image.addEventListener('click', () => {
-                                const bg = window.getComputedStyle(image).backgroundImage;
-                                const url = extractUrl(bg);
-
-                                modalImg.src = url;
-
-                                modal.style.display = 'flex';
-                                requestAnimationFrame(() => {
-                                    requestAnimationFrame(() => modal.classList.add('show'));
-                                });
-
-                                document.body.style.overflow = 'hidden';
-                                document.documentElement.style.overflow = 'hidden';
-                            });
-                        });
-
-                        // Close modal
-                        function closeModal() {
-                            modal.classList.remove('show');
-
-                            setTimeout(() => {
-                                modal.style.display = 'none';
-                                modalImg.src = "";
-                                document.body.style.overflow = '';
-                                document.documentElement.style.overflow = '';
-                            }, 300);
-                        }
-
-                        // Click X
-                        if (closeBtn) closeBtn.addEventListener('click', closeModal);
-
-                        // Click outside image
-                        modal.addEventListener('click', e => {
-                            if (e.target === modal) closeModal();
-                        });
-
-                        // ESC key
-                        document.addEventListener('keydown', e => {
-                            if (e.key === "Escape" && modal.classList.contains('show')) closeModal();
-                        });
-                    });
-
-                    /* -------------------------
-    CONTACT FLOATING WIDGET
- -------------------------- */
-                    document.addEventListener("DOMContentLoaded", () => {
-                        const toggleBtn = document.getElementById("contactToggle");
-                        const options = document.querySelectorAll(".contact-option");
-
-                        if (!toggleBtn) return;
-
-                        toggleBtn.addEventListener("click", () => {
-                            toggleBtn.classList.toggle("open");
-                            options.forEach(option => option.classList.toggle("show"));
-                        });
-                    });
+            // ESC key
+            document.addEventListener('keydown', e => {
+                if (e.key === "Escape" && modal.classList.contains('show')) closeModal();
+            });
+        });
 
 
-                </script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const toggleBtn = document.getElementById("contactToggle");
+            const options = document.querySelectorAll(".contact-option");
 
-               
+            if (!toggleBtn) return;
+
+            toggleBtn.addEventListener("click", () => {
+                toggleBtn.classList.toggle("open");
+                options.forEach(option => option.classList.toggle("show"));
+            });
+        });
+
+
+    </script>
+    <script src='https://www.noupe.com/embed/019b26b84577774bb380a6366e91d6a19bba.js'></script>
+
+
 </body>
 </html>
 
