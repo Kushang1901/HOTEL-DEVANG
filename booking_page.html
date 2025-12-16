@@ -106,14 +106,21 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-margin-top: 90px;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            min-height: 100vh;
+            overflow-x: hidden;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
         }
 
         header {
