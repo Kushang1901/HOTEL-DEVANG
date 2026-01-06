@@ -14,7 +14,8 @@
     <meta property="og:description" content="Know more about Hotel Devang in Dwarka. A family-friendly premium stay near Dwarkadhish Temple with deluxe rooms, comfort, and hospitality.">
     <meta property="og:url" content="https://hoteldevang.com/about_us.html">
     <meta property="og:type" content="website">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <meta name="geo.region" content="IN-GJ">
     <meta name="geo.placename" content="Dwarka, Gujarat">
@@ -382,7 +383,7 @@
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             height: 400px;
-            background: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749534107/LAL_7278_nxij4v.jpg');
+            background: url('photos/About_us/Trios.jpeg');
             background-size: cover;
             background-position: center;
         }
@@ -463,15 +464,15 @@
 
             /* Individual owner images */
             .owner-image.himanshu {
-                background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749642461/ada_1_nkcdfl.jpg');
+                background-image: url('photos/About_us/himanshu_acharya.jpeg');
             }
 
             .owner-image.udayan {
-                background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749534256/LAL_7145_qxk0ic.jpg');
+                background-image: url('photos/About_us/Udayan_acharya.jpeg');
             }
 
             .owner-image.govind {
-                background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749711365/govindkaka_d1sl6b.jpg');
+                background-image: url('photos/About_us/Govind_acharya.jpeg');
             }
 
         .owner-card h3 {
@@ -678,6 +679,7 @@
             margin-bottom: 1.5rem;
             display: block;
             line-height: 1;
+            color:gold;
         }
 
         .value-card h4 {
@@ -873,6 +875,39 @@
             transition-delay: 0.15s;
         }
 
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #b30000;
+            color: #ffd700;
+            border: 1px solid #ffd700;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+            .back-to-top.show {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .back-to-top:hover {
+                background-color: transparent;
+                color: var(--primary);
+                transform: translateY(-5px);
+            }
+
 
         @media (max-width: 992px) {
             .values-grid {
@@ -1063,7 +1098,7 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <div id="preloader">
-        <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1750791182/Untitled_design_bqjxji.gif" alt="Loading..." />
+        <img src="Photos/About_us/loader.gif" alt="Loading..." />
     </div>
     <div id="scroll-progress"></div>
 
@@ -1072,7 +1107,7 @@
         <nav>
             <div class="logo">
                 <a href="index.html">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749707119/logo-photoaidcom-cropped_vjedul.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
+                    <img src="Photos/index/logo.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
                     Hotel Devang
                 </a>
             </div>
@@ -1160,11 +1195,11 @@
         <div class="container">
             <div class="vision-mission-grid">
                 <div class="vision-card animate-on-scroll">
-                    <h3>🔮 Our Vision</h3>
+                    <h3><i class="fa fa-eye" aria-hidden="true"></i> Our Vision</h3>
                     <p>To be the leading hospitality destination in Dwarka, recognized for our commitment to excellence, spiritual sensitivity, and authentic Gujarati hospitality. We envision a future where every traveler finds not just accommodation, but a home away from home in the sacred city.</p>
                 </div>
                 <div class="mission-card animate-on-scroll">
-                    <h3>🎯 Our Mission</h3>
+                    <h3><i class="fa-solid fa-bullseye"></i> Our Mission</h3>
                     <p>Our mission is to provide exceptional accommodation and personalized service that enhances the spiritual journey of our guests. We are committed to preserving local traditions while embracing modern hospitality standards to create memorable experiences.</p>
                 </div>
             </div>
@@ -1177,32 +1212,32 @@
             <h2 class="section-title animate-on-scroll">Our Core Values</h2>
             <div class="values-grid">
                 <div class="value-card animate-on-scroll">
-                    <span class="value-icon">🙏</span>
+                    <span class="value-icon"><i class="fa-solid fa-hand-holding"></i></span>
                     <h4>Spiritual Respect</h4>
                     <p>We honor the sacred nature of Dwarka and ensure our services align with the spiritual significance of this holy city.</p>
                 </div>
                 <div class="value-card animate-on-scroll">
-                    <span class="value-icon">❤️</span>
+                    <span class="value-icon"><i class="fa-solid fa-heart"></i></span>
                     <h4>Warm Hospitality</h4>
                     <p>Every guest is treated as family, with genuine care and attention to their comfort and needs.</p>
                 </div>
                 <div class="value-card animate-on-scroll">
-                    <span class="value-icon">⭐</span>
+                    <span class="value-icon"><i class="fa-solid fa-star"></i></span>
                     <h4>Quality Excellence</h4>
                     <p>We maintain the highest standards in all our services, from accommodation to dining and guest care.</p>
                 </div>
                 <div class="value-card animate-on-scroll">
-                    <span class="value-icon">🤝</span>
+                    <span class="value-icon"><i class="fa-solid fa-handshake"></i></span>
                     <h4>Community Connection</h4>
                     <p>We actively support the local community and promote sustainable tourism practices.</p>
                 </div>
                 <div class="value-card animate-on-scroll">
-                    <span class="value-icon">💰</span>
+                    <span class="value-icon"><i class="fa fa-inr" aria-hidden="true"></i></span>
                     <h4>Fair Pricing</h4>
                     <p>Quality accommodation at reasonable rates, making spiritual journeys accessible to all.</p>
                 </div>
                 <div class="value-card animate-on-scroll">
-                    <span class="value-icon">🌱</span>
+                    <span class="value-icon"><i class="fa-solid fa-feather"></i></span>
                     <h4>Sustainable Practices</h4>
                     <p>We are committed to environmental responsibility and sustainable hospitality practices.</p>
                 </div>
@@ -1311,8 +1346,37 @@
         </div>
 
     </footer>
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
 
     <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const backToTop = document.getElementById("backToTop");
+            if (!backToTop) return;
+
+            window.addEventListener("scroll", function () {
+                const scrollPosition =
+                    window.scrollY ||
+                    document.documentElement.scrollTop ||
+                    document.body.scrollTop;
+
+                if (scrollPosition > 200) {
+                    backToTop.classList.add("show");
+                } else {
+                    backToTop.classList.remove("show");
+                }
+            });
+
+            backToTop.addEventListener("click", function (e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+        });
 
 
         function toggleMenu() {
@@ -1470,7 +1534,7 @@
         });
     </script>
 
-    <script src='https://www.noupe.com/embed/019b272adb3c73c2a85cc3a4a6b8ff5eebcf.js'></script>
+
 
 </body>
 </html>

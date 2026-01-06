@@ -159,8 +159,7 @@
         fbq('track', 'PageView');
     </script>
     <noscript>
-        <img height="1" width="1" style="display:none"
-             src="https://www.facebook.com/tr?id=856389973418737&ev=PageView&noscript=1" />
+        <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=856389973418737&ev=PageView&noscript=1" />
     </noscript>
     <!-- End Meta Pixel Code -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -319,7 +318,7 @@
         /* Hero Section */
         .hero {
             height: 60vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749676715/dwk_city_1_lqee9b.jpg');
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Photos/Nearby_attractions/cover.avif');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -711,44 +710,44 @@
 
         /* Specific attraction images */
         .dwarkadhish {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749676813/dwarkadhish-temple-1022x600_zd23bn.png');
+            background-image: url('Photos/Nearby_attractions/Dwarka_temple.jpg');
         }
 
         .gomti-ghat {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749677022/gomti-ghat-dwarka-gujarat-1-musthead-hero_bgzxvg.jpg');
+            background-image: url('Photos/Nearby_attractions/gomti-ghat.jpg');
         }
 
         .bhadkeshwar {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749704448/bhadkeshwar_gdevem.jpg');
+            background-image: url('Photos/Nearby_attractions/bhadkeshwar_temple.jpg');
         }
 
         .gayatri {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749677888/gayatri_temple_hgs2qs.jpg');
+            background-image: url('Photos/Nearby_attractions/gayatri_temple.jpg');
         }
 
 
         .sunset-point {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749704808/sunset_point_zu6xnf.jpg');
+            background-image: url('Photos/Nearby_attractions/sunset.jpg');
         }
 
         .shivrajpur {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749705052/Shivrajpur-Beach-Development-scaled_ykypdc.jpg');
+            background-image: url('Photos/Nearby_attractions/shivrajpur.jpg');
         }
 
         .nageshwar {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749705166/Nageshwarlnga_4_vogani.jpg');
+            background-image: url('Photos/Nearby_attractions/nageshwar.jpg');
         }
 
         .gopi-talav {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749677229/gopi_talav_qlgcbf.jpg');
+            background-image: url('Photos/Nearby_attractions/gopitalav.jpg');
         }
 
         .beyt-dwarka {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749677614/bet_dwarka_hectzc.jpg');
+            background-image: url('Photos/Nearby_attractions/beyt-dwk.jpg');
         }
 
         .rukmani {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749677719/900551442Dwarka_Rukmini_Temple_Main_xbfaqq.jpg');
+            background-image: url('Photos/Nearby_attractions/rukmani_temple.jpg');
         }
         /* Floating Contact Widget */
         .contact-widget {
@@ -835,6 +834,39 @@
         .contact-option:nth-child(3) {
             transition-delay: 0.15s;
         }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #b30000;
+            color: #ffd700;
+            border: 1px solid #ffd700;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+            .back-to-top.show {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .back-to-top:hover {
+                background-color: transparent;
+                color: var(--primary);
+                transform: translateY(-5px);
+            }
 
 
         /* Responsive Design */
@@ -1017,7 +1049,7 @@
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div id="preloader">
-        <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1750791182/Untitled_design_bqjxji.gif" alt="Loading..." />
+        <img src="Photos/Nearby_attractions/loader.gif" alt="Loading..." />
     </div>
     <div id="scroll-progress"></div>
 
@@ -1026,7 +1058,7 @@
         <nav>
             <div class="logo">
                 <a href="index.html">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749707119/logo-photoaidcom-cropped_vjedul.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
+                    <img src="Photos/Nearby_attractions/logo.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
                     Hotel Devang
                 </a>
             </div>
@@ -1359,8 +1391,38 @@
 
     </footer>
 
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
     <script>
-        // Mobile menu toggle
+
+        //back to top
+        document.addEventListener("DOMContentLoaded", function () {
+            const backToTop = document.getElementById("backToTop");
+            if (!backToTop) return;
+
+            window.addEventListener("scroll", function () {
+                const scrollPosition =
+                    window.scrollY ||
+                    document.documentElement.scrollTop ||
+                    document.body.scrollTop;
+
+                if (scrollPosition > 200) {
+                    backToTop.classList.add("show");
+                } else {
+                    backToTop.classList.remove("show");
+                }
+            });
+
+            backToTop.addEventListener("click", function (e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+        });        // Mobile menu toggle
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
@@ -1483,7 +1545,7 @@
             document.getElementById("preloader").style.display = "none";
         });
     </script>
-    <script src='https://www.noupe.com/embed/019b272adb3c73c2a85cc3a4a6b8ff5eebcf.js'></script>
+
 
 
 </body>

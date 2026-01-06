@@ -306,7 +306,7 @@
 
         /* Hero Section */
         .policies-hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749489887/hotel_image_klezyl.png');
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Photos/policies/bhadkeshwar_temple.jpg');
             background-size: cover;
             background-position: center;
             padding: 6rem 0 4rem;
@@ -728,6 +728,39 @@
             animation: fadeInUp 1s ease-out;
         }
 
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #b30000;
+            color: #ffd700;
+            border: 1px solid #ffd700;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+            .back-to-top.show {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .back-to-top:hover {
+                background-color: transparent;
+                color: var(--primary);
+                transform: translateY(-5px);
+            }
+
         /* Responsive Design */
         @media (max-width: 1024px) {
 
@@ -863,7 +896,7 @@
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div id="preloader">
-        <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1750791182/Untitled_design_bqjxji.gif" alt="Loading..." />
+        <img src="Photos/policies/loader.gif" alt="Loading..." />
     </div>
     <div id="scroll-progress"></div>
 
@@ -871,8 +904,8 @@
     <header>
         <nav>
             <div class="logo">
-                <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: white;">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749707119/logo-photoaidcom-cropped_vjedul.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
+                <a href="index.html">
+                    <img src="Photos/policies/logo.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
                     Hotel Devang
                 </a>
             </div>
@@ -1127,7 +1160,38 @@
 
     </footer>
 
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
     <script>
+
+        //back to top
+        document.addEventListener("DOMContentLoaded", function () {
+            const backToTop = document.getElementById("backToTop");
+            if (!backToTop) return;
+
+            window.addEventListener("scroll", function () {
+                const scrollPosition =
+                    window.scrollY ||
+                    document.documentElement.scrollTop ||
+                    document.body.scrollTop;
+
+                if (scrollPosition > 200) {
+                    backToTop.classList.add("show");
+                } else {
+                    backToTop.classList.remove("show");
+                }
+            });
+
+            backToTop.addEventListener("click", function (e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+        });
         // Mobile menu toggle
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
@@ -1247,6 +1311,6 @@
             document.getElementById("preloader").style.display = "none";
         });
     </script>
-    <script src='https://www.noupe.com/embed/019b272adb3c73c2a85cc3a4a6b8ff5eebcf.js'></script>
+
 </body>
 </html>

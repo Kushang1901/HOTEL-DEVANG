@@ -715,31 +715,31 @@
 
         /* Room Images */
         .standard-ac {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1760876307/IMG_7407_e1dmv0.jpg');
+            background-image: url('photos/rooms/standard Ac.jpeg');
         }
 
         .standard-non-ac {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1760876299/IMG_7410_hefnpc.jpg');
+            background-image: url('photos/rooms/standard Non_Ac.jpeg');
         }
 
         .deluxe-ac {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1760876257/IMG_7418_ypt29i.jpg');
+            background-image: url('photos/rooms/deluxe_ac.jpeg');
         }
 
         .deluxe-non-ac {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1760876235/IMG_7420_mnusg7.jpg');
+            background-image: url('photos/rooms/deluxe_nonac.jpeg');
         }
 
         .super-deluxe-ac {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1760876385/IMG_7389_doax2y.jpg');
+            background-image: url('photos/rooms/super_deluxe_ac.jpeg');
         }
 
         .super-deluxe-non-ac {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1760876362/IMG_7393_dudqb2.jpg');
+            background-image: url('photos/rooms/super_deluxe_nonac.jpeg');
         }
 
         .suite-ac {
-            background-image: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1760876428/IMG_7382_ryjx98.jpg');
+            background-image: url('photos/rooms/suite.jpeg');
         }
 
         .room-size {
@@ -1012,6 +1012,39 @@
             }
         }
 
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #b30000;
+            color: #ffd700;
+            border: 1px solid #ffd700;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+            .back-to-top.show {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .back-to-top:hover {
+                background-color: transparent;
+                color: var(--primary);
+                transform: translateY(-5px);
+            }
+
         /* Responsive Design */
         @media (max-width: 1024px) {
             .nav-links {
@@ -1124,17 +1157,16 @@
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div id="preloader">
-        <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1750791182/Untitled_design_bqjxji.gif" alt="Loading..." />
+        <img src="Photos/rooms/loader.gif" alt="Loading..." />
     </div>
-    <!-- Header -->
     <div id="scroll-progress"></div>
 
+    <!-- Header -->
     <header>
-
         <nav>
             <div class="logo">
-                <a href="index.html">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749707119/logo-photoaidcom-cropped_vjedul.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
+                <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: white;">
+                    <img src="Photos/rooms/logo.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
                     Hotel Devang
                 </a>
             </div>
@@ -1590,7 +1622,37 @@
         <img class="modal-content" id="modalImg" style="max-width:90%;max-height:90%;margin:auto;display:block;border-radius:10px;">
     </div>
 
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
     <script>
+        //back to top
+        document.addEventListener("DOMContentLoaded", function () {
+            const backToTop = document.getElementById("backToTop");
+            if (!backToTop) return;
+
+            window.addEventListener("scroll", function () {
+                const scrollPosition =
+                    window.scrollY ||
+                    document.documentElement.scrollTop ||
+                    document.body.scrollTop;
+
+                if (scrollPosition > 200) {
+                    backToTop.classList.add("show");
+                } else {
+                    backToTop.classList.remove("show");
+                }
+            });
+
+            backToTop.addEventListener("click", function (e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+        });
         /* -------------------------
 MOBILE MENU TOGGLE
 -------------------------- */
@@ -1711,7 +1773,7 @@ MOBILE MENU TOGGLE
 
 
     </script>
-    <script src='https://www.noupe.com/embed/019b272adb3c73c2a85cc3a4a6b8ff5eebcf.js'></script>
+
 
 
 </body>

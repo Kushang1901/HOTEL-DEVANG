@@ -280,7 +280,7 @@
         /* Hero Section */
         .hero {
             height: 60vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749491973/office_1_jvfbtg.jpg');
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Photos/gallery/cover2.png');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -930,6 +930,39 @@
             pointer-events: none;
         }
 
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #b30000;
+            color: #ffd700;
+            border: 1px solid #ffd700;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+            .back-to-top.show {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .back-to-top:hover {
+                background-color: transparent;
+                color: var(--primary);
+                transform: translateY(-5px);
+            }
+
         @media (max-width: 992px) {
             .video-content-wrapper {
                 flex-direction: column;
@@ -1251,16 +1284,16 @@
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div id="preloader">
-        <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1750791182/Untitled_design_bqjxji.gif" alt="Loading..." />
+        <img src="Photos/gallery/loader.gif" alt="Loading..." />
     </div>
-    <!-- Header -->
     <div id="scroll-progress"></div>
 
+    <!-- Header -->
     <header>
         <nav>
             <div class="logo">
-                <a href="index.html">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749707119/logo-photoaidcom-cropped_vjedul.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
+                <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: white;">
+                    <img src="Photos/gallery/logo.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
                     Hotel Devang
                 </a>
             </div>
@@ -1283,7 +1316,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Hotel Devang Gallery</h1>
+            <h1>Our Gallery</h1>
             <p>Explore our beautiful accommodations and serene surroundings in sacred Dwarka</p>
 
             <div class="breadcrumb">
@@ -1318,7 +1351,7 @@
             <div class="gallery-grid" id="galleryGrid">
                 <!-- Guest Rooms -->
                 <div class="gallery-item" data-category="rooms" onclick="openLightbox(0)">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1760876384/IMG_7390_qdn52z.jpg" alt="Deluxe Room">
+                    <img src="Photos/gallery/deluxe.jpeg" alt="Deluxe Room">
                     <div class="gallery-overlay">
                         <h3> Super Deluxe Room</h3>
                         <p>Spacious and comfortable room with modern amenities and traditional touch</p>
@@ -1326,7 +1359,7 @@
                 </div>
 
                 <div class="gallery-item" data-category="rooms" onclick="openLightbox(1)">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1760876423/IMG_7381_y4zxzt.jpg" alt="Premium Suite">
+                    <img src="Photos/gallery/suite.jpeg" alt="Premium Suite">
                     <div class="gallery-overlay">
                         <h3>Premium Suite</h3>
                         <p>Luxurious suite with separate living area and enhanced comfort</p>
@@ -1334,7 +1367,7 @@
                 </div>
 
                 <div class="gallery-item" data-category="rooms" onclick="openLightbox(2)">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1760876295/IMG_7408_wktcfi.jpg" alt="Classic Standard">
+                    <img src="Photos/gallery/standard.jpeg" alt="Classic Standard">
                     <div class="gallery-overlay">
                         <h3>Classic Standard</h3>
                         <p>A comfortability with a standard rates and relaxable stay</p>
@@ -1342,7 +1375,7 @@
                 </div>
 
                 <div class="gallery-item" data-category="rooms" onclick="openLightbox(3)">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1760876292/IMG_7417_rilxzh.jpg" alt="Proper Deluxe">
+                    <img src="Photos/gallery/deluxe_ac.jpeg" alt="Proper Deluxe">
                     <div class="gallery-overlay">
                         <h3>Prper Deluxe</h3>
                         <p>More than a Standard with more relaxation and more comfortness</p>
@@ -1350,7 +1383,7 @@
                 </div>
 
                 <div class="gallery-item" data-category="rooms" onclick="openLightbox(4)">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749733608/sofa_tazpih.jpg" alt="Seating Area">
+                    <img src="Photos/gallery/seating.jpeg" alt="Seating Area">
                     <div class="gallery-overlay">
                         <h3>Seating Area</h3>
                         <p>Perfect for families with children, spacious and well-appointed</p>
@@ -1359,7 +1392,7 @@
 
                 <!-- Bathrooms -->
                 <div class="gallery-item" data-category="bathrooms" onclick="openLightbox(5)">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749664943/Bathroom_ris49e.jpg" alt="Spacious Bathroom">
+                    <img src="Photos/gallery/bathroom.jpg" alt="Spacious Bathroom">
                     <div class="gallery-overlay">
                         <h3>Spacious Bathroom</h3>
                         <p>Clean and contemporary bathroom with all essential amenities</p>
@@ -1368,7 +1401,7 @@
 
                 <!-- Balconies -->
                 <div class="gallery-item" data-category="outdoor location" onclick="openLightbox(6)">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749664658/Balcony_izjhbw.jpg" alt="Room Balcony">
+                    <img src="Photos/gallery/balcony.jpg" alt="Room Balcony">
                     <div class="gallery-overlay">
                         <h3>Room Balcony</h3>
                         <p>Private balcony with city views and comfortable seating</p>
@@ -1376,7 +1409,7 @@
                 </div>
 
                 <div class="gallery-item" data-category="outdoor location" onclick="openLightbox(7)">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749632049/LAL_6503_formphotoeditor.com_phqtjh.jpg" alt="Functions Area">
+                    <img src="Photos/gallery/function.jpeg" alt="Functions Area">
                     <div class="gallery-overlay">
                         <h3>Functionable Venue</h3>
                         <p>A hotel which gives facility of celebrating the fashionable functions .</p>
@@ -1384,7 +1417,7 @@
                 </div>
 
                 <div class="gallery-item" data-category="outdoor location" onclick="openLightbox(8)">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1761896436/WhatsApp_Image_2025-10-31_at_10.38.42_AM_t1ptl8.jpg" alt="Reception Venue">
+                    <img src="Photos/gallery/reception.jpeg" alt="Reception Venue">
                     <div class="gallery-overlay">
                         <h3>Reception Venue</h3>
                         <p>A Hotel with Versatile Celebration Spaces.</p>
@@ -1393,7 +1426,7 @@
 
                 <!-- Interiors -->
                 <div class="gallery-item" data-category="interiors" onclick="openLightbox(9)">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1760876318/IMG_7405_ropuqv.jpg" alt="Hotel Lobby">
+                    <img src="Photos/gallery/lobby.jpg" alt="Hotel Lobby">
                     <div class="gallery-overlay">
                         <h3>Hotel Lobby</h3>
                         <p>Welcoming lobby with traditional decor and modern comfort</p>
@@ -1401,7 +1434,7 @@
                 </div>
 
                 <div class="gallery-item" data-category="interiors" onclick="openLightbox(10)">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749734009/reception_ph1e7p.jpg" alt="Reception Area">
+                    <img src="Photos/gallery/reception_area.jpeg" alt="Reception Area">
                     <div class="gallery-overlay">
                         <h3>Reception Area</h3>
                         <p>24/7 reception desk with friendly and helpful staff</p>
@@ -1409,7 +1442,7 @@
                 </div>
 
                 <div class="gallery-item" data-category="interiors" onclick="openLightbox(11)">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749628980/confernecr_hall_wnhtro.jpg" alt="Conference Hall">
+                    <img src="Photos/gallery/conference.jpg" alt="Conference Hall">
                     <div class="gallery-overlay">
                         <h3>Conference Area</h3>
                         <p>Clean and spacious meeting area for taking proper decisions .</p>
@@ -1418,7 +1451,7 @@
 
                 <!-- Exterior & Garden -->
                 <div class="gallery-item" data-category="exterior" onclick="openLightbox(12)">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1761896238/IMG20251031125325_ruufmk.jpg" alt="Hotel Exterior">
+                    <img src="Photos/gallery/exterior.jpeg" alt="Hotel Exterior">
                     <div class="gallery-overlay">
                         <h3>Hotel Exterior</h3>
                         <p>Heritage-style architecture blending tradition with modernity</p>
@@ -1426,7 +1459,7 @@
                 </div>
 
                 <div class="gallery-item" data-category="exterior" onclick="openLightbox(13)">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749735242/trees_ceyxb0.jpg " alt="Garden Area">
+                    <img src="Photos/gallery/garden.jpeg" alt="Garden Area">
                     <div class="gallery-overlay">
                         <h3>Garden Area</h3>
                         <p>Peaceful garden space for relaxation and meditation</p>
@@ -1434,7 +1467,7 @@
                 </div>
 
                 <div class="gallery-item" data-category="exterior" onclick="openLightbox(14)">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1750161977/parking_2_cgina7.jpg" alt="Parking Area">
+                    <img src="Photos/gallery/parking.jpeg" alt="Parking Area">
                     <div class="gallery-overlay">
                         <h3>Parking Facility</h3>
                         <p>Safe and secure parking space for our guests</p>
@@ -1443,7 +1476,7 @@
 
                 <!-- Surroundings -->
                 <div class="gallery-item" data-category="near temple" onclick="openLightbox(15)">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749629929/streets_xwdick.jpg" alt="Dwarka Streets">
+                    <img src="Photos/gallery/city_view.jpg" alt="Dwarka Streets">
                     <div class="gallery-overlay">
                         <h3>Dwarka Streets</h3>
                         <p>Vibrant streets of sacred Dwarka near our hotel</p>
@@ -1451,7 +1484,7 @@
                 </div>
 
                 <div class="gallery-item" data-category="near temple" onclick="openLightbox(16)">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749630692/temple_view_1_fn97qp.jpg" alt="Temple View">
+                    <img src="Photos/gallery/temple_nearby.jpg" alt="Temple View">
                     <div class="gallery-overlay">
                         <h3>Nearby Temple</h3>
                         <p>Close proximity to Dwarkadhish Temple and other sacred sites</p>
@@ -1459,7 +1492,7 @@
                 </div>
 
                 <div class="gallery-item" data-category="near temple" onclick="openLightbox(17)">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749630909/city_view_utvs8g.jpg" alt="City View">
+                    <img src="Photos/gallery/city.jpeg" alt="City View">
                     <div class="gallery-overlay">
                         <h3>City View</h3>
                         <p>Beautiful views of the sacred city from our hotel</p>
@@ -1576,8 +1609,37 @@
         <!-- Floating Contact Widget -->
 
     </footer>
-
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
     <script>
+
+        //back to top
+        document.addEventListener("DOMContentLoaded", function () {
+            const backToTop = document.getElementById("backToTop");
+            if (!backToTop) return;
+
+            window.addEventListener("scroll", function () {
+                const scrollPosition =
+                    window.scrollY ||
+                    document.documentElement.scrollTop ||
+                    document.body.scrollTop;
+
+                if (scrollPosition > 200) {
+                    backToTop.classList.add("show");
+                } else {
+                    backToTop.classList.remove("show");
+                }
+            });
+
+            backToTop.addEventListener("click", function (e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+        });
 
         const iframe = document.getElementById("hotelVideo");
         const wrapper = document.querySelector(".video-wrapper");
@@ -1597,25 +1659,98 @@
 
         // Gallery data
         const galleryData = [
-            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1760876384/IMG_7390_qdn52z.jpg', title: 'Super Deluxe Room', description: 'Spacious and comfortable room with modern amenities and traditional touch' },
-            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1760876423/IMG_7381_y4zxzt.jpg', title: 'Premium Suite', description: 'Luxurious suite with separate living area and enhanced comfort' },
-            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1760876295/IMG_7408_wktcfi.jpg', title: 'Classic Standard', description: 'A comfortability with a standard rates and relaxable stay' },
-            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1760876292/IMG_7417_rilxzh.jpg', title: 'Proper Deluxe', description: 'More than a Standard with more relaxation and more comfortness' },
-            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749733608/sofa_tazpih.jpg', title: 'Seating Area', description: 'Perfect for families with children, spacious and well-appointed' },
-            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749664943/Bathroom_ris49e.jpg', title: 'Spacious Bathroom', description: 'Clean and contemporary bathroom with all essential amenities' },
-            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749664658/Balcony_izjhbw.jpg', title: 'Room Balcony', description: 'Private balcony with city views and comfortable seating' },
-            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749632049/LAL_6503_formphotoeditor.com_phqtjh.jpg', title: 'Functionable Venue', description: 'A hotel which gives facility of celebrating the fashionable functions .' },
-            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1761896436/WhatsApp_Image_2025-10-31_at_10.38.42_AM_t1ptl8.jpg', title: 'Reception Venue', description: 'A Hotel with Versatile Celebration Spaces.' },
-            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1760876318/IMG_7405_ropuqv.jpg', title: 'Hotel Lobby', description: 'Welcoming lobby with traditional decor and modern comfort' },
-            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749734009/reception_ph1e7p.jpg', title: 'Reception Area', description: '24/7 reception desk with friendly and helpful staff' },
-            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749628980/confernecr_hall_wnhtro.jpg', title: 'Meeting Area', description: 'Clean and spacious meeting area for taking proper decisions .' },
-            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1761896238/IMG20251031125325_ruufmk.jpg', title: 'Hotel Exterior', description: 'Heritage-style architecture blending tradition with modernity' },
-            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749735242/trees_ceyxb0.jpg', title: 'Garden Area', description: 'Peaceful garden space for relaxation and meditation' },
-            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1750161977/parking_2_cgina7.jpg', title: 'Parking Facility', description: 'Safe and secure parking space for our guests' },
-            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749629929/streets_xwdick.jpg', title: 'Dwarka Streets', description: 'Vibrant streets of sacred Dwarka near our hotel' },
-            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749630692/temple_view_1_fn97qp.jpg', title: 'Nearby Temple', description: 'Close proximity to Dwarkadhish Temple and other sacred sites' },
-            { src: 'https://res.cloudinary.com/dn45xyazy/image/upload/v1749630909/city_view_utvs8g.jpg', title: 'City View', description: 'Beautiful views of the sacred city from our hotel' }
+            {
+                src: "Photos/gallery/deluxe.jpeg",
+                title: "Super Deluxe Room",
+                description: "Spacious and comfortable room with modern amenities and traditional touch"
+            },
+            {
+                src: "Photos/gallery/suite.jpeg",
+                title: "Premium Suite",
+                description: "Luxurious suite with separate living area and enhanced comfort"
+            },
+            {
+                src: "Photos/gallery/standard.jpeg",
+                title: "Classic Standard",
+                description: "A comfortability with a standard rates and relaxable stay"
+            },
+            {
+                src: "Photos/gallery/deluxe_ac.jpeg",
+                title: "Proper Deluxe",
+                description: "More than a Standard with more relaxation and more comfortness"
+            },
+            {
+                src: "Photos/gallery/seating.jpeg",
+                title: "Seating Area",
+                description: "Perfect for families with children, spacious and well-appointed"
+            },
+            {
+                src: "Photos/gallery/bathroom.jpg",
+                title: "Spacious Bathroom",
+                description: "Clean and contemporary bathroom with all essential amenities"
+            },
+            {
+                src: "Photos/gallery/balcony.jpg",
+                title: "Room Balcony",
+                description: "Private balcony with city views and comfortable seating"
+            },
+            {
+                src: "Photos/gallery/function.jpeg",
+                title: "Functionable Venue",
+                description: "A hotel which gives facility of celebrating the fashionable functions."
+            },
+            {
+                src: "Photos/gallery/reception.jpeg",
+                title: "Reception Venue",
+                description: "A Hotel with Versatile Celebration Spaces."
+            },
+            {
+                src: "Photos/gallery/lobby.jpg",
+                title: "Hotel Lobby",
+                description: "Welcoming lobby with traditional decor and modern comfort"
+            },
+            {
+                src: "Photos/gallery/reception_area.jpeg",
+                title: "Reception Area",
+                description: "24/7 reception desk with friendly and helpful staff"
+            },
+            {
+                src: "Photos/gallery/conference.jpg",
+                title: "Conference Area",
+                description: "Clean and spacious meeting area for taking proper decisions."
+            },
+            {
+                src: "Photos/gallery/exterior.jpeg",
+                title: "Hotel Exterior",
+                description: "Heritage-style architecture blending tradition with modernity"
+            },
+            {
+                src: "Photos/gallery/garden.jpeg",
+                title: "Garden Area",
+                description: "Peaceful garden space for relaxation and meditation"
+            },
+            {
+                src: "Photos/gallery/parking.jpeg",
+                title: "Parking Facility",
+                description: "Safe and secure parking space for our guests"
+            },
+            {
+                src: "Photos/gallery/city_view.jpg",
+                title: "Dwarka Streets",
+                description: "Vibrant streets of sacred Dwarka near our hotel"
+            },
+            {
+                src: "Photos/gallery/temple_nearby.jpg",
+                title: "Nearby Temple",
+                description: "Close proximity to Dwarkadhish Temple and other sacred sites"
+            },
+            {
+                src: "Photos/gallery/city.jpeg",
+                title: "City View",
+                description: "Beautiful views of the sacred city from our hotel"
+            }
         ];
+
 
         let currentImageIndex = 0;
 
@@ -1752,7 +1887,7 @@
         });
     </script>
 
-    <script src='https://www.noupe.com/embed/019b272adb3c73c2a85cc3a4a6b8ff5eebcf.js'></script>
+
 
 </body>
 </html>

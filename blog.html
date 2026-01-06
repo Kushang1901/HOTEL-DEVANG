@@ -192,7 +192,7 @@
 
         /* Hero Section */
         .blog-hero {
-            background: linear-gradient(rgba(136, 0, 0, 0.85), rgba(136, 0, 0, 0.85)), url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749489887/hotel_image_klezyl.png') center/cover;
+            background: linear-gradient(rgba(136, 0, 0, 0.85), rgba(136, 0, 0, 0.85)), url('') center/cover;
             height: 60vh;
             display: flex;
             align-items: center;
@@ -730,7 +730,38 @@
             list-style: none;
             gap: 1rem;
         }
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #b30000;
+            color: #ffd700;
+            border: 1px solid #ffd700;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
 
+            .back-to-top.show {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .back-to-top:hover {
+                background-color: transparent;
+                color: var(--primary);
+                transform: translateY(-5px);
+            }
 
         /* ==========================
    RESPONSIVE RULES
@@ -817,17 +848,16 @@
 </head>
 <body>
     <div id="preloader">
-        <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1750791182/Untitled_design_bqjxji.gif" alt="Loading..." />
+        <img src="Photos/index/loader.gif" alt="Loading..." />
     </div>
     <div id="scroll-progress"></div>
+
     <!-- Header -->
     <header>
         <nav>
             <div class="logo">
                 <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: white;">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749707119/logo-photoaidcom-cropped_vjedul.png"
-                         alt="Logo"
-                         style="height: 40px; border-radius: 50%; margin-right: 10px;">
+                    <img src="Photos/index/logo.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
                     Hotel Devang
                 </a>
             </div>
@@ -868,7 +898,7 @@
 
         <!-- BLOG IMAGE -->
         <div class="blog-hero-image">
-            <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1764972791/IMG-20251206-WA0000_svdlbt.jpg" alt="Hotel Devang">
+            <img src="Photos/index/blog.png" alt="Hotel Devang">
         </div>
 
         <!-- BLOG CONTENT -->
@@ -982,10 +1012,37 @@
 
         </div>
     </footer>
-
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
     <script>
 
+        //back to top
+        document.addEventListener("DOMContentLoaded", function () {
+            const backToTop = document.getElementById("backToTop");
+            if (!backToTop) return;
 
+            window.addEventListener("scroll", function () {
+                const scrollPosition =
+                    window.scrollY ||
+                    document.documentElement.scrollTop ||
+                    document.body.scrollTop;
+
+                if (scrollPosition > 200) {
+                    backToTop.classList.add("show");
+                } else {
+                    backToTop.classList.remove("show");
+                }
+            });
+
+            backToTop.addEventListener("click", function (e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+        });
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
@@ -1075,6 +1132,6 @@
             document.getElementById("preloader").style.display = "none";
         });
     </script>
-    <script src='https://www.noupe.com/embed/019b272adb3c73c2a85cc3a4a6b8ff5eebcf.js'></script>
+
 </body>
 </html>

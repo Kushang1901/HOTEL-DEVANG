@@ -23,7 +23,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="/css/style.css" as="style">
     <link rel="stylesheet" href="/css/style.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Preload your main banner image -->
     <link rel="preload" as="image" href="https://res.cloudinary.com/dn45xyazy/image/upload/v1749489887/hotel_image_klezyl.png">
 
@@ -107,7 +108,7 @@
         }
     </script>
 
-    </script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VCKHH3P6R3"></script>
     <script>
@@ -317,7 +318,7 @@
         /* Hero Section - Multiple Background Options */
         .hero {
             height: 100vh;
-            background: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1761896239/IMG20251031125123_kftx41.jpg') center/cover no-repeat;
+            background: url('Photos/index/Hero1.jpeg') center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -472,28 +473,28 @@
         }
 
         .slide1 {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dn45xyazy/image/upload/v1761896239/IMG20251031125123_kftx41.jpg');
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('Photos/index/Hero1.jpeg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
         }
 
         .slide2 {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dn45xyazy/image/upload/v1761896234/IMG20251031125205_kcbb2e.jpg');
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('Photos/index/Hero2.jpeg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
         }
 
         .slide3 {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dn45xyazy/image/upload/v1750707469/s2_nrsx3l.jpg');
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('Photos/index/Hero3.jpeg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
         }
 
         .slide4 {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dn45xyazy/image/upload/v1761905803/recp_out_kjbdq8.jpg');
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('Photos/index/Hero4.jpeg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -596,7 +597,7 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            background: url('https://res.cloudinary.com/dn45xyazy/image/upload/v1749489887/hotel_image_klezyl.png') no-repeat center center;
+            background: url('') no-repeat center center;
             background-size: cover;
             height: 400px;
             aspect-ratio: 4 / 3;
@@ -887,6 +888,39 @@
             }
         }
 
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #b30000;
+            color: #ffd700;
+            border: 1px solid #ffd700;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+            .back-to-top.show {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .back-to-top:hover {
+                background-color: transparent;
+                color: var(--primary);
+                transform: translateY(-5px);
+            }
+
         /* Responsive Design */
         /* Mobile Desktop Mode (1024px and below) */
         @media (max-width: 1024px) {
@@ -1176,7 +1210,7 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <div id="preloader">
-        <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1750791182/Untitled_design_bqjxji.gif" alt="Loading..." />
+        <img src="Photos/index/loader.gif" alt="Loading..." />
     </div>
     <div id="scroll-progress"></div>
 
@@ -1185,7 +1219,7 @@
         <nav>
             <div class="logo">
                 <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: white;">
-                    <img src="https://res.cloudinary.com/dn45xyazy/image/upload/v1749707119/logo-photoaidcom-cropped_vjedul.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
+                    <img src="Photos/index/logo.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; margin-right: 10px;">
                     Hotel Devang
                 </a>
             </div>
@@ -1194,7 +1228,7 @@
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about_us.html">About Us</a></li>
+                <li><a href="about_us.html" >About Us</a></li>
                 <li><a href="room.html">Rooms</a></li>
                 <li><a href="gallery_page.html">Gallery</a></li>
                 <li><a href="facilities_page.html">Facilities</a></li>
@@ -1289,7 +1323,7 @@
                 background: linear-gradient(135deg, #caa035, #880000);
                 box-shadow: 0 25px 45px rgba(0,0,0,0.15);">
                     <video width="100%" autoplay muted loop playsinline preload="auto" style="border-radius: 14px;">
-                        <source src="https://res.cloudinary.com/dn45xyazy/video/upload/v1763406699/Generate_a_realistic_202511180038_zppn0w.mp4" type="video/mp4">
+                        <source src="photos/index/Hotel_flow.mp4" type="video/mp4">
                     </video>
                 </div>
 
@@ -1311,32 +1345,32 @@
             <h2>Why Choose Hotel Devang?</h2>
             <div class="highlights-grid">
                 <div class="highlight-card">
-                    <span class="highlight-icon">🏛️</span>
+                    <span class="highlight-icon"><i class="fa-solid fa-hotel"></i></span>
                     <h3>Sacred Location</h3>
                     <p>Strategically located in Dwarka, Gujarat - 361335, just minutes away from the famous Dwarkadhish Temple and other significant religious sites.</p>
                 </div>
                 <div class="highlight-card">
-                    <span class="highlight-icon">🛏️</span>
+                    <span class="highlight-icon"><i class="fa-solid fa-bed"></i></span>
                     <h3>Comfortable Accommodation</h3>
                     <p>43 well-furnished rooms with modern amenities, ensuring a comfortable stay for all our guests during their spiritual journey.</p>
                 </div>
                 <div class="highlight-card">
-                    <span class="highlight-icon">🙏</span>
+                    <span class="highlight-icon"><i class="fa-solid fa-hands-praying"></i></span>
                     <h3>Warm Hospitality</h3>
                     <p>Experience authentic Gujarati hospitality with our caring staff who understand the needs of pilgrims and travelers.</p>
                 </div>
                 <div class="highlight-card">
-                    <span class="highlight-icon">🍽️</span>
+                    <span class="highlight-icon"><i class="fa-solid fa-plate-wheat"></i></span>
                     <h3>Pure Vegetarian breakfast</h3>
                     <p>Savor delicious, pure vegetarian meals prepared with love, respecting the spiritual significance of this holy city.</p>
                 </div>
                 <div class="highlight-card">
-                    <span class="highlight-icon">🌅</span>
+                    <span class="highlight-icon"><i class="fa-solid fa-peace"></i></span>
                     <h3>Peaceful Ambience</h3>
                     <p>Enjoy a serene atmosphere perfect for meditation, prayer, and spiritual reflection in the divine city of Dwarka.</p>
                 </div>
                 <div class="highlight-card">
-                    <span class="highlight-icon">💰</span>
+                    <span class="highlight-icon"><i class="fa fa-inr" aria-hidden="true"></i></span>
                     <h3>Affordable Rates</h3>
                     <p>Quality accommodation at reasonable prices, making your pilgrimage comfortable without straining your budget.</p>
                 </div>
@@ -1421,7 +1455,37 @@
 
     </footer>
 
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
     <script>
+        //back to top
+        document.addEventListener("DOMContentLoaded", function () {
+            const backToTop = document.getElementById("backToTop");
+            if (!backToTop) return;
+
+            window.addEventListener("scroll", function () {
+                const scrollPosition =
+                    window.scrollY ||
+                    document.documentElement.scrollTop ||
+                    document.body.scrollTop;
+
+                if (scrollPosition > 200) {
+                    backToTop.classList.add("show");
+                } else {
+                    backToTop.classList.remove("show");
+                }
+            });
+
+            backToTop.addEventListener("click", function (e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+        });
         // ✅ Mobile menu toggle
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
@@ -1580,7 +1644,7 @@
 
 
 
-    <script src='https://www.noupe.com/embed/019b272adb3c73c2a85cc3a4a6b8ff5eebcf.js'></script>
+
 
 </body>
 </html>
